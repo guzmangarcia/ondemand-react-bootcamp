@@ -5,16 +5,12 @@ import Home from './pages/Home/Home';
 import Layout from './components/Layout/Layout';
 import ProductList from './pages/ProductList/ProductList';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
-import {UserDetailsContextProvider} from './components/UserDetailsContextProvider/UserDetailsContextProvider.js';
+import { UserDetailsContextProvider } from './components/UserDetailsContextProvider/UserDetailsContextProvider.js';
 import Search from './pages/Search/Search';
+import Cart from './components/Cart/Cart';
 function App() {
 
   return (
-
-
-
-
-
 
     <BrowserRouter>
       <UserDetailsContextProvider>
@@ -26,6 +22,7 @@ function App() {
             <Route exact path="/products" element={<ProductList />} />
             <Route exact path="/detail" element={<ProductDetails />} />
             <Route exact path="/search" element={<Search />} />
+            <Route exact path="/cart" element={<Cart />} />
             <Route path="*" element={<NotFound />} />
 
           </Routes>
