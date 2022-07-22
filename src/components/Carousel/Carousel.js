@@ -103,7 +103,7 @@ export default function Carousel({
             <br/>
             {(buttonText !== undefined) &&
                 <button
-                    className={styles.next}
+                    className={styles.button}
                     onClick={buttonFunction}>
                     {buttonText}
                 </button>}

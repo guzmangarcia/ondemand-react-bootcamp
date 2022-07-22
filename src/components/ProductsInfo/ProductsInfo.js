@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider'
 import CarouselGrid from "../CarouselGrid/CarouselGrid";
 import Pagination from "../Pagination/Pagination";
-import styles from './ProductsInfo.module.scss'
+
 
 export default function ProductsInfo({ products, totalPages, currentPage, setCurrentPage }) {
 
