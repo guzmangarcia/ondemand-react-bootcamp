@@ -1,14 +1,14 @@
 import { useEffect, useState, useContext } from "react";
-import { UserDetailsContext } from '../UserDetailsContextProvider/UserDetailsContextProvider'
+import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider'
 import CarouselGrid from "../CarouselGrid/CarouselGrid";
 import Pagination from "../Pagination/Pagination";
 import './ProductsInfo.css'
 
 export default function ProductsInfo({ products ,totalPages,currentPage, setCurrentPage}) {
 
-    const { userDetails, setUserDetails } = useContext(UserDetailsContext);
-    // console.log(userDetails)
-    // console.log(setUserDetails)
+    const { cartItems, setCartItems } = useContext(CartItemsContext);
+    // console.log(CartItems)
+    // console.log(setCartItems)
 
     const [gridData, setGridData] = useState([]);
 
@@ -46,7 +46,7 @@ export default function ProductsInfo({ products ,totalPages,currentPage, setCurr
                 <CarouselGrid
                     gridData={gridData}
                     gridName={'Products'}
-                    buttonFunction={(id) => { /*console.log("id", id);*/ setUserDetails([...userDetails, id]) }}
+                    buttonFunction={(id) => { /*console.log("id", id);*/ setCartItems([...cartItems, id]) }}
                     buttonText='Add to cart' />
                 : <div>No items Found</div>
             }

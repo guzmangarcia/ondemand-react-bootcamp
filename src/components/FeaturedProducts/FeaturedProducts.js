@@ -2,15 +2,15 @@ import { useContext } from "react"
 import styles from './FeaturedProducts.module.scss'
 import CarouselGrid from '../CarouselGrid/CarouselGrid';
 import { useNavigate, } from 'react-router-dom';
-import { UserDetailsContext } from '../../components/UserDetailsContextProvider/UserDetailsContextProvider'
+import { CartItemsContext } from '../../components/CartItemsContextProvider/CartItemsContextProvider'
 
 export default function FeaturedProducts(props) {
 
 
     const navigate = useNavigate();
-    const { userDetails, setUserDetails } = useContext(UserDetailsContext);
-  //  console.log(userDetails)
-   // console.log(setUserDetails)
+    const { cartItems, setCartItems } = useContext(CartItemsContext);
+  //  console.log(cartItems)
+   // console.log(setCartItems)
 
     // console.log("FeaturedProducts constructor******************",props.featuredProducts)  
     var featuredProducts = props.featuredProducts.map
@@ -35,7 +35,7 @@ export default function FeaturedProducts(props) {
         <div className={styles.featuredProducts}>
             <CarouselGrid gridName={'FeaturedProducts'}
                 gridData={featuredProducts}
-                buttonFunction={(id) => { /*console.log("id", id);*/ setUserDetails([...userDetails,id]) }}
+                buttonFunction={(id) => { /*console.log("id", id);*/ setCartItems([...cartItems,id]) }}
                 buttonText='Add to cart' />
             <br />
             <div className={styles.featuredProducts}>

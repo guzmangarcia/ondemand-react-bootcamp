@@ -5,7 +5,7 @@ import Home from './pages/Home/Home';
 import Layout from './components/Layout/Layout';
 import ProductList from './pages/ProductList/ProductList';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
-import { UserDetailsContextProvider } from './components/UserDetailsContextProvider/UserDetailsContextProvider.js';
+import { CartItemsContextProvider } from './components/CartItemsContextProvider/CartItemsContextProvider.js';
 import Search from './pages/Search/Search';
 import Cart from './components/Cart/Cart';
 function App() {
@@ -13,7 +13,7 @@ function App() {
   return (
 
     <BrowserRouter>
-      <UserDetailsContextProvider>
+      <CartItemsContextProvider>
         <Layout >
           <Routes>
 
@@ -27,7 +27,7 @@ function App() {
 
           </Routes>
         </Layout>
-      </UserDetailsContextProvider>
+      </CartItemsContextProvider>
     </BrowserRouter>
 
 
