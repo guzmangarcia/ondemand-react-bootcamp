@@ -58,11 +58,20 @@ min-width: 250px;
  // padding: 8px 12px;
   // position: absolute;
  // bottom: 10px;
-   width: 100%;
- 
+   //width: 100%;
+   word-wrap: break-word;
+
+  width: 30vh;
+  left: 0;
+  right: 0;
   text-align: center;
 }
 
+.divbutton
+{
+  margin-top: 10px;
+
+}
 
 
 /* The dots/bullets/indicators */

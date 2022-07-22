@@ -19,24 +19,26 @@ function CarouselElement({ className, count, carouselCurrentSlideIndex, src, alt
         <div ref={itemRef} className={styles.carrouselMainStyle} >
             <div className={`${styles.fade}`}>
 
-                <img src={src}
-                    alt={alt}
-                    onClick={() => {
-                        //  console.log(navigationLink);
-                        if (navigationLink !== undefined) {
-                            navigate(navigationLink);
+                <div>
+                    <img src={src}
+                        alt={alt}
+                        onClick={() => {
+                            //  console.log(navigationLink);
+                            if (navigationLink !== undefined) {
+                                navigate(navigationLink);
 
-                        }
+                            }
 
-                    }}
-                    className={`${styles.styleCarrouselImage} ${className}`} />
+                        }}
+                        className={`${styles.styleCarrouselImage} ${className}`} />
+                </div>
+                <div id='aaa'>
+                    {text.map((element, index) => {
+                        return <div key={`${text} ${index}`} className={styles.text} >{element} </div>
+                    })}
 
-                {text.map((element, index) => {
-                    return <div key={`${text} ${index}`} className={styles.text} >{element} </div>
-                })}
-
-                <div className={styles.text}>  ({id}/{count})</div>
-
+                    <div className={styles.text}>  ({id}/{count})</div>
+                </div>
             </div>
         </div>);
 
@@ -100,13 +102,14 @@ export default function Carousel({
 
                 <button className={styles.next} onClick={nextClick} >❯</button>
             </div>
-            <br/>
-            {(buttonText !== undefined) &&
-                <button
+            <div className={styles.divbutton}>
+                {(buttonText !== undefined) &&
+                    <button
                     className={styles.button}
-                    onClick={buttonFunction}>
-                    {buttonText}
-                </button>}
+                        onClick={buttonFunction}>
+                        {buttonText}
+                    </button>}
+            </div>
         </div >
 
     );

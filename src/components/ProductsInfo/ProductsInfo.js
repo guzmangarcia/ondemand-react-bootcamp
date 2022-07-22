@@ -39,42 +39,45 @@ export default function ProductsInfo({ products, totalPages, currentPage, setCur
     function addItemToCard(item) {
 
         let cartItem = cartItems.find((cardItem) => cardItem.uniqueId === item.uniqueId)
-        
+
         if (cartItem === undefined) {
             cartItem = {
                 uniqueId: item.uniqueId,
                 quantity: 0
             }
         }
-        if (item.stock > cartItem.quantity+1)
-        {
+        if (item.stock > cartItem.quantity + 1) {
             cartItem.quantity++;
             console.log(cartItem.quantity)
-            if(cartItem.quantity===1) setCartItems([...cartItems, cartItem])
+            if (cartItem.quantity === 1) setCartItems([...cartItems, cartItem])
         }
-        else
-        {
-            alert('not enough stock');
+        else {
+            setTimeout(() => {
+                alert('not enough stock');
+            }, 100);
 
         }
-       
+
     }
 
     return (
         <div >
             {(gridData?.length > 0) ?
-                <CarouselGrid
-                    gridData={gridData}
-                    gridName={'Products'}
-                    buttonFunction={(item) => { addItemToCard(item); }}
-                    buttonText='Add to cart' />
+                <div>
+                    <CarouselGrid
+                        gridData={gridData}
+                        gridName={'Products'}
+                        buttonFunction={(item) => { addItemToCard(item); }}
+                        buttonText='Add to cart' />
+                    <Pagination
+                        totalPages={totalPages}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage} />
+                </div>
                 : <div>No items Found</div>
             }
 
-            <Pagination
-                totalPages={totalPages}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage} />
+
         </div>
 
     );

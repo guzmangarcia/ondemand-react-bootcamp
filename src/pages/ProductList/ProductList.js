@@ -9,59 +9,61 @@ import styles from './ProductList.module.scss'
 
 
 const ProductList = () => {
-    const [ filteredProducts, setFilteredProducts ] = useState({});
+    const [filteredProducts, setFilteredProducts] = useState({});
     const [selectedCategories, updateSelectedCategories] = useState([]);
     const [readyForRender, setReadyForRender] = useState(false);
 
-   
+
     const [currentPage, setCurrentPage] = useState(1);
-    const { products, isProductsLoading,totalPages } = useWrappedProducts({pageNumber:currentPage});
-    const { productCategories, isProductCategoriesLoading } = useWrappedProductCategoriesMenu({pageNumber:1});
+    const { products, isProductsLoading, totalPages } = useWrappedProducts({ pageNumber: currentPage });
+    const { productCategories, isProductCategoriesLoading } = useWrappedProductCategoriesMenu({ pageNumber: 1 });
 
-    
 
-    
-    
+
+
+
 
     useEffect(() => {
 
-        if (isProductsLoading || isProductCategoriesLoading || selectedCategories=== undefined  ) {
+        if (isProductsLoading || isProductCategoriesLoading || selectedCategories === undefined) {
             return;
         }
-        if (selectedCategories===undefined || selectedCategories?.length === 0) {
-            setFilteredProducts(products); 
+        if (selectedCategories === undefined || selectedCategories?.length === 0) {
+            setFilteredProducts(products);
             setReadyForRender(true);
             return;
         }
-  
+
         setFilteredProducts(
-            products.filter((p) => selectedCategories.some(c => c===p.categoryId))
-        ); 
+            products.filter((p) => selectedCategories.some(c => c === p.categoryId))
+        );
         setReadyForRender(true);
 
     },
-    [selectedCategories, 
-     productCategories,
-     products, 
-     isProductsLoading, 
-     isProductCategoriesLoading,
-     readyForRender]);
+        [selectedCategories,
+            productCategories,
+            products,
+            isProductsLoading,
+            isProductCategoriesLoading,
+            readyForRender]);
 
     // console.log(products, isProductsLoading);
     return (
-        <div className={styles.sidePanel} id="aaaaaaa">
-            
-            {!readyForRender ?<div>Loading</div>:
-                <SideBar menuListItems={productCategories}
-                    selectedCategories={selectedCategories}
-                    updateParentSelectedCategories={updateSelectedCategories} />
-                 }
-                 <div>
-            <h1 className={ styles.flexDiv} >This is the Product List Page </h1>
-           
-            {(selectedCategories?.length>0)&&<button onClick={()=> updateSelectedCategories([])}>clear filters</button>}
-            {!readyForRender ? <div>Loading</div>:<ProductsInfo products={filteredProducts} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>  }
-</div>
+        <div  >
+
+            <h1 className={styles.flexDiv} >This is the Product List Page </h1>
+            <div className={styles.sidePanel}>
+                {!readyForRender ? <div>Loading</div> :
+                    <SideBar menuListItems={productCategories}
+                        selectedCategories={selectedCategories}
+                        updateParentSelectedCategories={updateSelectedCategories} />
+                }
+                <div>
+
+                    {!readyForRender ? <div>Loading</div> : <ProductsInfo products={filteredProducts} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />}
+                    {(selectedCategories?.length > 0) && <button onClick={() => updateSelectedCategories([])}>clear filters</button>}
+                </div>
+            </div>
         </div>
     );
 

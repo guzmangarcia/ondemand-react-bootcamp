@@ -1,8 +1,10 @@
 .styleCarrousel
 {
-  // display: grid;
-  display: inline-block;
+  display: flex;
+  width: 100vw;
+  flex-wrap: wrap;
 }
+
 .imageSmall
 {
    max-height: 20vh;

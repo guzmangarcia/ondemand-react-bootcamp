@@ -1,9 +1,7 @@
-import styled from 'styled-components';
+import styles from './Pagination.module.scss';
 import { useEffect, useState } from "react";
 
-var ButtonStyled = styled.button``
-var AStyledUnselected = styled.a``
-var AStyledSelected = styled.a``
+
 
 
 export default function Pagination({ totalPages, currentPage, setCurrentPage }) {
@@ -50,14 +48,13 @@ export default function Pagination({ totalPages, currentPage, setCurrentPage }) 
 
 
     return (
-        <div>
-            <br />
-            <br />
-            <ButtonStyled onClick={() => { handleClick(-1) }} > {"<"}    </ButtonStyled>
+        <div className={styles.maindiv}>
+          
+            <button onClick={() => { handleClick(-1) }} > {"<"}    </button>
 
-            {pages.map((d, index) => { return (d === currentPage) ? <AStyledUnselected key={index} >{d}</AStyledUnselected> : <AStyledSelected key={index} href={`#${d}`} onClick={() => handleClickPage(d)} >{d}</AStyledSelected> })}
+            {pages.map((d, index) => { return (d === currentPage) ? <span href={`#${d}`} key={index} >{d}</span> : <a key={index} href={`#${d}`} onClick={() => handleClickPage(d)} >{d}</a> })}
 
-            <ButtonStyled onClick={() => { handleClick(+1) }} > {">"}    </ButtonStyled>
+            <button onClick={() => { handleClick(+1) }} > {">"}    </button>
         </div>
 
     );

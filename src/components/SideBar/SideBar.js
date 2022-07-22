@@ -37,7 +37,7 @@ export default function SideBar({ menuListItems, selectedCategories, updateParen
             {
                 menuListItems.map((optionItem, index) => (
                     <a key={index}
-                        className={selectedCategories.some(d => d === optionItem.categoryId) ? 'active' : ''}
+                        className={selectedCategories.some(d => d === optionItem.categoryId) ? `${styles['.sidebar a.active']}` : ''}
                         href={'#' + encodeURIComponent(optionItem.categoryId)}
                         onClick={() => handleClick(optionItem.categoryId)} >
                         {optionItem.alt}
