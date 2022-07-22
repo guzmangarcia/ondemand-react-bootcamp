@@ -1,8 +1,8 @@
 
 
 import { useEffect } from 'react';
-import './SideBar.css'
 import { useSearchParams } from "react-router-dom";
+import styles from './SideBar.module.scss'
 
 export default function SideBar({ menuListItems, selectedCategories, updateParentSelectedCategories }) {
 
@@ -33,7 +33,7 @@ export default function SideBar({ menuListItems, selectedCategories, updateParen
     return (
 
 
-        <div className="sidebar">
+        <div className={styles.sidebar}>
             {
                 menuListItems.map((optionItem, index) => (
                     <a key={index}

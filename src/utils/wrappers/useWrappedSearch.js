@@ -29,7 +29,8 @@ export default function useWrappedSearch({ searchTerm ,pageNumber=1 }) {
           alt: item.data.mainimage.alt,
           text: [item.data.name, item.data.price, item.data.category.slug],
           navigationLink: `/detail?productId=${item.id}`,
-          uniqueId:item.id
+          uniqueId:item.id,
+          stock:data.stock
         };
       })
         setWrappedData({ totalPages,data:dataFiltered,  isLoading });

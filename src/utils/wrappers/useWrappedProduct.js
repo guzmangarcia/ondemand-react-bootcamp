@@ -35,7 +35,8 @@ export default function useWrappedProduct({ productId ,pageNumber=1}) {
             tags: item.tags,
             sku: item.data.sku,
             description: item.data.description[0].text,
-            specs: item.data.specs
+            specs: item.data.specs,
+            stock:item.data.stock
           },
           galery: item.data.images.map((image, indexImage) => {
             return ({
@@ -44,6 +45,7 @@ export default function useWrappedProduct({ productId ,pageNumber=1}) {
               alt: item.data.mainimage.alt,
               categoryId: item.data.category.id,
               navigationLink: `/detail?productId=${item.data.category.id}`,
+
 
             })
 

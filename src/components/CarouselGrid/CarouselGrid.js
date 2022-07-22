@@ -27,7 +27,7 @@ export default function CarouselGrid({ gridData, gridName, carouselName, carouse
                     carouselInitialSlideIndex={1}
                     data={carouselData}
                     uniqueId={carouselData[0].uniqueId}
-                    buttonFunction={()=>{/*console.log("grid",carouselData[0].uniqueId);*/ buttonFunction(carouselData[0].uniqueId)}}
+                    buttonFunction={()=>{ buttonFunction(carouselData[0])}}
                     buttonText ={buttonText}
                 />
             

@@ -3,6 +3,7 @@ import ProductsInfo from "../../components/ProductsInfo/ProductsInfo"
 import useWrappedProductCategoriesMenu from '../../utils/wrappers/useWrappedProductCategoriesMenu'
 import useWrappedProducts from "../../utils/wrappers/useWrappedProducts";
 import { useEffect, useState } from "react";
+import styles from './ProductList.module.scss'
 // import { Button } from "bootstrap";
 
 
@@ -48,18 +49,19 @@ const ProductList = () => {
 
     // console.log(products, isProductsLoading);
     return (
-        <div>
+        <div className={styles.sidePanel} id="aaaaaaa">
             
             {!readyForRender ?<div>Loading</div>:
                 <SideBar menuListItems={productCategories}
                     selectedCategories={selectedCategories}
                     updateParentSelectedCategories={updateSelectedCategories} />
                  }
-            <h1 style={{ display: 'inline-block' }} >This is the Product List Page </h1>
+                 <div>
+            <h1 className={ styles.flexDiv} >This is the Product List Page </h1>
            
             {(selectedCategories?.length>0)&&<button onClick={()=> updateSelectedCategories([])}>clear filters</button>}
             {!readyForRender ? <div>Loading</div>:<ProductsInfo products={filteredProducts} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>  }
-
+</div>
         </div>
     );
 

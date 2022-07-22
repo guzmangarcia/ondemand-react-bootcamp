@@ -25,7 +25,8 @@ export default function FeaturedProducts(props) {
                     alt: data.alt,
                     text: data.text,
                     navigationLink: data.navigationLink,
-                    uniqueId: data.uniqueId
+                    uniqueId: data.uniqueId,
+                    stock:data.stock
                 };
             })
         });
@@ -35,7 +36,7 @@ export default function FeaturedProducts(props) {
         <div className={styles.featuredProducts}>
             <CarouselGrid gridName={'FeaturedProducts'}
                 gridData={featuredProducts}
-                buttonFunction={(id) => { /*console.log("id", id);*/ setCartItems([...cartItems,id]) }}
+                buttonFunction={(id) => {  setCartItems([...cartItems,id]) }}
                 buttonText='Add to cart' />
             <br />
             <div className={styles.featuredProducts}>

@@ -2,9 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider'
 import CarouselGrid from "../CarouselGrid/CarouselGrid";
 import Pagination from "../Pagination/Pagination";
-import './ProductsInfo.css'
+import styles from './ProductsInfo.module.scss'
 
-export default function ProductsInfo({ products ,totalPages,currentPage, setCurrentPage}) {
+export default function ProductsInfo({ products, totalPages, currentPage, setCurrentPage }) {
 
     const { cartItems, setCartItems } = useContext(CartItemsContext);
     // console.log(CartItems)
@@ -28,25 +28,45 @@ export default function ProductsInfo({ products ,totalPages,currentPage, setCurr
                         text: data.text,
                         categoryId: data.categoryId,
                         navigationLink: data.navigationLink,
-                        uniqueId: data.uniqueId
+                        uniqueId: data.uniqueId,
+                        stock: data.stock
                     };
                 })
             }))
 
     }, [products, setGridData]);
 
-    function addStock()
-    {
+    function addItemToCard(item) {
+
+        let cartItem = cartItems.find((cardItem) => cardItem.uniqueId === item.uniqueId)
         
+        if (cartItem === undefined) {
+            cartItem = {
+                uniqueId: item.uniqueId,
+                quantity: 0
+            }
+        }
+        if (item.stock > cartItem.quantity+1)
+        {
+            cartItem.quantity++;
+            console.log(cartItem.quantity)
+            if(cartItem.quantity===1) setCartItems([...cartItems, cartItem])
+        }
+        else
+        {
+            alert('not enough stock');
+
+        }
+       
     }
 
     return (
-        <div style={{ display: 'inline-block' }}>
+        <div >
             {(gridData?.length > 0) ?
                 <CarouselGrid
                     gridData={gridData}
                     gridName={'Products'}
-                    buttonFunction={(id) => { /*console.log("id", id);*/ setCartItems([...cartItems, id]) }}
+                    buttonFunction={(item) => { addItemToCard(item); }}
                     buttonText='Add to cart' />
                 : <div>No items Found</div>
             }
