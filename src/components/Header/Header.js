@@ -43,7 +43,7 @@ const Header = () => {
                         <img src={logo} alt={'Authentic Authentic Authentic'} width={100} height={100} onClick={() => navigate('/home')} />
                     </th>
                     <th><SearchEngine /></th>
-                    <th><img src={shoppingCart} alt={'check your purchase'} width={50} height={50} /></th>
+                    <th><img src={shoppingCart} alt={'check your purchase'} width={50} height={50} onClick={() => navigate('/cart')}/></th>
                 </tr>
             </tbody>
         </table>

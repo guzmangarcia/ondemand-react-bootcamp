@@ -35,6 +35,11 @@ export default function ProductsInfo({ products ,totalPages,currentPage, setCurr
 
     }, [products, setGridData]);
 
+    function addStock()
+    {
+        
+    }
+
     return (
         <div style={{ display: 'inline-block' }}>
             {(gridData?.length > 0) ?
