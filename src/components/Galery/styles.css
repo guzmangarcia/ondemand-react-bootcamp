@@ -1,23 +1,8 @@
-#app { height: 100% }
-html,
-body {
-  position: relative;
-  height: 100%;
-}
 
-body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-}
 
-.swiper {
-  width: 100%;
-  height: 100%;
-}
+
+
+
 
 .swiper-slide {
   text-align: center;
@@ -53,12 +38,13 @@ body {
 
 .swiper {
   width: 100%;
-  height: 300px;
+  height: 200px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .swiper-slide {
+  background-color:  rgb(214, 214, 214);
   background-size: cover;
   background-position: center;
 }
@@ -86,7 +72,7 @@ body {
 
 .swiper-slide img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   object-fit: cover;
 }
