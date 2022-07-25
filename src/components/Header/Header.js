@@ -14,7 +14,7 @@ const SearchEngine = () => {
 
     return (
 
-        <input className={styles.seach} onChange={(e) => {
+        <input className={styles.search} placeholder="Find your product..." onChange={(e) => {
             if (e.target.value === '') {
                 navigate(`/home`)
             } else {
