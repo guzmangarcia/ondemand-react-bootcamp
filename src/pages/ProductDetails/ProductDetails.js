@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Galery from '../../components/Galery/Galery'
 import ProductDescription from '../../components/ProductDescription/ProductDescription'
 import useWrappedProduct from '../../utils/wrappers/useWrappedProduct';
-
+import styles from './ProductDetails.module.scss'
 export default function ProductDetails() {
     const [searchParams] = useSearchParams();
     const [productId, setproductId] = useState('');
@@ -20,9 +20,14 @@ export default function ProductDetails() {
 
     return (
         <div>
+            <div className={styles.galery}>
 
-             {!isProductLoading && <Galery data={product.galery} />}
+            {!isProductLoading && <Galery data={product.galery} />}
+            </div>
+            
+            <div className={styles.galerydetails}>
              {!isProductLoading && <ProductDescription {...product.properties} />}
+             </div>
         </div>
 
     )
