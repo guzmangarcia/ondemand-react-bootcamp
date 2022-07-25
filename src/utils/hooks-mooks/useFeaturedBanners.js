@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
-import { API_BASE_URL } from '../constants';
-import { useLatestAPI } from './useLatestAPI';
+
+import useFeaturedBannersMock from '../../mocks/en-us/featured-banners.json';;
+
 
 export default function useFeaturedBanners() {
-  const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
+
   const [featuredBanners, setFeaturedBanners] = useState(() => ({
     data: {},
     isLoading: true,
   }));
 
   useEffect(() => {
-    if (!apiRef || isApiMetadataLoading) {
-      return () => {};
-    }
 
     const controller = new AbortController();
 
@@ -20,15 +18,7 @@ export default function useFeaturedBanners() {
       try {
         setFeaturedBanners({ data: {}, isLoading: true });
 
-        const response = await fetch(
-          `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
-            '[[at(document.type, "banner")]]'
-          )}&lang=en-us&pageSize=5`,
-          {
-            signal: controller.signal,
-          }
-        );
-        const data = await response.json();
+        const data = useFeaturedBannersMock;
 
         setFeaturedBanners({ data, isLoading: false });
       } catch (err) {
@@ -42,7 +32,7 @@ export default function useFeaturedBanners() {
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading]);
+  }, []);
 
   return featuredBanners;
 }
