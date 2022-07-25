@@ -34,19 +34,22 @@ const Header = () => {
 
     return (
 
-        <table className={styles.table}>
-            <tbody>
-                <tr>
-
+        <>
+            <div className={styles.header}>
+                <div className={styles.divwithborder}>
                     <th className={styles.textHeader}>Authentic Authentic Authentic!</th>
-                    <th>
-                        <img src={logo} alt={'Authentic Authentic Authentic'} width={100} height={100} onClick={() => navigate('/home')} />
-                    </th>
-                    <th><SearchEngine /></th>
-                    <th><img src={shoppingCart} alt={'check your purchase'} width={50} height={50} onClick={() => navigate('/cart')}/></th>
-                </tr>
-            </tbody>
-        </table>
+                </div>
+                <div className={styles.divwithborder}>
+                    <img src={logo} alt={'Authentic Authentic Authentic'} className={styles.logo} onClick={() => navigate('/home')} />
+                </div>
+                <div className={styles.divwithborder}>
+                    <SearchEngine />
+                </div>
+                <div className={styles.divwithborder}>
+                    <img src={shoppingCart} alt={'check your purchase'} className={styles.shoppingcart} onClick={() => navigate('/cart')} />
+                </div>
+            </div>
+        </>
     );
 
 };
