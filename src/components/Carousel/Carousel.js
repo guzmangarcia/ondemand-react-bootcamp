@@ -32,7 +32,7 @@ function CarouselElement({ className, count, carouselCurrentSlideIndex, src, alt
                         }}
                         className={`${styles.styleCarrouselImage} ${className}`} />
                 </div>
-                <div id='aaa'>
+                <div className={styles.divtext}>
                     {text.map((element, index) => {
                         return <div key={`${text} ${index}`} className={styles.text} >{element} </div>
                     })}

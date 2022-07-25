@@ -18,7 +18,7 @@ export default class ProductCategories extends React.Component {
 
 
         return (
-            <div className={styles.divCarrousell}>
+            <div className={styles.parentdiv}>
                 <Carousel className={styles.divCarrousell} carouselKeyIndex={1} carouselInitialSlideIndex={1} carouselName={'productCategories'} data={this.state.productCategories} />
             </div>
         );

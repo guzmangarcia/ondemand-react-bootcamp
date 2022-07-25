@@ -15,24 +15,27 @@ import ProductCategories from '../../components/ProductCategories/ProductCategor
 
 export default function Home() {
 
-  const { bannerDataItems, isBannerLoading } = useWrappedFeaturedBanners({pageNumber:1});
-  const { featuredProducts, isProductsLoading } = useWrappedFeaturedProducts({pageNumber:1});
-  const { productCategories, isProductCategoriesLoading } = useWrappedProductCategories({pageNumber:1});
+  const { bannerDataItems, isBannerLoading } = useWrappedFeaturedBanners({ pageNumber: 1 });
+  const { featuredProducts, isProductsLoading } = useWrappedFeaturedProducts({ pageNumber: 1 });
+  const { productCategories, isProductCategoriesLoading } = useWrappedProductCategories({ pageNumber: 1 });
   // console.log(featuredProducts, isBannerLoading);
   return (
 
 
     <div className={styles.textcontent}>
 
-
-      {isBannerLoading && <div>Loading...</div>}
-      {(!isBannerLoading && bannerDataItems !== null && bannerDataItems.length > 0) && <Slider index={1} elements={bannerDataItems} />}
-      <br />
-      {isProductCategoriesLoading && <div>Loading...</div>}
-      {(!isProductCategoriesLoading && productCategories !== null && productCategories.length > 0) && <ProductCategories productCategories={productCategories} />}
-      <br />
-      {isProductsLoading && <div>Loading...</div>}
-      {(!isProductsLoading && featuredProducts !== null && featuredProducts.length > 0) && <FeaturedProducts featuredProducts={featuredProducts} />}
+      <div>
+        {isBannerLoading && <div>Loading...</div>}
+        {(!isBannerLoading && bannerDataItems !== null && bannerDataItems.length > 0) && <Slider index={1} elements={bannerDataItems} />}
+      </div>
+      <div >
+        {isProductCategoriesLoading && <div>Loading...</div>}
+        {(!isProductCategoriesLoading && productCategories !== null && productCategories.length > 0) && <ProductCategories productCategories={productCategories} />}
+      </div>
+      <div>
+        {isProductsLoading && <div>Loading...</div>}
+        {(!isProductsLoading && featuredProducts !== null && featuredProducts.length > 0) && <FeaturedProducts featuredProducts={featuredProducts} />}
+      </div>
     </div>
 
   );

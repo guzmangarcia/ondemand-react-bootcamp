@@ -1,78 +1,64 @@
-
 // * {box-sizing:border-box}
 
-.carrouselMainStyle
-{
-min-width: 250px;
-
+.carrouselMainStyle {
+  min-width: 250px;
 }
 
-.styleCarrouselImage
-{
+.styleCarrouselImage {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
   margin-top: 10px;
-
 }
 
-.styleCarrouselDot
-{
- 
+.styleCarrouselDot {
   text-align: center;
-    
-
 }
 
-.styleCarrousel{
-  display:inline-block;
-  
-
+.styleCarrousel {
+  display: inline-block;
 }
-.button{
+.button {
   position: relative;
 
   top: 50%;
   left: 33%;
-  background-color: #805b5b; 
+  background-color: #805b5b;
   border: none;
   color: white;
-  
+
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   border-radius: 8px;
-
 }
 
-.prev:hover, .next:hover {
+.prev:hover,
+.next:hover {
   background-color: rgba(114, 114, 114, 0.8);
 }
-
+.divtext {
+  width: 100%;
+  padding-top: 15px;
+}
 // /* Caption text */
 .text {
   color: #805b5b;
   font-size: 15px;
- // padding: 8px 12px;
-  // position: absolute;
- // bottom: 10px;
-   //width: 100%;
-   word-wrap: break-word;
-
-  width: 30vh;
-  left: 0;
-  right: 0;
+  width: 20vh;
+  word-wrap: break-word;
   text-align: center;
+  position: relative;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
 }
 
-.divbutton
-{
+.divbutton {
   margin-top: 10px;
-
 }
-
 
 /* The dots/bullets/indicators */
 .dot {
@@ -84,11 +70,10 @@ min-width: 250px;
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
-  
-  
 }
 
-.active, .dot:hover {
+.active,
+.dot:hover {
   background-color: #717171;
 }
 
@@ -97,4 +82,3 @@ min-width: 250px;
   animation-name: fade;
   animation-duration: 1.5s;
 }
-
