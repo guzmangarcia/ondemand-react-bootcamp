@@ -3,35 +3,36 @@ import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextPr
 
 export default function ProductDescription({ name, price, sku, categoryName, tags, description, specs, stock, uniqueId }) {
 
-    const [quantity, setQuantity] = useState(1);
+
     const { cartItems, setCartItems } = useContext(CartItemsContext);
+    const [numberOfItems, setNumberOfItems] = useState(1);
 
     function addToCard() {
-
-        let totalElements = quantity;
+        let totalElements = parseInt(numberOfItems, 10);
+        let elements = cartItems;
         let cartItem = cartItems.find((item) => item.uniqueId === uniqueId);
         if (cartItem !== undefined) {
             totalElements += cartItem.quantity;
-
+            elements = cartItems.filter((item) => item.uniqueId !== uniqueId);
         }
         else {
             cartItem = {
                 uniqueId: uniqueId,
                 quantity: 0
             }
-            setCartItems([...cartItems, cartItem])
         }
         if (totalElements > stock) {
             setTimeout(() => {
                 alert('not enough stock');
             }, 100);
+            return;
         }
         else {
-            cartItem.quantity++;
+            cartItem.quantity=totalElements;
         }
-        console.log(cartItem)
+        console.log([...elements, cartItem])
 
-
+        setCartItems([...elements, cartItem])
     }
 
     return (
@@ -42,7 +43,12 @@ export default function ProductDescription({ name, price, sku, categoryName, tag
             <p><label><b>Category:</b> {categoryName}</label></p>
             <p><label><b>Tags:</b> {tags.map((tag, id) => { return (<label key={id}>{tag} </label>) })}</label></p>
             <p><label><b>Description:</b> <br /><br /> {description}</label></p>
-            <div><b>Qty:</b> <input type={'number'} value={quantity} onChange={(e) => setQuantity(e.target.value)} />  <button onClick={() => { addToCard() }} >Add to cart</button></div>
+            <div>
+                <b>Qty:</b>
+                <input type={'number'} defaultValue={1} onChange={(e)=>{ setNumberOfItems(e.target.value)}} />
+                <button onClick={() => { addToCard() }} >Add to cart</button>
+            </div>
+            <p>Stock:{stock}</p>
             <div><p><b>Specs:</b></p>
                 <ul>
                     {specs.map((spec, index) => { return (<li key={index}><b>{spec.spec_name}</b>: {spec.spec_value}</li>) })}

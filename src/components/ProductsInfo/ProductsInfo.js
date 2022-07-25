@@ -38,8 +38,9 @@ export default function ProductsInfo({ products, totalPages, currentPage, setCur
 
     function addItemToCard(item) {
 
+        let elements=cartItems.filter((item) => item.uniqueId !== item.uniqueId);
         let cartItem = cartItems.find((cardItem) => cardItem.uniqueId === item.uniqueId)
-
+        console.log(elements)
         if (cartItem === undefined) {
             cartItem = {
                 uniqueId: item.uniqueId,
@@ -49,15 +50,17 @@ export default function ProductsInfo({ products, totalPages, currentPage, setCur
         if (item.stock > cartItem.quantity + 1) {
             cartItem.quantity++;
             console.log(cartItem.quantity)
-            if (cartItem.quantity === 1) setCartItems([...cartItems, cartItem])
+       
         }
         else {
             setTimeout(() => {
                 alert('not enough stock');
             }, 100);
+            return;
 
         }
-
+        setCartItems([...elements, cartItem])
+        console.log(cartItems);
     }
 
     return (

@@ -2,9 +2,9 @@ import styles from './Header.module.scss'
 import logo from '../../media/logo.png';
 import shoppingCart from '../../media/shopping-cart.png';
 // import styled from 'styled-components';
-import React from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-
+import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider'
 
 
 
@@ -25,6 +25,31 @@ const SearchEngine = () => {
 
 };
 
+const ShoppingCart = () => {
+
+    const navigate = useNavigate();
+    const { cartItems } = useContext(CartItemsContext);
+    const [totalItems, setTotalItems] = useState(0);
+    useEffect(()=>
+        {
+            let tempTotalItems=0;
+
+            cartItems.forEach((e)=>{tempTotalItems+=e.quantity })
+
+            setTotalItems(tempTotalItems);
+            console.log(tempTotalItems);
+        },
+        [cartItems]
+    )
+
+
+    return (
+        <>
+            <img src={shoppingCart} alt={'check your purchase'} className={styles.shoppingcart} onClick={() => navigate('/cart')} />
+            <label>{totalItems}</label>
+        </>
+    );
+}
 
 
 const Header = () => {
@@ -46,7 +71,7 @@ const Header = () => {
                     <SearchEngine />
                 </div>
                 <div className={styles.divwithborder}>
-                    <img src={shoppingCart} alt={'check your purchase'} className={styles.shoppingcart} onClick={() => navigate('/cart')} />
+                    <ShoppingCart />
                 </div>
             </div>
         </>
