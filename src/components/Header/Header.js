@@ -37,7 +37,7 @@ const Header = () => {
         <>
             <div className={styles.header}>
                 <div className={styles.divwithborder}>
-                    <th className={styles.textHeader}>Authentic Authentic Authentic!</th>
+                    <p className={styles.textHeader}>Authentic Authentic Authentic!</p>
                 </div>
                 <div className={styles.divwithborder}>
                     <img src={logo} alt={'Authentic Authentic Authentic'} className={styles.logo} onClick={() => navigate('/home')} />
