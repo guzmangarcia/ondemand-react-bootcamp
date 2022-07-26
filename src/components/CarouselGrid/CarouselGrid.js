@@ -3,7 +3,7 @@ import styles from './CarouselGrid.module.scss'
 import Carousel from '../Carousel/Carousel'
 
 
-export default function CarouselGrid({ gridData, gridName, carouselName, carouselIndex,buttonFunction , buttonText}) {
+export default function CarouselGrid({ gridData, gridName, carouselName, carouselIndex,buttonFunction , buttonText,showButton}) {
 
     
    
@@ -28,7 +28,7 @@ export default function CarouselGrid({ gridData, gridName, carouselName, carouse
                     data={carouselData}
                     uniqueId={carouselData[0].uniqueId}
                     buttonFunction={()=>{ buttonFunction(carouselData[0])}}
-                    buttonText ={buttonText}
+                    buttonText ={showButton(carouselData)?buttonText:undefined}
                 />
             
 

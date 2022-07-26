@@ -66,7 +66,9 @@ export default function FeaturedProducts(props) {
             <CarouselGrid gridName={'FeaturedProducts'}
                 gridData={featuredProducts}
                 buttonFunction={(item) => {  addItemToCard(item) }}
-                buttonText='Add to cart' />
+                buttonText='Add to cart'
+                showButton={(item)=>{return item[0].stock>0}}
+                />
             <br />
             <div className={styles.featuredProducts}>
                 <button className={styles.viewProductsButton} onClick={() => navigate('/products')} >View all products</button>

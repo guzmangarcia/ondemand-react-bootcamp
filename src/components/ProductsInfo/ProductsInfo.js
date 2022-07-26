@@ -77,7 +77,8 @@ export default function ProductsInfo({ products, totalPages, currentPage, setCur
                         gridData={gridData}
                         gridName={'Products'}
                         buttonFunction={(item) => { addItemToCard(item); }}
-                        buttonText='Add to cart' />
+                        buttonText='Add to cart' 
+                        showButton={(item)=>{return item[0].stock>0}}/>
                     <Pagination
                         totalPages={totalPages}
                         currentPage={currentPage}
