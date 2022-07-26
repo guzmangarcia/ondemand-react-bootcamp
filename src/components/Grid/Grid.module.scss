@@ -1,0 +1,30 @@
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.thtd {
+  text-align: left;
+  padding: 8px;
+}
+.rthtd {
+    text-align: right;
+    padding: 8px;
+  }
+
+.tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.hidden
+{
+display:none
+
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  position: relative
+}

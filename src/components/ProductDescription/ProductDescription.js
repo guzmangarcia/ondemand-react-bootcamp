@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider'
 
-export default function ProductDescription({ name, price, sku, categoryName, tags, description, specs, stock, uniqueId }) {
+export default function ProductDescription({item, name, price, sku, categoryName, tags, description, specs, stock, uniqueId }) {
 
 
     const { cartItems, setCartItems } = useContext(CartItemsContext);
@@ -18,7 +18,8 @@ export default function ProductDescription({ name, price, sku, categoryName, tag
         else {
             cartItem = {
                 uniqueId: uniqueId,
-                quantity: 0
+                quantity: 0,
+                item
             }
         }
         if (totalElements > stock) {

@@ -26,7 +26,7 @@ export default function ProductDetails() {
             </div>
             
             <div className={styles.galerydetails}>
-             {!isProductLoading && <ProductDescription {...product.properties} />}
+             {!isProductLoading && <ProductDescription item={product.galery[0]} {...product.properties} />}
              </div>
         </div>
 

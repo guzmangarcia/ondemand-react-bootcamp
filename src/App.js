@@ -7,7 +7,7 @@ import ProductList from './pages/ProductList/ProductList';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import { CartItemsContextProvider } from './components/CartItemsContextProvider/CartItemsContextProvider.js';
 import Search from './pages/Search/Search';
-import Cart from './components/Cart/Cart';
+import Cart from './pages/Cart/Cart';
 function App() {
 
   return (

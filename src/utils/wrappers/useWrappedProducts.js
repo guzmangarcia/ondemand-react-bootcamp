@@ -34,7 +34,9 @@ export default function useWrappedProducts({ productId, pageNumber =1}) {
           text: [item.data.name, item.data.price, item.data.category.slug],
           navigationLink: `/detail?productId=${item.id}`,
           uniqueId:item.id,
-          stock:item.data.stock
+          stock:item.data.stock,
+          name:item.data.name, 
+          price:item.data.price, 
         };
       })
         //console.log('products',products);

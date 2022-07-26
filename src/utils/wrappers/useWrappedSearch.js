@@ -30,7 +30,9 @@ export default function useWrappedSearch({ searchTerm ,pageNumber=1 }) {
           text: [item.data.name, item.data.price, item.data.category.slug],
           navigationLink: `/detail?productId=${item.id}`,
           uniqueId:item.id,
-          stock:data.stock
+          stock:item.data.stock,
+          name:item.data.name, 
+          price:item.data.price, 
         };
       })
         setWrappedData({ totalPages,data:dataFiltered,  isLoading });

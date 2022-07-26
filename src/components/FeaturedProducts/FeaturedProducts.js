@@ -26,7 +26,9 @@ export default function FeaturedProducts(props) {
                     text: data.text,
                     navigationLink: data.navigationLink,
                     uniqueId: data.uniqueId,
-                    stock:data.stock
+                    stock:data.stock,
+                    name:data.name, 
+                    price:data.price, 
                 };
             })
         });
@@ -44,7 +46,8 @@ export default function FeaturedProducts(props) {
         else {
             cartItem = {
                 uniqueId: item.uniqueId,
-                quantity: 0
+                quantity: 0,
+                item:item
             }
         }
         if (totalElements > item.stock) {

@@ -28,7 +28,9 @@ export default function useWrappedFeaturedProducts({pageNumber=1}) {
           text: [row.data.name, row.data.price, row.data.category.slug],
           navigationLink:`/detail?productId=${row.id}`,
           uniqueId:row.id,
-          stock:row.data.stock
+          stock:row.data.stock,
+          name:row.data.name, 
+          price:row.data.price, 
         };
       });
       //console.log(featuredProducts);

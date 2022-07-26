@@ -29,7 +29,9 @@ export default function ProductsInfo({ products, totalPages, currentPage, setCur
                         categoryId: data.categoryId,
                         navigationLink: data.navigationLink,
                         uniqueId: data.uniqueId,
-                        stock: data.stock
+                        stock: data.stock,
+                        name:data.name, 
+                        price:data.price, 
                     };
                 })
             }))
@@ -49,7 +51,8 @@ export default function ProductsInfo({ products, totalPages, currentPage, setCur
         else {
             cartItem = {
                 uniqueId: item.uniqueId,
-                quantity: 0
+                quantity: 0,
+                item:item
             }
         }
         if (totalElements > item.stock) {
