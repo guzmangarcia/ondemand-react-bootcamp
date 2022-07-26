@@ -7,7 +7,7 @@ export default function ProductDescription({ name, price, sku, categoryName, tag
     const { cartItems, setCartItems } = useContext(CartItemsContext);
     const [numberOfItems, setNumberOfItems] = useState(1);
 
-    function addToCard() {
+    function addItemToCard() {
         let totalElements = parseInt(numberOfItems, 10);
         let elements = cartItems;
         let cartItem = cartItems.find((item) => item.uniqueId === uniqueId);
@@ -46,7 +46,7 @@ export default function ProductDescription({ name, price, sku, categoryName, tag
             <div>
                 <b>Qty:</b>
                 <input type={'number'} defaultValue={1} onChange={(e)=>{ setNumberOfItems(e.target.value)}} />
-                <button onClick={() => { addToCard() }} >Add to cart</button>
+                <button onClick={() => { addItemToCard() }} >Add to cart</button>
             </div>
             <p>Stock:{stock}</p>
             <div><p><b>Specs:</b></p>

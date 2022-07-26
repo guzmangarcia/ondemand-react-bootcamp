@@ -13,7 +13,7 @@ export default function FeaturedProducts(props) {
    // console.log(setCartItems)
 
     // console.log("FeaturedProducts constructor******************",props.featuredProducts)  
-    var featuredProducts = props.featuredProducts.map
+    let featuredProducts = props.featuredProducts.map
         ((data) => {
 
 
@@ -32,11 +32,40 @@ export default function FeaturedProducts(props) {
         });
     // console.log(featuredProducts)  
 
+
+    function addItemToCard(item) {
+        let totalElements = 1
+        let elements = cartItems;
+        let cartItem = cartItems.find((cartItem) => cartItem.uniqueId === item.uniqueId);
+        if (cartItem !== undefined) {
+            totalElements += cartItem.quantity;
+            elements = cartItems.filter((cartItem) => cartItem.uniqueId !== item.uniqueId);
+        }
+        else {
+            cartItem = {
+                uniqueId: item.uniqueId,
+                quantity: 0
+            }
+        }
+        if (totalElements > item.stock) {
+            setTimeout(() => {
+                alert('not enough stock');
+            }, 100);
+            return;
+        }
+        else {
+            cartItem.quantity=totalElements;
+        }
+        console.log([...elements, cartItem])
+
+        setCartItems([...elements, cartItem])
+    }
+
     return (
         <div className={styles.featuredProducts}>
             <CarouselGrid gridName={'FeaturedProducts'}
                 gridData={featuredProducts}
-                buttonFunction={(id) => {  setCartItems([...cartItems,id]) }}
+                buttonFunction={(item) => {  addItemToCard(item) }}
                 buttonText='Add to cart' />
             <br />
             <div className={styles.featuredProducts}>

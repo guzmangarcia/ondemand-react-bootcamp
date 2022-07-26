@@ -36,32 +36,38 @@ export default function ProductsInfo({ products, totalPages, currentPage, setCur
 
     }, [products, setGridData]);
 
-    function addItemToCard(item) {
 
-        let elements=cartItems.filter((item) => item.uniqueId !== item.uniqueId);
-        let cartItem = cartItems.find((cardItem) => cardItem.uniqueId === item.uniqueId)
-        console.log(elements)
-        if (cartItem === undefined) {
+
+    function addItemToCard(item) {
+        let totalElements = 1
+        let elements = cartItems;
+        let cartItem = cartItems.find((cartItem) => cartItem.uniqueId === item.uniqueId);
+        if (cartItem !== undefined) {
+            totalElements += cartItem.quantity;
+            elements = cartItems.filter((cartItem) => cartItem.uniqueId !== item.uniqueId);
+        }
+        else {
             cartItem = {
                 uniqueId: item.uniqueId,
                 quantity: 0
             }
         }
-        if (item.stock > cartItem.quantity + 1) {
-            cartItem.quantity++;
-            console.log(cartItem.quantity)
-       
-        }
-        else {
+        if (totalElements > item.stock) {
             setTimeout(() => {
                 alert('not enough stock');
             }, 100);
             return;
-
         }
+        else {
+            cartItem.quantity=totalElements;
+        }
+        console.log([...elements, cartItem])
+
         setCartItems([...elements, cartItem])
-        console.log(cartItems);
     }
+
+
+
 
     return (
         <div >

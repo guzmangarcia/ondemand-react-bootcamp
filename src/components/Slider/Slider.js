@@ -2,12 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import styles from './Slider.module.scss'
 
-class SliderElement extends React.Component {
-    constructor(props) {
-        super(props)
-        this.itemRef = React.createRef();
-    }
 
+class SliderElement extends React.Component {
 
     static propTypes = {
         id: PropTypes.number.isRequired,
@@ -17,6 +13,14 @@ class SliderElement extends React.Component {
         text: PropTypes.string.isRequired,
         rangeValue: PropTypes.number.isRequired
     }
+
+    constructor(props) {
+        super(props)
+        this.itemRef = React.createRef();
+    }
+
+
+
 
     componentDidMount() {
 

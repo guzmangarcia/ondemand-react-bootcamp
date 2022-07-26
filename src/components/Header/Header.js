@@ -33,11 +33,9 @@ const ShoppingCart = () => {
     useEffect(()=>
         {
             let tempTotalItems=0;
-
             cartItems.forEach((e)=>{tempTotalItems+=e.quantity })
-
             setTotalItems(tempTotalItems);
-            console.log(tempTotalItems);
+           
         },
         [cartItems]
     )
