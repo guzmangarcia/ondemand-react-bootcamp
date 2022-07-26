@@ -1,32 +1,57 @@
+import { useEffect, useState } from 'react';
 import styles from './Grid.module.scss'
 
-export default function Grid({ data }) {
+export default function Grid({ data, setData }) {
 
-    let dataAux = data.map((itemData) => {
-
-        let itemDataQuantity = []
-        for (let id = 1; id <= itemData.item.stock; id++) {
-            itemDataQuantity.push(id)
-
-        }
-
-        return {
-            uniqueId: itemData.uniqueId,
-            name: itemData.item.name,
-            quantity: itemData.quantity,
-            src: itemData.item.src,
-            alt: itemData.item.alt,
-            price: itemData.item.price,
-            stock: itemData.item.stock,
-            quantityItems: itemDataQuantity
-        }
-
-        
-    })
-
-    console.log(dataAux);
+   
+    const [totalPrice, settotalPrice] = useState(0);
+    const [dataAux, setDataAux] = useState([]);
     
+    useEffect(()=>{
 
+      let  totalPriceAux=0;
+        setDataAux( data.map((itemData) => {
+
+            let itemDataQuantity = [];
+            for (let id = 1; id <= itemData.item.stock; id++) {
+                itemDataQuantity.push(id)
+    
+            }
+    
+            totalPriceAux += itemData.item.price * itemData.quantity
+    
+            return {
+                uniqueId: itemData.uniqueId,
+                name: itemData.item.name,
+                quantity: itemData.quantity,
+                src: itemData.item.src,
+                alt: itemData.item.alt,
+                price: itemData.item.price,
+                stock: itemData.item.stock,
+                quantityItems: itemDataQuantity
+            }
+    
+        }))
+
+        settotalPrice(   totalPriceAux);
+
+
+    },[data]);
+ 
+
+    function handleClick({itemId, newValue})
+    {
+
+        console.log(itemId, newValue)
+        console.log(data);
+       let cardItem= data.find((item)=> itemId===item.uniqueId)
+       let restItems= data.filter((item)=> itemId===item.uniqueId)
+       console.log(cardItem)
+       cardItem.quantity=newValue;
+       setData([restItems,...restItems]);
+    }
+
+    
     return (
         <div style={{ 'overflowx': 'auto' }}>
             <table className={styles.table}>
@@ -48,22 +73,38 @@ export default function Grid({ data }) {
                                 <td className={styles.hidden}>{itemData.uniqueId}</td>
                                 <td className={styles.thtd}>{itemData.name}</td>
                                 <td className={styles.thtd}>
-                                    <select >
+                                    <select defaultValue={itemData.quantity} onChange={(e)=>{handleClick({itemId:itemData.uniqueId, newValue:e.currentTarget.value}) }}>
                                         {itemData.quantityItems.map((item, index) => {
-                                            return (<option key={itemData.uniqueId+index} value={item}>{item}</option>);
+                                            if (item === itemData.quantity) {
+                                                return (<option key={itemData.uniqueId + index} value={item}  >{item}</option>);
+                                            }
+                                            else {
+                                                return (<option key={itemData.uniqueId + index} value={item}>{item}</option>);
+                                            }
                                         })}
                                     </select>
-                                 
+
                                 </td>
                                 <td className={styles.thtd}> <img src={itemData.src} alt={itemData.alt} className={styles.image} /> </td>
-
                                 <td className={styles.thtd}>{itemData.price}$</td>
-                                <td className={styles.thtd}>{itemData.price * itemData.quantity}</td>
+                                <td className={styles.thtd}>{itemData.price * itemData.quantity}$</td>
                                 <td className={styles.thtd}><button>X</button></td>
                             </tr>)
                     }
                     )}
+
                 </tbody>
+                <tfoot>
+                    <tr className={styles.tr}>
+                        <td className={styles.hidden}></td>
+                        <td className={styles.thtd}></td>
+                        <td className={styles.thtd}></td>
+                        <td className={styles.thtd}></td>
+                        <td className={styles.thtd}>Total price</td>
+                        <td className={styles.thtd}>{totalPrice}$</td>
+                        <td className={styles.thtd}></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     );
