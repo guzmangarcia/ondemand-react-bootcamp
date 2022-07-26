@@ -6,7 +6,7 @@ export default function Cart() {
     return (
         <div>
             <h1>Cart</h1>
-            {cartItems.length > 0 ? <Grid data={cartItems} ></Grid> : <p>no items found</p>}
+            {cartItems.length > 0 ? <Grid data={cartItems} /> : <p>no items found</p>}
         </div>
     );
 }
