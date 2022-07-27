@@ -10,9 +10,17 @@ import { useNavigate } from 'react-router-dom';
 
 const SearchEngine = () => {
 
+    const navigate = useNavigate();
+
     return (
 
-        <input className={styles.seach} />
+        <input className={styles.seach} onChange={(e) => {
+            if (e.target.value === '') {
+                navigate(`/home`)
+            } else {
+                navigate(`/search?q=${e.target.value}`)
+            }
+        }} />
     );
 
 };
@@ -21,7 +29,7 @@ const SearchEngine = () => {
 
 const Header = () => {
 
-    const navigate = useNavigate();    
+    const navigate = useNavigate();
 
 
     return (

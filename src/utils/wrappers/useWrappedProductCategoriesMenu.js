@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 // import useProductCategories from '../hooks/useProductCategories'
 import useProductCategories from '../hooks-mooks/useProductCategories'
 
-export default function useWrappedProductCategoriesMenu() {
+export default function useWrappedProductCategoriesMenu({pageNumber=1}) {
 
 
 
@@ -10,14 +10,15 @@ export default function useWrappedProductCategoriesMenu() {
     productCategories: {},
     isProductCategoriesLoading: true
   }));
-  const { data: ProductCategories, isLoading } = useProductCategories();
+  const { data: ProductCategories, isLoading } = useProductCategories({pageNumber});
 
   useEffect(() => {
 
 
     let productCategories = [];
     if (ProductCategories.results !== undefined) {
-
+      
+     // console.log(ProductCategories);
       productCategories = ProductCategories.results.map((row, index) => {
 
         return {
@@ -26,9 +27,10 @@ export default function useWrappedProductCategoriesMenu() {
           // src: row.data.main_image.url,
           alt: row.data.main_image.alt,
           text: [row.data.name],
+      
         };
       });
-
+      //console.log(productCategories);
 
       setWrappedData({
         productCategories: productCategories,

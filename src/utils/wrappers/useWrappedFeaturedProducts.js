@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-// import useFeaturedProducts from '../hooks/useFeaturedProducts';
-import useFeaturedProducts from '../hooks-mooks/useFeaturedProducts';
+ import useFeaturedProducts from '../hooks/useFeaturedProducts';
+//import useFeaturedProducts from '../hooks-mooks/useFeaturedProducts';
 
-export default function useWrappedFeaturedProducts() {
+export default function useWrappedFeaturedProducts({pageNumber=1}) {
 
 
 
@@ -10,23 +10,27 @@ export default function useWrappedFeaturedProducts() {
     featuredProducts: {},
     isProductsLoading: true
   }));
-  const { data: productsData, isLoading } = useFeaturedProducts();
+  const { data: productsData, isLoading } = useFeaturedProducts({pageNumber});
 
   useEffect(() => {
 
+    
     let featuredProducts = [];
     if (productsData.results !== undefined) {
-
+      //console.log(productsData);
+      
       featuredProducts = productsData.results.map((row, index) => {
 
         return {
           id: index + 1,
           srcs: row.data.images,
           alt: row.data.mainimage.alt,
-          text: [row.data.name, row.data.price, row.data.category.slug]
+          text: [row.data.name, row.data.price, row.data.category.slug],
+          navigationLink:`/detail?productId=${row.id}`,
+          uniqueId:row.id
         };
       });
-
+      //console.log(featuredProducts);
       setWrappedData({
         featuredProducts: featuredProducts,
         isProductsLoading: isLoading

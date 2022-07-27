@@ -1,8 +1,9 @@
 import SideBar from "../../components/SideBar/SideBar";
-import ProductInfo from "../../components/ProductInfo/ProductInfo"
+import ProductsInfo from "../../components/ProductsInfo/ProductsInfo"
 import useWrappedProductCategoriesMenu from '../../utils/wrappers/useWrappedProductCategoriesMenu'
 import useWrappedProducts from "../../utils/wrappers/useWrappedProducts";
 import { useEffect, useState } from "react";
+// import { Button } from "bootstrap";
 
 
 
@@ -11,8 +12,15 @@ const ProductList = () => {
     const [selectedCategories, updateSelectedCategories] = useState([]);
     const [readyForRender, setReadyForRender] = useState(false);
 
-    const { productCategories, isProductCategoriesLoading } = useWrappedProductCategoriesMenu();
-    const { products, isProductsLoading } = useWrappedProducts({}, 0, 0);
+   
+    const [currentPage, setCurrentPage] = useState(1);
+    const { products, isProductsLoading,totalPages } = useWrappedProducts({pageNumber:currentPage});
+    const { productCategories, isProductCategoriesLoading } = useWrappedProductCategoriesMenu({pageNumber:1});
+
+    
+
+    
+    
 
     useEffect(() => {
 
@@ -44,12 +52,13 @@ const ProductList = () => {
             
             {!readyForRender ?<div>Loading</div>:
                 <SideBar menuListItems={productCategories}
-                    categoriesParentList={selectedCategories}
+                    selectedCategories={selectedCategories}
                     updateParentSelectedCategories={updateSelectedCategories} />
                  }
             <h1 style={{ display: 'inline-block' }} >This is the Product List Page </h1>
-
-            {!readyForRender ? <div>Loading</div>:<ProductInfo products={filteredProducts} />  }
+           
+            {(selectedCategories?.length>0)&&<button onClick={()=> updateSelectedCategories([])}>clear filters</button>}
+            {!readyForRender ? <div>Loading</div>:<ProductsInfo products={filteredProducts} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>  }
 
         </div>
     );

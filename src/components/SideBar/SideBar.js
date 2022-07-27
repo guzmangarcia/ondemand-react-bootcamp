@@ -1,11 +1,21 @@
 
 
-import { useState } from 'react';
+import { useEffect } from 'react';
 import './SideBar.css'
-export default function SideBar({ menuListItems, categoriesParentList, updateParentSelectedCategories }) {
+import { useSearchParams } from "react-router-dom";
+
+export default function SideBar({ menuListItems, selectedCategories, updateParentSelectedCategories }) {
 
 
-    const [selectedCategories, updateSelectedCategories] = useState(categoriesParentList);
+    const [searchParams] = useSearchParams();
+
+    useEffect(() => {
+
+        const categorySelected = searchParams.get("category");
+        if (categorySelected === undefined || categorySelected === null|| categorySelected === '') return;
+        handleClick(categorySelected);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
 
     function handleClick(categoryId) {
@@ -16,7 +26,7 @@ export default function SideBar({ menuListItems, categoriesParentList, updatePar
         else {
             newArray = [...selectedCategories, categoryId];
         }
-        updateSelectedCategories(newArray);
+ 
         updateParentSelectedCategories(newArray);
     }
 
@@ -27,8 +37,8 @@ export default function SideBar({ menuListItems, categoriesParentList, updatePar
             {
                 menuListItems.map((optionItem, index) => (
                     <a key={index}
-                        class={selectedCategories.some(d => d === optionItem.categoryId) ? 'active' : ''}
-                        href={'#filtered'}
+                        className={selectedCategories.some(d => d === optionItem.categoryId) ? 'active' : ''}
+                        href={'#' + encodeURIComponent(optionItem.categoryId)}
                         onClick={() => handleClick(optionItem.categoryId)} >
                         {optionItem.alt}
                     </a>))

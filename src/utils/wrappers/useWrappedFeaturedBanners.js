@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-// import useFeaturedBanners  from '../hooks/useFeaturedBanners';
-import useFeaturedBanners from '../hooks-mooks/useFeaturedBanners';
-export default function useWrappedFeaturedBanners() {
+import useFeaturedBanners  from '../hooks/useFeaturedBanners';
+//import useFeaturedBanners from '../hooks-mooks/useFeaturedBanners';
+export default function useWrappedFeaturedBanners({pageNumber=1}) {
 
 
 
@@ -9,7 +9,7 @@ export default function useWrappedFeaturedBanners() {
         bannerDataItems: {},
         isBannerLoading: true,
     }));
-    const { data: bannerData, isLoading } = useFeaturedBanners();
+    const { data: bannerData, isLoading } = useFeaturedBanners({pageNumber});
 
     useEffect(() => {
 
@@ -31,6 +31,7 @@ export default function useWrappedFeaturedBanners() {
             });
 
         }
+       // console.log(wrappedData)
 
     }, [bannerData, isLoading]);
 

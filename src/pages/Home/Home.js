@@ -9,17 +9,22 @@ import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts
 import Slider from '../../components/Slider/Slider'
 import ProductCategories from '../../components/ProductCategories/ProductCategories'
 
+// import { useContext } from "react"
+
+
+
 export default function Home() {
 
-
-  const { bannerDataItems, isBannerLoading } = useWrappedFeaturedBanners();
-  const { featuredProducts, isProductsLoading } = useWrappedFeaturedProducts();
-  const {  productCategories, isProductCategoriesLoading } = useWrappedProductCategories();
+  const { bannerDataItems, isBannerLoading } = useWrappedFeaturedBanners({pageNumber:1});
+  const { featuredProducts, isProductsLoading } = useWrappedFeaturedProducts({pageNumber:1});
+  const { productCategories, isProductCategoriesLoading } = useWrappedProductCategories({pageNumber:1});
   // console.log(featuredProducts, isBannerLoading);
   return (
 
 
     <div className={styles.textcontent}>
+
+
       {isBannerLoading && <div>Loading...</div>}
       {(!isBannerLoading && bannerDataItems !== null && bannerDataItems.length > 0) && <Slider index={1} elements={bannerDataItems} />}
       <br />
@@ -29,6 +34,7 @@ export default function Home() {
       {isProductsLoading && <div>Loading...</div>}
       {(!isProductsLoading && featuredProducts !== null && featuredProducts.length > 0) && <FeaturedProducts featuredProducts={featuredProducts} />}
     </div>
+
   );
 }
 
