@@ -68,7 +68,7 @@ export default function Grid({ data, setData, editable }) {
                         <th className={styles.thtd}>Image</th>
                         <th className={styles.thtd}>Price/Unit</th>
                         <th className={styles.thtd}>Subtotal</th>
-                        {!editable && <th className={styles.thtd}>X</th>}
+                        {editable && <th className={styles.thtd}>X</th>}
                     </tr>
                 </thead>
                 <tbody>
