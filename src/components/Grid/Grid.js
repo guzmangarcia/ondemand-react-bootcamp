@@ -50,6 +50,13 @@ export default function Grid({ data, setData }) {
        setData([cardItem,...restItems]);
     }
 
+    function removeItem({itemId})
+    {
+
+      
+        let restItems= data.filter((item)=> itemId!==item.uniqueId)
+        setData(restItems);
+    }
     
     return (
         <div style={{ 'overflowx': 'auto' }}>
@@ -87,7 +94,7 @@ export default function Grid({ data, setData }) {
                                 <td className={styles.thtd}> <img src={itemData.src} alt={itemData.alt} className={styles.image} /> </td>
                                 <td className={styles.thtd}>{itemData.price}$</td>
                                 <td className={styles.thtd}>{itemData.price * itemData.quantity}$</td>
-                                <td className={styles.thtd}><button>X</button></td>
+                                <td className={styles.thtd}><button onClick={()=>{removeItem({itemId:itemData.uniqueId})}} >X</button></td>
                             </tr>)
                     }
                     )}
