@@ -1,25 +1,26 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Grid.module.scss'
 
-export default function Grid({ data, setData }) {
+export default function Grid({ data, setData, editable }) {
 
-   
+    const navigate = useNavigate();
     const [totalPrice, settotalPrice] = useState(0);
     const [dataAux, setDataAux] = useState([]);
-    
-    useEffect(()=>{
 
-      let  totalPriceAux=0;
-        setDataAux( data.map((itemData) => {
+    useEffect(() => {
+
+        let totalPriceAux = 0;
+        setDataAux(data.map((itemData) => {
 
             let itemDataQuantity = [];
             for (let id = 1; id <= itemData.item.stock; id++) {
                 itemDataQuantity.push(id)
-    
+
             }
-    
+
             totalPriceAux += itemData.item.price * itemData.quantity
-    
+
             return {
                 uniqueId: itemData.uniqueId,
                 name: itemData.item.name,
@@ -30,34 +31,32 @@ export default function Grid({ data, setData }) {
                 stock: itemData.item.stock,
                 quantityItems: itemDataQuantity
             }
-    
+
         }))
 
-        settotalPrice(   totalPriceAux);
+        settotalPrice(totalPriceAux);
 
 
-    },[data]);
- 
-
-    function handleClick({itemId, newValue})
-    {
+    }, [data]);
 
 
-       let cardItem= data.find((item)=> itemId===item.uniqueId)
-       let restItems= data.filter((item)=> itemId!==item.uniqueId)
+    function handleClick({ itemId, newValue }) {
 
-       cardItem.quantity=parseInt( newValue,10);
-       setData([cardItem,...restItems]);
+
+        let cardItem = data.find((item) => itemId === item.uniqueId)
+        let restItems = data.filter((item) => itemId !== item.uniqueId)
+
+        cardItem.quantity = parseInt(newValue, 10);
+        setData([cardItem, ...restItems]);
     }
 
-    function removeItem({itemId})
-    {
+    function removeItem({ itemId }) {
 
-      
-        let restItems= data.filter((item)=> itemId!==item.uniqueId)
+
+        let restItems = data.filter((item) => itemId !== item.uniqueId)
         setData(restItems);
     }
-    
+
     return (
         <div style={{ 'overflowx': 'auto' }}>
             <table className={styles.table}>
@@ -69,7 +68,7 @@ export default function Grid({ data, setData }) {
                         <th className={styles.thtd}>Image</th>
                         <th className={styles.thtd}>Price/Unit</th>
                         <th className={styles.thtd}>Subtotal</th>
-                        <th className={styles.thtd}>X</th>
+                        {!editable && <th className={styles.thtd}>X</th>}
                     </tr>
                 </thead>
                 <tbody>
@@ -79,22 +78,21 @@ export default function Grid({ data, setData }) {
                                 <td className={styles.hidden}>{itemData.uniqueId}</td>
                                 <td className={styles.thtd}>{itemData.name}</td>
                                 <td className={styles.thtd}>
-                                    <select defaultValue={itemData.quantity} onChange={(e)=>{handleClick({itemId:itemData.uniqueId, newValue:e.currentTarget.value}) }}>
-                                        {itemData.quantityItems.map((item, index) => {
-                                            if (item === itemData.quantity) {
+                                    {editable ?
+                                        <select defaultValue={itemData.quantity} onChange={(e) => { handleClick({ itemId: itemData.uniqueId, newValue: e.currentTarget.value }) }}>
+                                            {itemData.quantityItems.map((item, index) => {
                                                 return (<option key={itemData.uniqueId + index} value={item}  >{item}</option>);
-                                            }
-                                            else {
-                                                return (<option key={itemData.uniqueId + index} value={item}>{item}</option>);
-                                            }
-                                        })}
-                                    </select>
+                                            })}
+                                        </select>
+                                        :
+                                        <p>{itemData.quantity}</p>
+                                    }
 
                                 </td>
                                 <td className={styles.thtd}> <img src={itemData.src} alt={itemData.alt} className={styles.image} /> </td>
                                 <td className={styles.thtd}>{itemData.price}$</td>
                                 <td className={styles.thtd}>{itemData.price * itemData.quantity}$</td>
-                                <td className={styles.thtd}><button onClick={()=>{removeItem({itemId:itemData.uniqueId})}} >X</button></td>
+                                {editable && <td className={styles.thtd}><button onClick={() => { removeItem({ itemId: itemData.uniqueId }) }} >X</button></td>}
                             </tr>)
                     }
                     )}
@@ -103,12 +101,12 @@ export default function Grid({ data, setData }) {
                 <tfoot>
                     <tr className={styles.tr}>
                         <td className={styles.hidden}></td>
-                        <td className={styles.thtd}></td>
+                        <td className={styles.thtd}>{!editable && <button onClick={() => navigate('/cart')} >Go back to cart</button>}</td>
                         <td className={styles.thtd}></td>
                         <td className={styles.thtd}></td>
                         <td className={styles.thtd}>Total price</td>
                         <td className={styles.thtd}>{totalPrice}$</td>
-                        <td className={styles.thtd}></td>
+                        <td className={styles.thtd}>{editable ? <button onClick={() => navigate('/checkout')} >Proceed to checkout</button> : <button onClick={(e)=>{e.preventDefault()}}>Place order</button>}</td>
                     </tr>
                 </tfoot>
             </table>

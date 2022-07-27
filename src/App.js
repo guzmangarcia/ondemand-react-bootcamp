@@ -8,6 +8,8 @@ import ProductDetails from './pages/ProductDetails/ProductDetails';
 import { CartItemsContextProvider } from './components/CartItemsContextProvider/CartItemsContextProvider.js';
 import Search from './pages/Search/Search';
 import Cart from './pages/Cart/Cart';
+import Checkout from './pages/Checkout/Checkout';
+
 function App() {
 
   return (
@@ -23,6 +25,7 @@ function App() {
             <Route exact path="/detail" element={<ProductDetails />} />
             <Route exact path="/search" element={<Search />} />
             <Route exact path="/cart" element={<Cart />} />
+            <Route exact path="/checkout" element={<Checkout />} />
             <Route path="*" element={<NotFound />} />
 
           </Routes>
