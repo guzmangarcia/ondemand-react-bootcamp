@@ -1,14 +1,10 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from 'react';
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider'
-import CarouselGrid from "../CarouselGrid/CarouselGrid";
-import Pagination from "../Pagination/Pagination";
-
+import CarouselGrid from '../CarouselGrid/CarouselGrid';
+import Pagination from '../Pagination/Pagination';
 
 export default function ProductsInfo({ products, totalPages, currentPage, setCurrentPage }) {
-
     const { cartItems, setCartItems } = useContext(CartItemsContext);
-
-
     const [gridData, setGridData] = useState([]);
 
     useEffect(() => {

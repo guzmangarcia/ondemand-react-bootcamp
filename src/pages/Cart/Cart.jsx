@@ -1,13 +1,6 @@
-import { useContext } from "react";
-import { CartItemsContext } from "../../components/CartItemsContextProvider/CartItemsContextProvider";
-import Grid from "../../components/Grid/Grid";
-
-
-
-
-
-  
-
+import { useContext } from 'react';
+import { CartItemsContext } from ''../../components/CartItemsContextProvider/CartItemsContextProvider';
+import Grid from '../../components/Grid/Grid';
 
 export default function Cart() {
     const { cartItems, setCartItems } = useContext(CartItemsContext);

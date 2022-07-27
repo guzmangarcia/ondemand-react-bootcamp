@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import styles from './Carrousel.module.scss';
 import { useNavigate } from 'react-router-dom';
 

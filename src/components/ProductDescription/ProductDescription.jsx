@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState } from 'react';
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider'
 
 export default function ProductDescription({item, name, price, sku, categoryName, tags, description, specs, stock, uniqueId }) {
