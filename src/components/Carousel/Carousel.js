@@ -23,7 +23,7 @@ function CarouselElement({ className, count, carouselCurrentSlideIndex, src, alt
                     <img src={src}
                         alt={alt}
                         onClick={() => {
-                        
+
                             if (navigationLink !== undefined) {
                                 navigate(navigationLink);
 
@@ -105,7 +105,7 @@ export default function Carousel({
             <div className={styles.divbutton}>
                 {(buttonText !== undefined) &&
                     <button
-                    className={styles.button}
+                        className={styles.button}
                         onClick={buttonFunction}>
                         {buttonText}
                     </button>}

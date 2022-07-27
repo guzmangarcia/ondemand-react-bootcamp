@@ -46,7 +46,7 @@ export default function Grid({ data, setData }) {
        let cardItem= data.find((item)=> itemId===item.uniqueId)
        let restItems= data.filter((item)=> itemId!==item.uniqueId)
 
-       cardItem.quantity=newValue;
+       cardItem.quantity=parseInt( newValue,10);
        setData([cardItem,...restItems]);
     }
 

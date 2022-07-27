@@ -44,7 +44,7 @@ const ShoppingCart = () => {
     return (
         <>
             <img src={shoppingCart} alt={'check your purchase'} className={styles.shoppingcart} onClick={() => navigate('/cart')} />
-            <label>{totalItems}</label>
+             {(totalItems>0) &&<label><b>({totalItems})</b></label>}
         </>
     );
 }
