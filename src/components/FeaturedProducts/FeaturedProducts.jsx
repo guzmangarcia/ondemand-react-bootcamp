@@ -1,8 +1,9 @@
-import { useContext } from "react"
-import styles from './FeaturedProducts.module.scss'
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './FeaturedProducts.module.scss';
 import CarouselGrid from '../CarouselGrid/CarouselGrid';
-import { useNavigate, } from 'react-router-dom';
-import { CartItemsContext } from '../../components/CartItemsContextProvider/CartItemsContextProvider'
+
+import { CartItemsContext } from '../../components/CartItemsContextProvider/CartItemsContextProvider';
 
 export default function FeaturedProducts(props) {
 

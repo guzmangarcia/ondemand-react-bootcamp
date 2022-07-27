@@ -3,7 +3,7 @@ import styles from './Home.module.scss'
 
 import useWrappedFeaturedProducts from '../../utils/wrappers/useWrappedFeaturedProducts';
 import useWrappedProductCategories from '../../utils/wrappers/useWrappedProductCategories';
-import useWrappedFeaturedBanners from '../../utils/wrappers/useWrappedFeaturedBanners.js'
+import useWrappedFeaturedBanners from '../../utils/wrappers/useWrappedFeaturedBanners'
 
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts'
 import Slider from '../../components/Slider/Slider'

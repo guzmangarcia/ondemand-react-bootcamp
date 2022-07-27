@@ -1,8 +1,8 @@
-import SideBar from "../../components/SideBar/SideBar";
-import ProductsInfo from "../../components/ProductsInfo/ProductsInfo"
-import useWrappedProductCategoriesMenu from '../../utils/wrappers/useWrappedProductCategoriesMenu'
+import { useEffect, useState } from 'react';
+import SideBar from '../../components/SideBar/SideBar';
+import ProductsInfo from '../../components/ProductsInfo/ProductsInfo';
+import useWrappedProductCategoriesMenu from '../../utils/wrappers/useWrappedProductCategoriesMenu';
 import useWrappedProducts from "../../utils/wrappers/useWrappedProducts";
-import { useEffect, useState } from "react";
 import styles from './ProductList.module.scss'
 // import { Button } from "bootstrap";
 

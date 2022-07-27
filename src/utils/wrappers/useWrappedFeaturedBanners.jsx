@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import useFeaturedBanners  from '../hooks/useFeaturedBanners';
-//import useFeaturedBanners from '../hooks-mooks/useFeaturedBanners';
+import useFeaturedBanners from '../hooks/useFeaturedBanners';
+
 export default function useWrappedFeaturedBanners({pageNumber=1}) {
 
 

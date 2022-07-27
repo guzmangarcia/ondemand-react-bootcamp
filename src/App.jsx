@@ -1,22 +1,21 @@
+import React from 'react';
 import './App.css';
-//import React, { useContext, useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Layout from './components/Layout/Layout';
 import ProductList from './pages/ProductList/ProductList';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
-import { CartItemsContextProvider } from './components/CartItemsContextProvider/CartItemsContextProvider.js';
+import { CartItemsContextProvider } from './components/CartItemsContextProvider/CartItemsContextProvider';
 import Search from './pages/Search/Search';
 import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
 
 function App() {
-
   return (
 
     <BrowserRouter>
       <CartItemsContextProvider>
-        <Layout >
+        <Layout>
           <Routes>
 
             <Route exact path="/" element={<Home />} />
@@ -32,19 +31,10 @@ function App() {
         </Layout>
       </CartItemsContextProvider>
     </BrowserRouter>
-
-
-
-
   );
 }
 function NotFound() {
-  return (
-    <div>Not Found</div>);
-
-
+  return (<div>Not Found</div>);
 }
-
-
 
 export default App;

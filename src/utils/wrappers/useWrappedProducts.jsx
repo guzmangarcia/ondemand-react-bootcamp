@@ -1,9 +1,6 @@
 
 import { useState, useEffect } from 'react';
-
-
-//import useProducts from '../hooks-mooks/useProducts.js';
-import useProducts from '../hooks/useProducts.js';
+import useProducts from '../hooks/useProducts';
 
 
 export default function useWrappedProducts({ productId, pageNumber =1}) {
