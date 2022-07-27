@@ -31,9 +31,7 @@ class SliderElement extends React.Component {
     }
 
     componentDidUpdate() {
-        // console.log(this.props.id )
-        //     console.log( this.props.rangeValue)
-        // console.log(this.props.id === this.props.rangeValue)
+
         const state = (this.props.id === this.props.rangeValue)
         this.itemRef.current.style.display = state
             ? "block"
@@ -66,7 +64,7 @@ export default class Slider extends React.Component {
         }
         this.itemRef = React.createRef()
         this.onChange = this.onChange.bind(this)
-        // console.log(this.state.rangeValue)
+      
     }
 
 
@@ -74,8 +72,7 @@ export default class Slider extends React.Component {
         elements: PropTypes.array.isRequired,
     }
     onChange(event) {
-        // console.log(event);
-        // console.log(this.itemRef.current.value);
+
         this.setState({ rangeValue: parseInt(this.itemRef.current.value) });
     }
 

@@ -15,7 +15,7 @@ SwiperCore.use([FreeMode, Navigation, Thumbs]);
 export default function Galery({ data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-//  console.log(data)
+
   if (data===undefined)return null;
 
   return (

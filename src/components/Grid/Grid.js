@@ -42,13 +42,12 @@ export default function Grid({ data, setData }) {
     function handleClick({itemId, newValue})
     {
 
-        console.log(itemId, newValue)
-        console.log(data);
+
        let cardItem= data.find((item)=> itemId===item.uniqueId)
-       let restItems= data.filter((item)=> itemId===item.uniqueId)
-       console.log(cardItem)
+       let restItems= data.filter((item)=> itemId!==item.uniqueId)
+
        cardItem.quantity=newValue;
-       setData([restItems,...restItems]);
+       setData([cardItem,...restItems]);
     }
 
     

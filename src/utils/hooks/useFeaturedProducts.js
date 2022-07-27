@@ -21,7 +21,7 @@ export default function useFeaturedProducts({pageNumber=1}) {
         setFeaturedProducts({ data: {}, isLoading: true });
         const url =`${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent('[[at(document.type, "product")]]')}&q=${encodeURIComponent('[[at(document.tags, ["Featured"])]]')}&lang=en-us&pageSize=16&page=${pageNumber}`;
        
-        // console.log("test:", apiRef);
+      
 
         const response = await fetch(
           url,

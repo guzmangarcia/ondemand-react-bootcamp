@@ -47,7 +47,7 @@ const ProductList = () => {
             isProductCategoriesLoading,
             readyForRender]);
 
-    // console.log(products, isProductsLoading);
+
     return (
         <div  >
 

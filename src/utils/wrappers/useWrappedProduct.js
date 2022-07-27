@@ -56,11 +56,11 @@ export default function useWrappedProduct({ productId ,pageNumber=1}) {
       })[0];
 
 
-      //  console.log('useWrappedProduct', 'product', product);
+   
 
       setProduct({ product, isProductLoading: isLoading });
     }
-    // console.log(product)
+
 
   }, [productDataFiltered, isLoading]);
 

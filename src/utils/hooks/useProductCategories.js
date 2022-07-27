@@ -20,7 +20,7 @@ export default function useProductCategories({pageNumber=1}) {
       try {
         setProductCategories({ data: {}, isLoading: true });
         const url =`${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent('[[at(document.type, "category")]]')}&lang=en-us&pageSize=30&page=${pageNumber}`;
-        // console.log("test:", url);
+
 
         const response = await fetch(
           url,

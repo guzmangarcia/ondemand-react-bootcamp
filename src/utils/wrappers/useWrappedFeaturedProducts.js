@@ -17,7 +17,7 @@ export default function useWrappedFeaturedProducts({pageNumber=1}) {
     
     let featuredProducts = [];
     if (productsData.results !== undefined) {
-      //console.log(productsData);
+
       
       featuredProducts = productsData.results.map((row, index) => {
 
@@ -33,7 +33,7 @@ export default function useWrappedFeaturedProducts({pageNumber=1}) {
           price:row.data.price, 
         };
       });
-      //console.log(featuredProducts);
+
       setWrappedData({
         featuredProducts: featuredProducts,
         isProductsLoading: isLoading

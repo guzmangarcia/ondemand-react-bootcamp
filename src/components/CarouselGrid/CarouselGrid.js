@@ -7,16 +7,15 @@ export default function CarouselGrid({ gridData, gridName, carouselName, carouse
 
     
    
-//console.log(userDetails)
+
 
     if (gridData === undefined || gridData?.length === 0) return (null);
 
-    // console.log(props.gridData);
     return (
 
         <div className={styles.styleCarrousel} >
              
-            {/* {gridData.map((item, index) => (console.log(item) ))} */}
+
             {gridData.map((carouselData, index) => (
             
                 <Carousel

@@ -9,10 +9,7 @@ export default function FeaturedProducts(props) {
 
     const navigate = useNavigate();
     const { cartItems, setCartItems } = useContext(CartItemsContext);
-  //  console.log(cartItems)
-   // console.log(setCartItems)
 
-    // console.log("FeaturedProducts constructor******************",props.featuredProducts)  
     let featuredProducts = props.featuredProducts.map
         ((data) => {
 
@@ -32,7 +29,7 @@ export default function FeaturedProducts(props) {
                 };
             })
         });
-    // console.log(featuredProducts)  
+
 
 
     function addItemToCard(item) {
@@ -59,7 +56,7 @@ export default function FeaturedProducts(props) {
         else {
             cartItem.quantity=totalElements;
         }
-        console.log([...elements, cartItem])
+    
 
         setCartItems([...elements, cartItem])
     }

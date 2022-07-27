@@ -19,7 +19,7 @@ export default function ProductDescription({item, name, price, sku, categoryName
             cartItem = {
                 uniqueId: uniqueId,
                 quantity: 0,
-                item
+                item:{...item,name, price, sku, categoryName, tags, description, specs, stock, uniqueId }
             }
         }
         if (totalElements > stock) {
@@ -31,7 +31,7 @@ export default function ProductDescription({item, name, price, sku, categoryName
         else {
             cartItem.quantity=totalElements;
         }
-        console.log([...elements, cartItem])
+
 
         setCartItems([...elements, cartItem])
     }

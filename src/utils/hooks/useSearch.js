@@ -10,7 +10,7 @@ export default function useSearch({searchTerm,pageNumber=1}) {
     }));
 
     useEffect(() => {
-      //  console.log('useSearch,getsearchResults')
+
         if (!apiRef || isApiMetadataLoading) {
             return () => { };
         }
@@ -18,7 +18,7 @@ export default function useSearch({searchTerm,pageNumber=1}) {
         const controller = new AbortController();
 
         async function getsearchResults({ searchTerm }) {
-            //console.log('async function getsearchResults')
+       
             try {
                 if (searchTerm === undefined || searchTerm === null || searchTerm === '') {
                     setsearchResults({ data: {}, isLoading: false });
@@ -29,7 +29,7 @@ export default function useSearch({searchTerm,pageNumber=1}) {
                 const url = `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent('[[at(document.type, "product")]]')}&q=${encodeURIComponent('[[fulltext(document,"' + searchTerm + '" )]]')}&lang=en-us&pageSize=20&page=${pageNumber}`;
 
 
-                // console.log("test:", apiRef);
+                
 
                 const response = await fetch(
                     url,

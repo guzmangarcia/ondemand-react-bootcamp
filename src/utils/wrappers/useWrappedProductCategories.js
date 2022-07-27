@@ -17,7 +17,7 @@ export default function useWrappedProductCategories({pageNumber=1}) {
 
     let productCategories = [];
     if (ProductCategories.results !== undefined) {
-    //  console.log(ProductCategories);
+
       productCategories = ProductCategories.results.map((row, index) => {
 
         return {
@@ -28,7 +28,7 @@ export default function useWrappedProductCategories({pageNumber=1}) {
           navigationLink: `/products?category=${row.id}`
         };
       });
-    //  console.log(productCategories);
+
 
       setWrappedData({
         productCategories: productCategories,

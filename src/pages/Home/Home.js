@@ -18,7 +18,7 @@ export default function Home() {
   const { bannerDataItems, isBannerLoading } = useWrappedFeaturedBanners({ pageNumber: 1 });
   const { featuredProducts, isProductsLoading } = useWrappedFeaturedProducts({ pageNumber: 1 });
   const { productCategories, isProductCategoriesLoading } = useWrappedProductCategories({ pageNumber: 1 });
-  // console.log(featuredProducts, isBannerLoading);
+
   return (
 
 

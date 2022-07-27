@@ -7,8 +7,7 @@ import Pagination from "../Pagination/Pagination";
 export default function ProductsInfo({ products, totalPages, currentPage, setCurrentPage }) {
 
     const { cartItems, setCartItems } = useContext(CartItemsContext);
-    // console.log(CartItems)
-    // console.log(setCartItems)
+
 
     const [gridData, setGridData] = useState([]);
 
@@ -64,7 +63,7 @@ export default function ProductsInfo({ products, totalPages, currentPage, setCur
         else {
             cartItem.quantity=totalElements;
         }
-        console.log([...elements, cartItem])
+      
 
         setCartItems([...elements, cartItem])
     }

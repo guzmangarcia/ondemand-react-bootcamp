@@ -19,7 +19,7 @@ export default function useWrappedSearch({ searchTerm ,pageNumber=1 }) {
     if (data.results !== undefined) {
 
       totalPages=data.total_pages;
-      //console.log('totalPages',totalPages)
+
       dataFiltered = data.results.map((item, index) => {
         return {
 
@@ -37,7 +37,7 @@ export default function useWrappedSearch({ searchTerm ,pageNumber=1 }) {
       })
         setWrappedData({ totalPages,data:dataFiltered,  isLoading });
     }
-     //console.log(dataFiltered)
+
 
   }, [data, isLoading,searchTerm,pageNumber]);
 

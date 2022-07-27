@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 function CarouselElement({ className, count, carouselCurrentSlideIndex, src, alt, text, id, navigationLink }) {
 
-    //console.log(navigationLink)
+
     let itemRef = React.createRef()
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ function CarouselElement({ className, count, carouselCurrentSlideIndex, src, alt
                     <img src={src}
                         alt={alt}
                         onClick={() => {
-                            //  console.log(navigationLink);
+                        
                             if (navigationLink !== undefined) {
                                 navigate(navigationLink);
 

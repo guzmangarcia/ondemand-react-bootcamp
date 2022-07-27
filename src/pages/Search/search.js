@@ -13,7 +13,7 @@ export default function Search() {
 
 
     useEffect(() => {
-       // console.log('Search useEffect')
+
         const searchString = searchParams.get("q");
         if (searchString === undefined || searchString === null || searchString === '') return;
         setSearchTerm(searchString);
@@ -21,7 +21,7 @@ export default function Search() {
     }, [searchParams])
  
 
-   console.log('test', data, isLoading, totalPages)
+
 
     return (
         <>

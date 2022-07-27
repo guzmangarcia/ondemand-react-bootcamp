@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../constants';
 import { useLatestAPI } from './useLatestAPI';
 
 export default function useProducts({ productId ,pageSize=12, pageNumber=1}) {
- //console.log('useProducts', productId)
+
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [products, setProducts] = useState(() => ({
     data: {},
@@ -28,10 +28,10 @@ export default function useProducts({ productId ,pageSize=12, pageNumber=1}) {
           searchByID = `&q=${encodeURIComponent('[[at(document.type, "product")]]')}`
         }
 
-       // console.log('searchByID', searchByID)
+
         setProducts({ data: {}, isLoading: true });
         const url = `${API_BASE_URL}/documents/search?ref=${apiRef}${searchByID}&lang=en-us&pageSize=${pageSize}&page=${pageNumber}`;
-       // console.log("test:", apiRef);
+
 
         const response = await fetch(
           url,

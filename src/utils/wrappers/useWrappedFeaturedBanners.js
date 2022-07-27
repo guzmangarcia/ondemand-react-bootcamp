@@ -31,7 +31,7 @@ export default function useWrappedFeaturedBanners({pageNumber=1}) {
             });
 
         }
-       // console.log(wrappedData)
+
 
     }, [bannerData, isLoading]);
 
