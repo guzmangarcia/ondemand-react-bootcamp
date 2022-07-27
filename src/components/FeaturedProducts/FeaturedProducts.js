@@ -1,16 +1,16 @@
 import React from "react"
-import PropTypes from "prop-types"
 import styles from './FeaturedProducts.module.scss'
 import CarouselGrid from '../CarouselGrid/CarouselGrid';
+import { useNavigate } from 'react-router-dom';
 
-export default class FeaturedProducts extends React.Component {
+export default function FeaturedProducts(props) 
+  {
 
 
-    constructor(props) {
-        super(props)
+    const  navigate=useNavigate();
 
         //   console.log("FeaturedProducts constructor******************",this.props.featuredProducts)  
-        var featuredProducts = this.props.featuredProducts.map
+        var featuredProducts = props.featuredProducts.map
             ((data) => {
 
 
@@ -26,20 +26,16 @@ export default class FeaturedProducts extends React.Component {
             });
 
 
-        this.state = { featuredProducts: featuredProducts }
-    }
-
-    static propTypes = {
-        featuredProducts: PropTypes.array.isRequired,
-    }
-
-    render() {
-
         return (
-            <div className={styles.divCarrousell}>
-                <CarouselGrid gridName={'FeaturedProducts'} gridData={this.state.featuredProducts} />)
+            <div className={styles.featuredProducts}>
+                <CarouselGrid gridName={'FeaturedProducts'} gridData={featuredProducts} />
+                <br/>
+                <div className={styles.featuredProducts}>
+                    <button className={styles.viewProductsButton} onClick={()=> navigate('/products') } >View all products</button>
+                </div>
+                <br/>
             </div>
         );
-    }
+    
 
 }

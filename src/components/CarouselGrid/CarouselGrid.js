@@ -27,6 +27,9 @@ export default class CarouselGrid extends React.Component {
 
 
     render() {
+        if(this.props.gridData===undefined || this.props.gridData?.length===0) return (null);
+
+        // console.log(this.props.gridData);
         return (
 
             <div className={styles.styleCarrousel} >

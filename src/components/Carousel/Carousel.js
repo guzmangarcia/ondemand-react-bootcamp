@@ -36,12 +36,12 @@ class CarouselElement extends React.Component {
     render() {
 
         return (
-            <div ref={this.itemRef}  >
+            <div ref={this.itemRef} className={styles.carrouselMainStyle} >
                 <div className={`${styles.fade}`}>
 
-                    <img src={this.props.src} alt={this.props.alt} className={`${styles.styleCarrouselImage} ${this.props.className}`} />
+                    <img src={this.props.src} alt={this.props.alt} className={`${styles.styleCarrouselImage} ${this.props.className}`}  />
                     {this.props.text.map((element, index) => {
-                        return <div key={`${element.id} ${index}`} className={styles.text}>{element} </div>
+                        return <div key={`${this.props.id} ${index}`} className={styles.text} >{element} </div>
                     })}
 
                     <div className={styles.text}>  ({this.props.id}/{this.props.count})</div>
@@ -99,6 +99,7 @@ export default class Carousel extends React.Component {
 
 
     render() {
+        if(this.props.data===undefined || this.props.data?.length===0) return (null);
         return (
             <div className={styles.styleCarrousel} >
                 {this.props.data.map((item, index) => (<CarouselElement className={`${this.props.className}`} key={`${this.props.carouselName}-${this.props.carouselKeyIndex}-${index}-${item.id}`} count={this.props.data.length} carouselCurrentSlideIndex={this.state.carouselCurrentSlideIndex} {...item} />))}
