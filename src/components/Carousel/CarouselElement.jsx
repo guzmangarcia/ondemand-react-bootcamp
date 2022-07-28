@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import styles from './Carrousel.module.scss';
 
@@ -49,3 +50,14 @@ export default function CarouselElement({
     </div>
   );
 }
+
+CarouselElement.propTypes = {
+  className: PropTypes.string.isRequired,
+  count: PropTypes.string.isRequired,
+  carouselCurrentSlideIndex: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  navigationLink: PropTypes.string.isRequired,
+};

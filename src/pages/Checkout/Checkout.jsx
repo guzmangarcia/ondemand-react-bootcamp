@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import { CartItemsContext } from '../../components/CartItemsContextProvider/CartItemsContextProvider';
 import Grid from '../../components/Grid/Grid';
 
@@ -7,7 +6,10 @@ import styles from './Checkout.module.scss';
 
 export default function Checkout() {
   const { cartItems, setCartItems } = useContext(CartItemsContext);
-  const navigate = useNavigate();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [zipCode, setZipCode] = useState('');
+  const [orderNotes, setOrderNotes] = useState('');
 
   return (
     <>
@@ -16,24 +18,24 @@ export default function Checkout() {
         <div className={styles.forminputs}>
           <div className={styles.input}>
             {' '}
-            <label>Name:</label>
-            <input />
+            <label htmlFor={name}>Name:</label>
+            <input onChange={(e) => setName(e.currentTarget.value)} />
           </div>
           <div className={styles.input}>
-            <label>Email:</label>
-            <input />
-          </div>
-          <div className={styles.input}>
-            {' '}
-            <label>Zip Code:</label>
-            {' '}
-            <input />
+            <label htmlFor={email}>Email:</label>
+            <input onChange={(e) => setEmail(e.currentTarget.value)} />
           </div>
           <div className={styles.input}>
             {' '}
-            <label>Order Notes:</label>
+            <label htmlFor={zipCode}>Zip Code:</label>
             {' '}
-            <textarea />
+            <input onChange={(e) => setZipCode(e.currentTarget.value)} />
+          </div>
+          <div className={styles.input}>
+            {' '}
+            <label htmlFor={orderNotes}>Order Notes:</label>
+            {' '}
+            <textarea onChange={(e) => setOrderNotes(e.currentTarget.value)} />
           </div>
         </div>
 

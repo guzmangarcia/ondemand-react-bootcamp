@@ -4,7 +4,6 @@ import ProductsInfo from '../../components/ProductsInfo/ProductsInfo';
 import useWrappedProductCategoriesMenu from '../../utils/wrappers/useWrappedProductCategoriesMenu';
 import useWrappedProducts from '../../utils/wrappers/useWrappedProducts';
 import styles from './ProductList.module.scss';
-// import { Button } from "bootstrap";
 
 function ProductList() {
   const [filteredProducts, setFilteredProducts] = useState({});
@@ -12,8 +11,15 @@ function ProductList() {
   const [readyForRender, setReadyForRender] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const { products, isProductsLoading, totalPages } = useWrappedProducts({ pageNumber: currentPage });
-  const { productCategories, isProductCategoriesLoading } = useWrappedProductCategoriesMenu({ pageNumber: 1 });
+  const {
+    products,
+    isProductsLoading,
+    totalPages,
+  } = useWrappedProducts({ pageNumber: currentPage });
+  const {
+    productCategories,
+    isProductCategoriesLoading,
+  } = useWrappedProductCategoriesMenu({ pageNumber: 1 });
 
   useEffect(
     () => {
@@ -54,7 +60,8 @@ function ProductList() {
           )}
         <div>
 
-          {!readyForRender ? <div>Loading</div> : <ProductsInfo products={filteredProducts} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />}
+          {!readyForRender ? <div>Loading</div>
+            : <ProductsInfo products={filteredProducts} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />}
           {(selectedCategories?.length > 0) && <button onClick={() => updateSelectedCategories([])}>clear filters</button>}
         </div>
       </div>
