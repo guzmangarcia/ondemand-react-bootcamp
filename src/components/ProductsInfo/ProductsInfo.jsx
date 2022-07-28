@@ -32,10 +32,10 @@ export default function ProductsInfo({
   function addItemToCard(item) {
     let totalElements = 1;
     let elements = cartItems;
-    let cartItem = cartItems.find((cartItem) => cartItem.uniqueId === item.uniqueId);
+    let cartItem = cartItems.find((itemToFind) => itemToFind.uniqueId === item.uniqueId);
     if (cartItem !== undefined) {
       totalElements += cartItem.quantity;
-      elements = cartItems.filter((cartItem) => cartItem.uniqueId !== item.uniqueId);
+      elements = cartItems.filter((itemToModify) => itemToModify.uniqueId !== item.uniqueId);
     } else {
       cartItem = {
         uniqueId: item.uniqueId,

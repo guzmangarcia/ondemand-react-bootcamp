@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { createContext, useState, useMemo } from 'react';
 
 // create a context, with createContext api
@@ -17,3 +18,7 @@ function CartItemsContextProvider({ children }) {
 }
 
 export { CartItemsContext, CartItemsContextProvider };
+
+CartItemsContextProvider.propTypes = {
+  children: PropTypes.string.isRequired,
+};

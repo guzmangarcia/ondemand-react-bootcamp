@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import styles from './Pagination.module.scss';
@@ -42,7 +43,8 @@ export default function Pagination({ totalPages, currentPage, setCurrentPage }) 
         {' '}
       </button>
 
-      {pages.map((d, index) => ((d === currentPage) ? <span href={`#${d}`} key={index}>{d}</span> : <a key={index} href={`#${d}`} onClick={() => handleClickPage(d)}>{d}</a>))}
+      {pages.map((d, index) => ((d === currentPage) ? <span href={`#${d}`} key={index}>{d}</span>
+        : <a key={index} href={`#${d}`} onClick={() => handleClickPage(d)}>{d}</a>))}
 
       <button type="button" onClick={() => { handleClick(+1); }}>
         {' '}

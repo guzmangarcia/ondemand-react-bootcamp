@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './FeaturedProducts.module.scss';
@@ -5,11 +6,11 @@ import CarouselGrid from '../CarouselGrid/CarouselGrid';
 
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider';
 
-export default function FeaturedProducts(props) {
+export default function FeaturedProducts({ featuredProducts }) {
   const navigate = useNavigate();
   const { cartItems, setCartItems } = useContext(CartItemsContext);
 
-  const featuredProducts = props.featuredProducts.map((data) => data.srcs.map((image, index) => ({
+  const featuredProductsMapped = featuredProducts.map((data) => data.srcs.map((image, index) => ({
     id: index + 1,
     src: image.image.url,
     alt: data.alt,
@@ -24,10 +25,10 @@ export default function FeaturedProducts(props) {
   function addItemToCard(item) {
     let totalElements = 1;
     let elements = cartItems;
-    let cartItem = cartItems.find((cartItem) => cartItem.uniqueId === item.uniqueId);
+    let cartItem = cartItems.find((itemToFind) => itemToFind.uniqueId === item.uniqueId);
     if (cartItem !== undefined) {
       totalElements += cartItem.quantity;
-      elements = cartItems.filter((cartItem) => cartItem.uniqueId !== item.uniqueId);
+      elements = cartItems.filter((itemToModify) => itemToModify.uniqueId !== item.uniqueId);
     } else {
       cartItem = {
         uniqueId: item.uniqueId,
@@ -50,7 +51,7 @@ export default function FeaturedProducts(props) {
     <div className={styles.featuredProducts}>
       <CarouselGrid
         gridName="FeaturedProducts"
-        gridData={featuredProducts}
+        gridData={featuredProductsMapped}
         buttonFunction={(item) => { addItemToCard(item); }}
         buttonText="Add to cart"
         showButton={(item) => item[0].stock > 0}
@@ -63,3 +64,7 @@ export default function FeaturedProducts(props) {
     </div>
   );
 }
+
+FeaturedProducts.propTypes = {
+  featuredProducts: PropTypes.string.isRequired,
+};
