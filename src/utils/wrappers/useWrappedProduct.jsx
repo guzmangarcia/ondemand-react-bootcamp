@@ -12,7 +12,7 @@ export default function useWrappedProduct({ productId, pageNumber = 1 }) {
   useEffect(() => {
     let product = [];
     if (productDataFiltered.results !== undefined) {
-      product = productDataFiltered.results.map((item, index) => ({
+      product = productDataFiltered.results.map((item) => ({
         properties: {
           uniqueId: item.id,
           name: item.data.name,
@@ -25,7 +25,7 @@ export default function useWrappedProduct({ productId, pageNumber = 1 }) {
           stock: item.data.stock,
         },
         galery: item.data.images.map((image, indexImage) => ({
-          id: index + 1,
+          id: indexImage + 1,
           src: image.image.url,
           alt: item.data.mainimage.alt,
           categoryId: item.data.category.id,

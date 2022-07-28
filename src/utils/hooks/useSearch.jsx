@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
-import { useLatestAPI } from './useLatestAPI';
+import useLatestAPI from './useLatestAPI';
 
 export default function useSearch({ searchTerm, pageNumber = 1 }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
@@ -16,7 +16,7 @@ export default function useSearch({ searchTerm, pageNumber = 1 }) {
 
     const controller = new AbortController();
 
-    async function getsearchResults({ searchTerm }) {
+    async function getsearchResults() {
       try {
         if (searchTerm === undefined || searchTerm === null || searchTerm === '') {
           setsearchResults({ data: {}, isLoading: false });
@@ -37,16 +37,15 @@ export default function useSearch({ searchTerm, pageNumber = 1 }) {
         setsearchResults({ data, isLoading: false });
       } catch (err) {
         setsearchResults({ data: {}, isLoading: false });
-        console.error(err);
       }
     }
 
-    getsearchResults({ searchTerm, pageNumber });
+    getsearchResults();
 
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading, searchTerm, pageNumber]);
+  }, [apiRef, isApiMetadataLoading, searchTerm]);
 
   return searchResults;
 }

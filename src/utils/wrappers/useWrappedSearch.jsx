@@ -20,7 +20,7 @@ export default function useWrappedSearch({ searchTerm, pageNumber = 1 }) {
 
         id: index + 1,
         categoryId: item.data.category.id,
-        srcs: item.data.images.map((image, index) => image.image.url),
+        srcs: item.data.images.map((image) => image.image.url),
         alt: item.data.mainimage.alt,
         text: [item.data.name, item.data.price, item.data.category.slug],
         navigationLink: `/detail?productId=${item.id}`,

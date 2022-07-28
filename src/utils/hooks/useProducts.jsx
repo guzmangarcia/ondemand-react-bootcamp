@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
-import { useLatestAPI } from './useLatestAPI';
+import useLatestAPI from './useLatestAPI';
 
 export default function useProducts({ productId, pageSize = 12, pageNumber = 1 }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
@@ -39,7 +39,6 @@ export default function useProducts({ productId, pageSize = 12, pageNumber = 1 }
         setProducts({ data, isLoading: false });
       } catch (err) {
         setProducts({ data: {}, isLoading: false });
-        console.error(err);
       }
     }
 

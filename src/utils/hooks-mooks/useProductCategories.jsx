@@ -19,7 +19,6 @@ export default function useProductCategories() {
         setProductCategories({ data, isLoading: false });
       } catch (err) {
         setProductCategories({ data: {}, isLoading: false });
-        console.error(err);
       }
     }
 

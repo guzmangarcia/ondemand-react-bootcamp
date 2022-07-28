@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
-import { useLatestAPI } from './useLatestAPI';
+import useLatestAPI from './useLatestAPI';
 
 export default function useProductCategories({ pageNumber = 1 }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();

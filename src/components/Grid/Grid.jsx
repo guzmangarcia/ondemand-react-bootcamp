@@ -67,9 +67,9 @@ export default function Grid({ data, setData, editable }) {
               <td className={styles.thtd}>
                 {editable
                   ? (
-                      <select defaultValue={itemData.quantity} onChange={(e) => { handleClick({ itemId: itemData.uniqueId, newValue: e.currentTarget.value }); }}>
-                          {itemData.quantityItems.map((item, index) => (<option key={itemData.uniqueId + index} value={item}>{item}</option>))}
-                        </select>
+                    <select defaultValue={itemData.quantity} onChange={(e) => { handleClick({ itemId: itemData.uniqueId, newValue: e.currentTarget.value }); }}>
+                      {itemData.quantityItems.map((item, index) => (<option key={itemData.uniqueId + index} value={item}>{item}</option>))}
+                    </select>
                   )
                   : <p>{itemData.quantity}</p>}
 

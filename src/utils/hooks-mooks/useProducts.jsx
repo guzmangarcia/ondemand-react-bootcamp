@@ -20,7 +20,6 @@ export default function useProducts() {
         setProducts({ data, isLoading: false });
       } catch (err) {
         setProducts({ data: {}, isLoading: false });
-        console.error(err);
       }
     }
 

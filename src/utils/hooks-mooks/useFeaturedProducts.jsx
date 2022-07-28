@@ -20,7 +20,7 @@ export default function useFeaturedProducts() {
         setFeaturedProducts({ data, isLoading: false });
       } catch (err) {
         setFeaturedProducts({ data: {}, isLoading: false });
-        console.error(err);
+        // console.error(err);
       }
     }
 
