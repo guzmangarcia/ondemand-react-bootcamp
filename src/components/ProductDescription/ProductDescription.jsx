@@ -51,7 +51,7 @@ export default function ProductDescription({
         </label>
       </p>
       <p>
-        <label>
+        <label htmlFor={sku}>
           <b>SKU:</b>
           {' '}
           {sku}
@@ -68,8 +68,8 @@ export default function ProductDescription({
         <label htmlFor={tags}>
           <b>Tags:</b>
           {' '}
-          {tags.map((tag, id) => (
-            <label key={tags}>
+          {tags.map((tag) => (
+            <label key={tag} htmlFor={tag}>
               {tag}
               {' '}
             </label>
@@ -89,7 +89,7 @@ export default function ProductDescription({
       <div>
         <b>Qty:</b>
         <input type="number" defaultValue={1} onChange={(e) => { setNumberOfItems(e.target.value); }} />
-        <button onClick={() => { addItemToCard(); }}>Add to cart</button>
+        <button type="button" onClick={() => { addItemToCard(); }}>Add to cart</button>
       </div>
       <p>
         Stock:

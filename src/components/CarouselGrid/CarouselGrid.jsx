@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import styles from './CarouselGrid.module.scss';
 import Carousel from '../Carousel/Carousel';
+
 
 export default function CarouselGrid({
   gridData, gridName, carouselName, carouselIndex, buttonFunction, buttonText, showButton,
@@ -29,3 +31,13 @@ export default function CarouselGrid({
 
   );
 }
+CarouselGrid.propTypes = {
+  gridData: PropTypes.string.isRequired,
+  gridName: PropTypes.string.isRequired,
+  carouselName: PropTypes.string.isRequired,
+  carouselIndex: PropTypes.string.isRequired,
+  buttonFunction: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  showButton: PropTypes.string.isRequired,
+
+};

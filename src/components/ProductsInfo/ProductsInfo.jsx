@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState, useContext } from 'react';
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider';
 import CarouselGrid from '../CarouselGrid/CarouselGrid';
@@ -78,3 +79,10 @@ export default function ProductsInfo({
 
   );
 }
+ProductsInfo.propTypes = {
+  products: PropTypes.string.isRequired,
+  totalPages: PropTypes.string.isRequired,
+  currentPage: PropTypes.string.isRequired,
+  setCurrentPage: PropTypes.string.isRequired,
+
+};

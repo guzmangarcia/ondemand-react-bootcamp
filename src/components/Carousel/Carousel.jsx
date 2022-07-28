@@ -58,6 +58,9 @@ export default function Carousel({
             className={styles.dot}
             key={`${carouselName}-${carouselKeyIndex}-${index}-${item.id}-dot`}
             onClick={(() => dotClick(index + 1))}
+            onKeyDown={() => dotClick(index + 1)}
+            role="button"
+            tabIndex={index}
           />
         ))}
 
