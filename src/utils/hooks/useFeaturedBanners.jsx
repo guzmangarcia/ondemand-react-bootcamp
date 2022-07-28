@@ -16,7 +16,7 @@ export default function useFeaturedBanners({ pageNumber = 1 }) {
 
     const controller = new AbortController();
 
-    async function getFeaturedBanners({ pageNumber }) {
+    async function getFeaturedBanners() {
       try {
         setFeaturedBanners({ data: {}, isLoading: true });
 
@@ -36,7 +36,7 @@ export default function useFeaturedBanners({ pageNumber = 1 }) {
       }
     }
 
-    getFeaturedBanners({ pageNumber });
+    getFeaturedBanners();
 
     return () => {
       controller.abort();

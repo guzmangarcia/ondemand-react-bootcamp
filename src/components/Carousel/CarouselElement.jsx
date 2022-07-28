@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Carrousel.module.scss';
 
-export function CarouselElement({
+export default function CarouselElement({
   className, count, carouselCurrentSlideIndex, src, alt, text, id, navigationLink,
 }) {
   const itemRef = React.createRef();

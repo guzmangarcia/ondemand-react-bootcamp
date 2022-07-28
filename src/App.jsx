@@ -1,5 +1,3 @@
-import React from 'react';
-import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Layout from './components/Layout/Layout';
@@ -9,6 +7,7 @@ import { CartItemsContextProvider } from './components/CartItemsContextProvider/
 import Search from './pages/Search/Search';
 import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
+import './App.css';
 
 function App() {
   return (

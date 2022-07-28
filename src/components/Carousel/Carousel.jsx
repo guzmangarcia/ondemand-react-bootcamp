@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import styles from './Carrousel.module.scss';
-import { CarouselElement } from './CarouselElement';
+import  CarouselElement  from './CarouselElement';
 
 export default function Carousel({
   className,
@@ -9,7 +9,6 @@ export default function Carousel({
   carouselKeyIndex,
   carouselInitialSlideIndex,
   data,
-  uniqueId,
   buttonText,
   buttonFunction,
 }) {
