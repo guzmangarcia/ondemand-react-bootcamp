@@ -3,7 +3,7 @@ import { createContext, useState, useMemo } from 'react';
 // create a context, with createContext api
 const CartItemsContext = createContext();
 
-function CartItemsContextProvider({children}) {
+function CartItemsContextProvider({ children }) {
   // this state will be shared with all components
   const [cartItems, setCartItems] = useState([]);
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import styles from './Carrousel.module.scss';
-import  CarouselElement  from './CarouselElement';
+import CarouselElement from './CarouselElement';
 
 export default function Carousel({
   className,
@@ -15,7 +15,13 @@ export default function Carousel({
   const [carouselCurrentSlideIndex, setCarouselCurrentSlideIndex] = useState(carouselInitialSlideIndex);
 
   function setIndex(nextIndex) {
-    if (nextIndex > data.length) { setCarouselCurrentSlideIndex(1); } else if (nextIndex < 1) { setCarouselCurrentSlideIndex(setCarouselCurrentSlideIndex(data.length)); } else { setCarouselCurrentSlideIndex(nextIndex); }
+    if (nextIndex > data.length) {
+      setCarouselCurrentSlideIndex(1);
+    } else if (nextIndex < 1) {
+      setCarouselCurrentSlideIndex(setCarouselCurrentSlideIndex(data.length));
+    } else {
+      setCarouselCurrentSlideIndex(nextIndex);
+    }
   }
 
   function prevClick() {
@@ -58,12 +64,12 @@ export default function Carousel({
       <div className={styles.divbutton}>
         {(buttonText !== undefined)
           && (
-          <button
-            className={styles.button}
-            onClick={buttonFunction}
-          >
-            {buttonText}
-          </button>
+            <button
+              className={styles.button}
+              onClick={buttonFunction}
+            >
+              {buttonText}
+            </button>
           )}
       </div>
     </div>

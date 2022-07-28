@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider';
 
@@ -37,13 +38,13 @@ export default function ProductDescription({
   return (
     <div>
       <p>
-        <label>
+        <label htmlFor={name}>
           <b>Name: </b>
           {name}
         </label>
       </p>
       <p>
-        <label>
+        <label htmlFor={price}>
           <b>Price:</b>
           {' '}
           {price}
@@ -57,18 +58,18 @@ export default function ProductDescription({
         </label>
       </p>
       <p>
-        <label>
+        <label htmlFor={categoryName}>
           <b>Category:</b>
           {' '}
           {categoryName}
         </label>
       </p>
       <p>
-        <label>
+        <label htmlFor={tags}>
           <b>Tags:</b>
           {' '}
           {tags.map((tag, id) => (
-            <label key={id}>
+            <label key={tags}>
               {tag}
               {' '}
             </label>
@@ -76,7 +77,7 @@ export default function ProductDescription({
         </label>
       </p>
       <p>
-        <label>
+        <label htmlFor={description}>
           <b>Description:</b>
           {' '}
           <br />
@@ -111,3 +112,16 @@ export default function ProductDescription({
 
   );
 }
+
+ProductDescription.propTypes = {
+  item: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  sku: PropTypes.string.isRequired,
+  categoryName: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  specs: PropTypes.string.isRequired,
+  stock: PropTypes.string.isRequired,
+  uniqueId: PropTypes.string.isRequired,
+};
