@@ -88,5 +88,5 @@ Carousel.propTypes = {
   data: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
   buttonFunction: PropTypes.string.isRequired,
-  uniqueId: PropTypes.string.isRequired,
+
 };

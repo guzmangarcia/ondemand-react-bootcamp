@@ -10,7 +10,7 @@ export default function Pagination({ totalPages, currentPage, setCurrentPage }) 
       return;
     }
     const pagesAux = [];
-    for (let index = 1; index <= totalPages; index++) {
+    for (let index = 1; index <= totalPages; index += 1) {
       pagesAux.push(index);
     }
     setPages(pagesAux);

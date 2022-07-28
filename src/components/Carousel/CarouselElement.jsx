@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import styles from './Carrousel.module.scss';
@@ -6,7 +6,7 @@ import styles from './Carrousel.module.scss';
 export default function CarouselElement({
   className, count, carouselCurrentSlideIndex, src, alt, text, id, navigationLink,
 }) {
-  const itemRef = React.createRef();
+  const itemRef = createRef();
   const navigate = useNavigate();
 
   useEffect(() => {
