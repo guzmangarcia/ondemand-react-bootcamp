@@ -61,8 +61,15 @@ function ProductList() {
         <div>
 
           {!readyForRender ? <div>Loading</div>
-            : <ProductsInfo products={filteredProducts} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />}
-          {(selectedCategories?.length > 0) && <button onClick={() => updateSelectedCategories([])}>clear filters</button>}
+            : (
+              <ProductsInfo
+                products={filteredProducts}
+                totalPages={totalPages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            )}
+          {(selectedCategories?.length > 0) && <button type="button" onClick={() => updateSelectedCategories([])}>clear filters</button>}
         </div>
       </div>
     </div>

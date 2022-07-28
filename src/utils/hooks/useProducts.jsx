@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
 import useLatestAPI from './useLatestAPI';
@@ -51,3 +52,11 @@ export default function useProducts({ productId, pageSize = 12, pageNumber = 1 }
 
   return products;
 }
+
+useProducts.propTypes = {
+  className: PropTypes.string.isRequired,
+  productId: PropTypes.string.isRequired,
+  pageSize: PropTypes.string.isRequired,
+  pageNumber: PropTypes.string.isRequired,
+
+};

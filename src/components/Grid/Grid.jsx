@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Grid.module.scss';
@@ -67,8 +68,14 @@ export default function Grid({ data, setData, editable }) {
               <td className={styles.thtd}>
                 {editable
                   ? (
-                    <select defaultValue={itemData.quantity} onChange={(e) => { handleClick({ itemId: itemData.uniqueId, newValue: e.currentTarget.value }); }}>
-                      {itemData.quantityItems.map((item, index) => (<option key={itemData.uniqueId + index} value={item}>{item}</option>))}
+                    <select
+                      defaultValue={itemData.quantity}
+                      onChange={(e) => {
+                        handleClick({ itemId: itemData.uniqueId, newValue: e.currentTarget.value });
+                      }}
+                    >
+                      {itemData.quantityItems.map((item, index) => (
+                        <option key={itemData.uniqueId + index} value={item}>{item}</option>))}
                     </select>
                   )
                   : <p>{itemData.quantity}</p>}
@@ -115,3 +122,10 @@ export default function Grid({ data, setData, editable }) {
     </div>
   );
 }
+Grid.propTypes = {
+
+  data: PropTypes.string.isRequired,
+  setData: PropTypes.string.isRequired,
+  editable: PropTypes.string.isRequired,
+
+};

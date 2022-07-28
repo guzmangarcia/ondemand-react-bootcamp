@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import styles from './CarouselGrid.module.scss';
 import Carousel from '../Carousel/Carousel';
 
-
 export default function CarouselGrid({
   gridData, gridName, carouselName, carouselIndex, buttonFunction, buttonText, showButton,
 }) {

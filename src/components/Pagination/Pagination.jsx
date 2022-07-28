@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import styles from './Pagination.module.scss';
 
@@ -52,3 +53,9 @@ export default function Pagination({ totalPages, currentPage, setCurrentPage }) 
 
   );
 }
+
+Pagination.propTypes = {
+  totalPages: PropTypes.string.isRequired,
+  currentPage: PropTypes.string.isRequired,
+  setCurrentPage: PropTypes.string.isRequired,
+};
