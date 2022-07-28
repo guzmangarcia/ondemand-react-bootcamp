@@ -2,14 +2,12 @@ import { useState, useEffect } from 'react';
 import useProductCategoriesMock from '../../mocks/en-us/product-categories.json';
 
 export default function useProductCategories() {
-
   const [ProductCategories, setProductCategories] = useState(() => ({
     data: {},
     isLoading: true,
   }));
 
   useEffect(() => {
-
     const controller = new AbortController();
 
     async function getProductCategories() {

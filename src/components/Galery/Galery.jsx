@@ -14,49 +14,47 @@ SwiperCore.use([FreeMode, Navigation, Thumbs]);
 export default function Galery({ data }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-
-  if (data===undefined)return null;
+  if (data === undefined) return null;
 
   return (
     <>
       <Swiper
         style={{
-          "--swiper-navigation-color": "#fff",
-          "--swiper-pagination-color": "#fff"
+          '--swiper-navigation-color': '#fff',
+          '--swiper-pagination-color': '#fff',
         }}
-        loop={true}
+        loop
         spaceBetween={10}
-        navigation={true}
+        navigation
         thumbs={{ swiper: thumbsSwiper }}
         className="mySwiper2"
       >
         {
-          data.map((element, index) => {
-            return(
-          <SwiperSlide key={index+'main'} >
-            <img src={element.src} alt={'prop'} />
-          </SwiperSlide>);
-        })}
-
+          data.map((element, index) => (
+            <SwiperSlide key={`${index}main`}>
+              <img src={element.src} alt="prop" />
+            </SwiperSlide>
+          ))
+}
 
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
-        loop={true}
+        loop
         spaceBetween={10}
         slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
+        freeMode
+        watchSlidesProgress
         className="mySwiper"
       >
         {
-        
-          data.map((element, index) => {
-            return(
-          <SwiperSlide key={index+'secondary'}>
-            <img src={element.src}  alt={'prop'} />
-          </SwiperSlide>);
-        })}
+
+          data.map((element, index) => (
+            <SwiperSlide key={`${index}secondary`}>
+              <img src={element.src} alt="prop" />
+            </SwiperSlide>
+          ))
+}
 
       </Swiper>
     </>

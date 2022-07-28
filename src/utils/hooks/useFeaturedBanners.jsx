@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
 import { useLatestAPI } from './useLatestAPI';
 
-export default function useFeaturedBanners({pageNumber=1}) {
+export default function useFeaturedBanners({ pageNumber = 1 }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [featuredBanners, setFeaturedBanners] = useState(() => ({
     data: {},
@@ -16,17 +16,17 @@ export default function useFeaturedBanners({pageNumber=1}) {
 
     const controller = new AbortController();
 
-    async function getFeaturedBanners({pageNumber}) {
+    async function getFeaturedBanners({ pageNumber }) {
       try {
         setFeaturedBanners({ data: {}, isLoading: true });
 
         const response = await fetch(
           `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
-            '[[at(document.type, "banner")]]'
+            '[[at(document.type, "banner")]]',
           )}&lang=en-us&pageSize=5&page=${pageNumber}`,
           {
             signal: controller.signal,
-          }
+          },
         );
         const data = await response.json();
 
@@ -37,12 +37,12 @@ export default function useFeaturedBanners({pageNumber=1}) {
       }
     }
 
-    getFeaturedBanners({pageNumber});
+    getFeaturedBanners({ pageNumber });
 
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading,pageNumber]);
+  }, [apiRef, isApiMetadataLoading, pageNumber]);
 
   return featuredBanners;
 }

@@ -9,16 +9,12 @@ import ProductCategories from '../../components/ProductCategories/ProductCategor
 
 // import { useContext } from "react"
 
-
-
 export default function Home() {
-
   const { bannerDataItems, isBannerLoading } = useWrappedFeaturedBanners({ pageNumber: 1 });
   const { featuredProducts, isProductsLoading } = useWrappedFeaturedProducts({ pageNumber: 1 });
   const { productCategories, isProductCategoriesLoading } = useWrappedProductCategories({ pageNumber: 1 });
 
   return (
-
 
     <div className={styles.textcontent}>
 
@@ -26,7 +22,7 @@ export default function Home() {
         {isBannerLoading && <div>Loading...</div>}
         {(!isBannerLoading && bannerDataItems !== null && bannerDataItems.length > 0) && <Slider index={1} elements={bannerDataItems} />}
       </div>
-      <div >
+      <div>
         {isProductCategoriesLoading && <div>Loading...</div>}
         {(!isProductCategoriesLoading && productCategories !== null && productCategories.length > 0) && <ProductCategories productCategories={productCategories} />}
       </div>
@@ -38,4 +34,3 @@ export default function Home() {
 
   );
 }
-

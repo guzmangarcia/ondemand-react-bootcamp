@@ -16,7 +16,7 @@ function Header() {
           <p className={styles.textHeader}>Authentic Authentic Authentic!</p>
         </div>
         <div className={styles.divwithborder}>
-          <img src={logo} alt={'Authentic Authentic Authentic'} className={styles.logo} onClick={() => navigate('/home')} />
+          <img src={logo} alt="Authentic Authentic Authentic" className={styles.logo} onClick={() => navigate('/home')} />
         </div>
         <div className={styles.divwithborder}>
           <SearchEngine />
@@ -27,6 +27,6 @@ function Header() {
       </div>
     </div>
   );
-};
+}
 
 export default Header;

@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react';
 
-import useFeaturedBannersMock from '../../mocks/en-us/featured-banners.json';;
-
+import useFeaturedBannersMock from '../../mocks/en-us/featured-banners.json';
 
 export default function useFeaturedBanners() {
-
   const [featuredBanners, setFeaturedBanners] = useState(() => ({
     data: {},
     isLoading: true,
   }));
 
   useEffect(() => {
-
     const controller = new AbortController();
 
     async function getFeaturedBanners() {

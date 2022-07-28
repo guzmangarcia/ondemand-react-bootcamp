@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
 import { useLatestAPI } from './useLatestAPI';
 
-export default function useProductCategories({pageNumber=1}) {
+export default function useProductCategories({ pageNumber = 1 }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [ProductCategories, setProductCategories] = useState(() => ({
     data: {},
@@ -19,14 +19,13 @@ export default function useProductCategories({pageNumber=1}) {
     async function getProductCategories() {
       try {
         setProductCategories({ data: {}, isLoading: true });
-        const url =`${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent('[[at(document.type, "category")]]')}&lang=en-us&pageSize=30&page=${pageNumber}`;
-
+        const url = `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent('[[at(document.type, "category")]]')}&lang=en-us&pageSize=30&page=${pageNumber}`;
 
         const response = await fetch(
           url,
           {
             signal: controller.signal,
-          }
+          },
         );
         const data = await response.json();
 
@@ -37,12 +36,12 @@ export default function useProductCategories({pageNumber=1}) {
       }
     }
 
-    getProductCategories({pageNumber});
+    getProductCategories({ pageNumber });
 
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading,pageNumber]);
+  }, [apiRef, isApiMetadataLoading, pageNumber]);
 
   return ProductCategories;
 }

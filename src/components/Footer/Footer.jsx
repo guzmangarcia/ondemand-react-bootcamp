@@ -1,12 +1,8 @@
-import styles from './Footer.module.scss'
+import styles from './Footer.module.scss';
 
 export default function Footer() {
+  return (
 
-    return (
-
-
-        <div className={styles.Footer}>Ecommerce created during Wizeline’s Academy React Bootcamp</div>
-    );
-
-
+    <div className={styles.Footer}>Ecommerce created during Wizeline’s Academy React Bootcamp</div>
+  );
 }

@@ -27,9 +27,5 @@ export default function Search() {
       {(!isLoading && data?.length > 0) ? <ProductsInfo products={data} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} /> : <div>No products found</div>}
     </>
 
-
-  )
-
-
+  );
 }
-

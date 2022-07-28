@@ -6,14 +6,16 @@ export function SearchEngine() {
 
   return (
 
-    <input className={styles.search} placeholder="Find your product..." onChange={(e) => {
-      if (e.target.value === '') {
-        navigate('/home');
-      } else {
-        navigate(`/search?q=${e.target.value}`);
-      }
-    }} />
+    <input
+      className={styles.search}
+      placeholder="Find your product..."
+      onChange={(e) => {
+        if (e.target.value === '') {
+          navigate('/home');
+        } else {
+          navigate(`/search?q=${e.target.value}`);
+        }
+      }}
+    />
   );
-
 }
-;

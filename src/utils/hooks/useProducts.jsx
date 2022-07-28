@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
 import { useLatestAPI } from './useLatestAPI';
 
-export default function useProducts({ productId ,pageSize=12, pageNumber=1}) {
-
+export default function useProducts({ productId, pageSize = 12, pageNumber = 1 }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [products, setProducts] = useState(() => ({
     data: {},
@@ -17,27 +16,23 @@ export default function useProducts({ productId ,pageSize=12, pageNumber=1}) {
 
     const controller = new AbortController();
 
-    async function getProducts({productId,pageSize,pageNumber}) {
+    async function getProducts({ productId, pageSize, pageNumber }) {
       try {
-        let searchByID = ''
+        let searchByID = '';
         if (productId !== undefined) {
-          searchByID = `&q=${encodeURIComponent('[[at(document.id,"' + productId + '")]]')}`
+          searchByID = `&q=${encodeURIComponent(`[[at(document.id,"${productId}")]]`)}`;
+        } else {
+          searchByID = `&q=${encodeURIComponent('[[at(document.type, "product")]]')}`;
         }
-        else {
-
-          searchByID = `&q=${encodeURIComponent('[[at(document.type, "product")]]')}`
-        }
-
 
         setProducts({ data: {}, isLoading: true });
         const url = `${API_BASE_URL}/documents/search?ref=${apiRef}${searchByID}&lang=en-us&pageSize=${pageSize}&page=${pageNumber}`;
-
 
         const response = await fetch(
           url,
           {
             signal: controller.signal,
-          }
+          },
         );
         const data = await response.json();
 
@@ -48,12 +43,12 @@ export default function useProducts({ productId ,pageSize=12, pageNumber=1}) {
       }
     }
 
-    getProducts({productId,pageSize,pageNumber});
+    getProducts({ productId, pageSize, pageNumber });
 
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading, pageSize, productId,pageNumber]);
+  }, [apiRef, isApiMetadataLoading, pageSize, productId, pageNumber]);
 
   return products;
 }
