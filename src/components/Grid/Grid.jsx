@@ -87,7 +87,7 @@ export default function Grid({ data, setData, editable }) {
                 {itemData.price * itemData.quantity}
                 $
               </td>
-              {editable && <td className={styles.thtd}><button onClick={() => { removeItem({ itemId: itemData.uniqueId }); }}>X</button></td>}
+              {editable && <td className={styles.thtd}><button type="button" onClick={() => { removeItem({ itemId: itemData.uniqueId }); }}>X</button></td>}
             </tr>
           ))}
 
@@ -95,7 +95,7 @@ export default function Grid({ data, setData, editable }) {
         <tfoot>
           <tr className={styles.tr}>
             <td className={styles.hidden} />
-            <td className={styles.thtd}>{!editable && <button onClick={() => navigate('/cart')}>Go back to cart</button>}</td>
+            <td className={styles.thtd}>{!editable && <button type="button" onClick={() => navigate('/cart')}>Go back to cart</button>}</td>
             <td className={styles.thtd} />
             <td className={styles.thtd} />
             <td className={styles.thtd}>Total price</td>
@@ -103,7 +103,12 @@ export default function Grid({ data, setData, editable }) {
               {totalPrice}
               $
             </td>
-            <td className={styles.thtd}>{editable ? <button onClick={() => navigate('/checkout')}>Proceed to checkout</button> : <button onClick={(e) => { e.preventDefault(); }}>Place order</button>}</td>
+            <td className={styles.thtd}>
+              {
+                editable ? <button type="button" onClick={() => navigate('/checkout')}>Proceed to checkout</button>
+                  : <button type="button" onClick={(e) => { e.preventDefault(); }}>Place order</button>
+              }
+            </td>
           </tr>
         </tfoot>
       </table>

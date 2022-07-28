@@ -57,7 +57,7 @@ export default function FeaturedProducts(props) {
       />
       <br />
       <div className={styles.featuredProducts}>
-        <button className={styles.viewProductsButton} onClick={() => navigate('/products')}>View all products</button>
+        <button type="button" className={styles.viewProductsButton} onClick={() => navigate('/products')}>View all products</button>
       </div>
       <br />
     </div>

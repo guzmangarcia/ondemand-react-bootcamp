@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-
 import styles from './Carrousel.module.scss';
 import CarouselElement from './CarouselElement';
 
@@ -12,7 +12,9 @@ export default function Carousel({
   buttonText,
   buttonFunction,
 }) {
-  const [carouselCurrentSlideIndex, setCarouselCurrentSlideIndex] = useState(carouselInitialSlideIndex);
+  const [
+    carouselCurrentSlideIndex, setCarouselCurrentSlideIndex,
+  ] = useState(carouselInitialSlideIndex);
 
   function setIndex(nextIndex) {
     if (nextIndex > data.length) {
@@ -50,7 +52,7 @@ export default function Carousel({
         ))
       }
       <div className={`${styles.styleCarrouselDot} ${className}`}>
-        <button className={styles.prev} onClick={prevClick}>❮</button>
+        <button type="button" className={styles.prev} onClick={prevClick}>❮</button>
         {data.map((item, index) => (
           <span
             className={styles.dot}
@@ -59,12 +61,13 @@ export default function Carousel({
           />
         ))}
 
-        <button className={styles.next} onClick={nextClick}>❯</button>
+        <button type="button" className={styles.next} onClick={nextClick}>❯</button>
       </div>
       <div className={styles.divbutton}>
         {(buttonText !== undefined)
           && (
             <button
+              type="button"
               className={styles.button}
               onClick={buttonFunction}
             >
@@ -76,3 +79,14 @@ export default function Carousel({
 
   );
 }
+
+Carousel.propTypes = {
+  className: PropTypes.string.isRequired,
+  carouselName: PropTypes.string.isRequired,
+  carouselKeyIndex: PropTypes.string.isRequired,
+  carouselInitialSlideIndex: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  buttonFunction: PropTypes.string.isRequired,
+  uniqueId: PropTypes.string.isRequired,
+};
