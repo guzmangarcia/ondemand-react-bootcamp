@@ -31,6 +31,7 @@ export default function CarouselElement({
         </div>
         <div className={styles.divtext}>
           {text.map((element, index) => (
+            // eslint-disable-next-line react/no-array-index-key
             <div key={`${text} ${index}`} className={styles.text}>
               {element}
               {' '}

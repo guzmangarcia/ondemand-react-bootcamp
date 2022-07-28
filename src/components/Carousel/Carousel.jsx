@@ -44,6 +44,7 @@ export default function Carousel({
         data.map((item, index) => (
           <CarouselElement
             className={`${className}`}
+            // eslint-disable-next-line react/no-array-index-key
             key={`${carouselName}-${carouselKeyIndex}-${index}-${item.id}`}
             count={data.length}
             carouselCurrentSlideIndex={carouselCurrentSlideIndex}
@@ -56,6 +57,7 @@ export default function Carousel({
         {data.map((item, index) => (
           <span
             className={styles.dot}
+            // eslint-disable-next-line react/no-array-index-key
             key={`${carouselName}-${carouselKeyIndex}-${index}-${item.id}-dot`}
             onClick={(() => dotClick(index + 1))}
             onKeyDown={() => dotClick(index + 1)}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// Import Swiper React components
+import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
@@ -35,7 +35,7 @@ export default function Galery({ data }) {
               <img src={element.src} alt="prop" />
             </SwiperSlide>
           ))
-}
+        }
 
       </Swiper>
       <Swiper
@@ -54,9 +54,13 @@ export default function Galery({ data }) {
               <img src={element.src} alt="prop" />
             </SwiperSlide>
           ))
-}
+        }
 
       </Swiper>
     </>
   );
 }
+Galery.propTypes = {
+  data: PropTypes.string.isRequired,
+
+};

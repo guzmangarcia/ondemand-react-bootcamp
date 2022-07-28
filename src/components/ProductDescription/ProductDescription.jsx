@@ -11,10 +11,10 @@ export default function ProductDescription({
   function addItemToCard() {
     let totalElements = parseInt(numberOfItems, 10);
     let elements = cartItems;
-    let cartItem = cartItems.find((item) => item.uniqueId === uniqueId);
+    let cartItem = cartItems.find((itemToFind) => itemToFind.uniqueId === uniqueId);
     if (cartItem !== undefined) {
       totalElements += cartItem.quantity;
-      elements = cartItems.filter((item) => item.uniqueId !== uniqueId);
+      elements = cartItems.filter((itemToModify) => itemToModify.uniqueId !== uniqueId);
     } else {
       cartItem = {
         uniqueId,

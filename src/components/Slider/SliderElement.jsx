@@ -10,25 +10,31 @@ export default class SliderElement extends React.Component {
 
   componentDidMount() {
     const state = this.props.id === this.props.rangeValue;
-    this.itemRef.current.style.display = state ? "block" : "none";
+    this.itemRef.current.style.display = state ? 'block' : 'none';
   }
 
   componentDidUpdate() {
     const state = this.props.id === this.props.rangeValue;
-    this.itemRef.current.style.display = state ? "block" : "none";
+    this.itemRef.current.style.display = state ? 'block' : 'none';
   }
 
   render() {
     return (
       <div ref={this.itemRef}>
-        <div style={{ width: "100%" }}>
+        <div style={{ width: '100%' }}>
           <img
             className={this.props.className}
             src={this.props.src}
             alt={this.props.alt}
           />
           <div className={styles.text}>
-            {this.props.text} ({this.props.id}/{this.props.count})
+            {this.props.text}
+            {' '}
+            (
+            {this.props.id}
+            /
+            {this.props.count}
+            )
           </div>
         </div>
       </div>
