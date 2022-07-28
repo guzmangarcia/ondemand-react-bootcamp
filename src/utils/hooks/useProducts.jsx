@@ -17,7 +17,7 @@ export default function useProducts({ productId, pageSize = 12, pageNumber = 1 }
 
     const controller = new AbortController();
 
-    async function getProducts({ productId, pageSize, pageNumber }) {
+    async function getProducts() {
       try {
         let searchByID = '';
         if (productId !== undefined) {
@@ -43,7 +43,7 @@ export default function useProducts({ productId, pageSize = 12, pageNumber = 1 }
       }
     }
 
-    getProducts({ productId, pageSize, pageNumber });
+    getProducts();
 
     return () => {
       controller.abort();

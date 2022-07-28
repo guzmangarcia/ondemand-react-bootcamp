@@ -18,28 +18,41 @@ export default function Checkout() {
         <div className={styles.forminputs}>
           <div className={styles.input}>
             {' '}
-            <label htmlFor={name}>Name:</label>
-            <input onChange={(e) => setName(e.currentTarget.value)} />
+            <label htmlFor={name}>
+              Name:
+              <input defaultValue={name} onChange={(e) => setName(e.currentTarget.value)} />
+            </label>
           </div>
           <div className={styles.input}>
-            <label htmlFor={email}>Email:</label>
-            <input onChange={(e) => setEmail(e.currentTarget.value)} />
+            <label htmlFor={email}>
+              Email:
+              <input defaultValue={email} type="text" onChange={(e) => setEmail(e.currentTarget.value)} />
+            </label>
           </div>
           <div className={styles.input}>
-            {' '}
-            <label htmlFor={zipCode}>Zip Code:</label>
-            {' '}
-            <input onChange={(e) => setZipCode(e.currentTarget.value)} />
+
+            <label htmlFor={zipCode}>
+              Zip Code:
+
+              <input id={zipCode} type="text" defaultValue={zipCode} onChange={(e) => setZipCode(e.currentTarget.value)} />
+            </label>
           </div>
           <div className={styles.input}>
-            {' '}
-            <label htmlFor={orderNotes}>Order Notes:</label>
-            {' '}
-            <textarea onChange={(e) => setOrderNotes(e.currentTarget.value)} />
+
+            <label htmlFor={orderNotes}>
+              Order Notes:
+
+              <textarea
+                htmlFor={orderNotes}
+                defaultValue={orderNotes}
+                onChange={(e) => setOrderNotes(e.currentTarget.value)}
+              />
+            </label>
           </div>
         </div>
 
-        {cartItems.length > 0 ? <Grid data={cartItems} setData={setCartItems} editable={false} /> : <p>No items found</p>}
+        {cartItems.length > 0 ? <Grid data={cartItems} setData={setCartItems} editable={false} />
+          : <p>No items found</p>}
       </form>
     </>
   );
