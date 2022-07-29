@@ -19,6 +19,6 @@ function CartItemsContextProvider({ children }) {
 
 export { CartItemsContext, CartItemsContextProvider };
 
-// CartItemsContextProvider.propTypes = {
-//   children: PropTypes.string.isRequired,
-// };
+CartItemsContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

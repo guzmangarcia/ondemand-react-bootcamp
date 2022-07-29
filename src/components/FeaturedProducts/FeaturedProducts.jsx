@@ -65,6 +65,35 @@ export default function FeaturedProducts({ featuredProducts }) {
   );
 }
 
-// FeaturedProducts.propTypes = {
-//   featuredProducts: PropTypes.string.isRequired,
-// };
+FeaturedProducts.propTypes = {
+
+  featuredProducts: PropTypes.PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    src: PropTypes.string,
+    alt: PropTypes.string,
+    text: PropTypes.arrayOf(PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ])),
+    navigationLink: PropTypes.string,
+    uniqueId: PropTypes.string,
+    stock: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.number,
+  })),
+};
+FeaturedProducts.defaultProps = {
+  featuredProducts: [{
+    id: 1,
+    src: '',
+    alt: '',
+    text: [],
+    navigationLink: '',
+    uniqueId: '',
+    stock: 0,
+    name: '',
+    price: 0,
+
+  }],
+
+};
