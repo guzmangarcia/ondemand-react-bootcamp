@@ -30,13 +30,24 @@ export default function CarouselGrid({
 
   );
 }
-// CarouselGrid.propTypes = {
-//   gridData: PropTypes.string.isRequired,
-//   gridName: PropTypes.string.isRequired,
-//   carouselName: PropTypes.string.isRequired,
-//   carouselIndex: PropTypes.string.isRequired,
-//   buttonFunction: PropTypes.string.isRequired,
-//   buttonText: PropTypes.string.isRequired,
-//   showButton: PropTypes.string.isRequired,
+CarouselGrid.propTypes = {
+  gridData: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape(Carousel.propTypes))),
+  gridName: PropTypes.string,
+  carouselName: PropTypes.string,
+  carouselIndex: PropTypes.number,
+  buttonFunction: PropTypes.func,
+  buttonText: PropTypes.string,
+  showButton: PropTypes.func,
 
-// };
+};
+
+CarouselGrid.defaultProps = {
+  gridData: undefined,
+  gridName: '',
+  carouselName: '',
+  carouselIndex: 0,
+  buttonFunction: undefined,
+  buttonText: undefined,
+  showButton: (() => false),
+
+};
