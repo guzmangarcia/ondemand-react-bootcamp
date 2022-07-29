@@ -82,19 +82,22 @@ export default function ProductsInfo({
 ProductsInfo.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.number.isRequired,
-    text: PropTypes.number.isRequired,
-    categoryId: PropTypes.number.isRequired,
-    navigationLink: PropTypes.number.isRequired,
-    uniqueId: PropTypes.number.isRequired,
+    src: PropTypes.string,
+    alt: PropTypes.string,
+    text: PropTypes.arrayOf(PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ])),
+    categoryId: PropTypes.string.isRequired,
+    navigationLink: PropTypes.string.isRequired,
+    uniqueId: PropTypes.string.isRequired,
     stock: PropTypes.number.isRequired,
-    name: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
 
   })).isRequired,
   totalPages: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
-  setCurrentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
 
 };
