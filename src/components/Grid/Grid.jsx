@@ -12,7 +12,7 @@ export default function Grid({ data, setData, editable }) {
     let totalPriceAux = 0;
     setDataAux(data.map((itemData) => {
       const itemDataQuantity = [];
-      for (let id = 1; id <= itemData.item.stock; id++) {
+      for (let id = 1; id <= itemData.item.stock; id += 1) {
         itemDataQuantity.push(id);
       }
 
@@ -75,6 +75,7 @@ export default function Grid({ data, setData, editable }) {
                       }}
                     >
                       {itemData.quantityItems.map((item, index) => (
+                        // eslint-disable-next-line react/no-array-index-key
                         <option key={itemData.uniqueId + index} value={item}>{item}</option>))}
                     </select>
                   )

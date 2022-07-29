@@ -1,45 +1,36 @@
-import React from 'react';
+import { useEffect, createRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Slider.module.scss';
 
-export default class SliderElement extends React.Component {
-  constructor(props) {
-    super(props);
-    this.itemRef = React.createRef();
-  }
+export default function SliderElement({
+  id, rangeValue, className, src, alt, text, count,
+}) {
+  const itemRef = createRef();
 
-  componentDidMount() {
-    const state = this.props.id === this.props.rangeValue;
-    this.itemRef.current.style.display = state ? 'block' : 'none';
-  }
+  useEffect(() => {
+    itemRef.current.style.display = (id === rangeValue) ? 'block' : 'none';
+  }, [id, rangeValue, itemRef]);
 
-  componentDidUpdate() {
-    const state = this.props.id === this.props.rangeValue;
-    this.itemRef.current.style.display = state ? 'block' : 'none';
-  }
-
-  render() {
-    return (
-      <div ref={this.itemRef}>
-        <div style={{ width: '100%' }}>
-          <img
-            className={this.props.className}
-            src={this.props.src}
-            alt={this.props.alt}
-          />
-          <div className={styles.text}>
-            {this.props.text}
-            {' '}
-            (
-            {this.props.id}
-            /
-            {this.props.count}
-            )
-          </div>
+  return (
+    <div ref={itemRef}>
+      <div style={{ width: '100%' }}>
+        <img
+          className={className}
+          src={src}
+          alt={alt}
+        />
+        <div className={styles.text}>
+          {text}
+          {' '}
+          (
+          {id}
+          /
+          {count}
+          )
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 SliderElement.propTypes = {
   id: PropTypes.number.isRequired,
@@ -48,4 +39,5 @@ SliderElement.propTypes = {
   alt: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   rangeValue: PropTypes.number.isRequired,
+  className: PropTypes.string.isRequired,
 };

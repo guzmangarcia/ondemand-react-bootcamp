@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 import shoppingCart from '../../media/shopping-cart.png';
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider';
 
-export function ShoppingCart() {
+export default function ShoppingCart() {
   const navigate = useNavigate();
   const { cartItems } = useContext(CartItemsContext);
   const [totalItems, setTotalItems] = useState(0);
@@ -21,13 +21,13 @@ export function ShoppingCart() {
     <>
       <img src={shoppingCart} alt="check your purchase" className={styles.shoppingcart} onClick={() => navigate('/cart')} />
       {(totalItems > 0) && (
-      <label>
-        <b>
-          (
-          {totalItems}
-          )
-        </b>
-      </label>
+        <label htmlFor={totalItems}>
+          <b>
+            (
+            {totalItems}
+            )
+          </b>
+        </label>
       )}
     </>
   );

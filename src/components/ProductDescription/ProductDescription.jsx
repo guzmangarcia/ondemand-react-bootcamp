@@ -99,6 +99,7 @@ export default function ProductDescription({
         <p><b>Specs:</b></p>
         <ul>
           {specs.map((spec, index) => (
+            // eslint-disable-next-line react/no-array-index-key
             <li key={index}>
               <b>{spec.spec_name}</b>
               :

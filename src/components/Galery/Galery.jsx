@@ -31,6 +31,7 @@ export default function Galery({ data }) {
       >
         {
           data.map((element, index) => (
+            // eslint-disable-next-line react/no-array-index-key
             <SwiperSlide key={`${index}main`}>
               <img src={element.src} alt="prop" />
             </SwiperSlide>
@@ -50,6 +51,7 @@ export default function Galery({ data }) {
         {
 
           data.map((element, index) => (
+            // eslint-disable-next-line react/no-array-index-key
             <SwiperSlide key={`${index}secondary`}>
               <img src={element.src} alt="prop" />
             </SwiperSlide>

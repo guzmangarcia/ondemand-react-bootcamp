@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 
-export function SearchEngine() {
+export default function SearchEngine() {
   const navigate = useNavigate();
 
   return (

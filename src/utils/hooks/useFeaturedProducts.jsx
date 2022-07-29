@@ -16,7 +16,7 @@ export default function useFeaturedProducts({ pageNumber = 1 }) {
 
     const controller = new AbortController();
 
-    async function getFeaturedProducts({ pageNumber }) {
+    async function getFeaturedProducts() {
       try {
         setFeaturedProducts({ data: {}, isLoading: true });
         const url = `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent('[[at(document.type, "product")]]')}&q=${encodeURIComponent('[[at(document.tags, ["Featured"])]]')}&lang=en-us&pageSize=16&page=${pageNumber}`;
@@ -36,7 +36,7 @@ export default function useFeaturedProducts({ pageNumber = 1 }) {
       }
     }
 
-    getFeaturedProducts({ pageNumber });
+    getFeaturedProducts();
 
     return () => {
       controller.abort();

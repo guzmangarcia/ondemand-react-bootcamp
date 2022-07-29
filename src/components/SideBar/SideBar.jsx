@@ -33,6 +33,7 @@ export default function SideBar({
       {
         menuListItems.map((optionItem, index) => (
           <a
+            // eslint-disable-next-line react/no-array-index-key
             key={index}
             className={selectedCategories.some((d) => d === optionItem.categoryId) ? `${styles.active}` : ''}
             href={`#${encodeURIComponent(optionItem.categoryId)}`}

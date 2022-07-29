@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Layout.module.scss';
@@ -12,3 +13,8 @@ export default function Layout({ children }) {
     </div>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.string.isRequired,
+
+};

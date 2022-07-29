@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import logo from '../../media/logo.png';
-import { SearchEngine } from './SearchEngine';
-import { ShoppingCart } from './ShoppingCart';
+import SearchEngine from './SearchEngine';
+import ShoppingCart from './ShoppingCart';
 
 function Header() {
   const navigate = useNavigate();

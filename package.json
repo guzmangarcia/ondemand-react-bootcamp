@@ -43,10 +43,7 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "resolutions": {
-      "react-error-overlay": "6.0.9"
-    }
+    ]
   },
   "devDependencies": {
     "eslint-config-airbnb": "^19.0.4",
