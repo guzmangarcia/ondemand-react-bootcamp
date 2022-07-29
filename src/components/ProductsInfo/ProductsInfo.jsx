@@ -79,10 +79,10 @@ export default function ProductsInfo({
 
   );
 }
-ProductsInfo.propTypes = {
-  products: PropTypes.string.isRequired,
-  totalPages: PropTypes.string.isRequired,
-  currentPage: PropTypes.string.isRequired,
-  setCurrentPage: PropTypes.string.isRequired,
+// ProductsInfo.propTypes = {
+//   products: PropTypes.string.isRequired,
+//   totalPages: PropTypes.string.isRequired,
+//   currentPage: PropTypes.string.isRequired,
+//   setCurrentPage: PropTypes.string.isRequired,
 
-};
+// };

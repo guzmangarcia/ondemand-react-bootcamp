@@ -114,15 +114,15 @@ export default function ProductDescription({
   );
 }
 
-ProductDescription.propTypes = {
-  item: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  sku: PropTypes.string.isRequired,
-  categoryName: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  specs: PropTypes.string.isRequired,
-  stock: PropTypes.string.isRequired,
-  uniqueId: PropTypes.string.isRequired,
-};
+// ProductDescription.propTypes = {
+//   item: PropTypes.string.isRequired,
+//   name: PropTypes.string.isRequired,
+//   price: PropTypes.string.isRequired,
+//   sku: PropTypes.string.isRequired,
+//   categoryName: PropTypes.string.isRequired,
+//   tags: PropTypes.string.isRequired,
+//   description: PropTypes.string.isRequired,
+//   specs: PropTypes.string.isRequired,
+//   stock: PropTypes.string.isRequired,
+//   uniqueId: PropTypes.string.isRequired,
+// };

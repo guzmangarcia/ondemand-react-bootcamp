@@ -65,6 +65,6 @@ export default function FeaturedProducts({ featuredProducts }) {
   );
 }
 
-FeaturedProducts.propTypes = {
-  featuredProducts: PropTypes.string.isRequired,
-};
+// FeaturedProducts.propTypes = {
+//   featuredProducts: PropTypes.string.isRequired,
+// };

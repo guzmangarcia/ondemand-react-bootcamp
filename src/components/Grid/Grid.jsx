@@ -123,10 +123,10 @@ export default function Grid({ data, setData, editable }) {
     </div>
   );
 }
-Grid.propTypes = {
+// Grid.propTypes = {
 
-  data: PropTypes.string.isRequired,
-  setData: PropTypes.string.isRequired,
-  editable: PropTypes.string.isRequired,
+//   data: PropTypes.string.isRequired,
+//   setData: PropTypes.string.isRequired,
+//   editable: PropTypes.string.isRequired,
 
-};
+// };

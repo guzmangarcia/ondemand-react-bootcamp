@@ -47,8 +47,8 @@ export default function SideBar({
     </div>
   );
 }
-SideBar.propTypes = {
-  menuListItems: PropTypes.string.isRequired,
-  selectedCategories: PropTypes.string.isRequired,
-  updateParentSelectedCategories: PropTypes.string.isRequired,
-};
+// SideBar.propTypes = {
+//   menuListItems: PropTypes.string.isRequired,
+//   selectedCategories: PropTypes.string.isRequired,
+//   updateParentSelectedCategories: PropTypes.string.isRequired,
+// };

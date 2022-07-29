@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
+import PropTypes, { element } from 'prop-types';
 import styles from './Slider.module.scss';
 import SliderElement from './SliderElement';
 
@@ -9,6 +9,7 @@ export default function Slider({ elements }) {
   function onChange(value) {
     setRangeValue(parseInt(value, 10));
   }
+  console.log(elements);
 
   return (
     <div className={styles.text}>
@@ -35,6 +36,17 @@ export default function Slider({ elements }) {
     </div>
   );
 }
+
 Slider.propTypes = {
-  elements: PropTypes.array.isRequired,
+  elements: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        id: PropTypes.number.isRequired,
+        src: PropTypes.string.isRequired,
+        alt: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+      },
+
+    ),
+  ).isRequired,
 };

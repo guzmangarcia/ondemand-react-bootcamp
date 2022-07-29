@@ -54,11 +54,14 @@ export default function CarouselElement({
 
 CarouselElement.propTypes = {
   className: PropTypes.string.isRequired,
-  count: PropTypes.string.isRequired,
-  carouselCurrentSlideIndex: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  carouselCurrentSlideIndex: PropTypes.number.isRequired,
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  text: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ])).isRequired,
+  id: PropTypes.number.isRequired,
   navigationLink: PropTypes.string.isRequired,
 };

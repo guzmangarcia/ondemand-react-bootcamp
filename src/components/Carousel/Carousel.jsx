@@ -85,13 +85,13 @@ export default function Carousel({
   );
 }
 
-Carousel.propTypes = {
-  className: PropTypes.string.isRequired,
-  carouselName: PropTypes.string.isRequired,
-  carouselKeyIndex: PropTypes.string.isRequired,
-  carouselInitialSlideIndex: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
-  buttonText: PropTypes.string.isRequired,
-  buttonFunction: PropTypes.string.isRequired,
+// Carousel.propTypes = {
+//   className: PropTypes.string.isRequired,
+//   carouselName: PropTypes.string.isRequired,
+//   carouselKeyIndex: PropTypes.string.isRequired,
+//   carouselInitialSlideIndex: PropTypes.string.isRequired,
+//   data: PropTypes.string.isRequired,
+//   buttonText: PropTypes.string.isRequired,
+//   buttonFunction: PropTypes.string.isRequired,
 
-};
+// };
