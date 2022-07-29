@@ -53,15 +53,25 @@ export default function CarouselElement({
 }
 
 CarouselElement.propTypes = {
-  className: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
-  carouselCurrentSlideIndex: PropTypes.number.isRequired,
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  count: PropTypes.number,
+  carouselCurrentSlideIndex: PropTypes.number,
+  src: PropTypes.string,
+  alt: PropTypes.string,
   text: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-  ])).isRequired,
-  id: PropTypes.number.isRequired,
-  navigationLink: PropTypes.string.isRequired,
+  ])),
+  id: PropTypes.number,
+  navigationLink: PropTypes.string,
+};
+CarouselElement.defaultProps = {
+  className: '',
+  count: 0,
+  carouselCurrentSlideIndex: 0,
+  src: '',
+  alt: '',
+  text: '',
+  id: 0,
+  navigationLink: '',
 };

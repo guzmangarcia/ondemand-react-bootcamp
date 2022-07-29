@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PropTypes, { element } from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './Slider.module.scss';
 import SliderElement from './SliderElement';
 
@@ -9,7 +9,6 @@ export default function Slider({ elements }) {
   function onChange(value) {
     setRangeValue(parseInt(value, 10));
   }
-  console.log(elements);
 
   return (
     <div className={styles.text}>

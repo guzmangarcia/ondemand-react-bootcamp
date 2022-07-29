@@ -4,7 +4,7 @@ import styles from './Carrousel.module.scss';
 import CarouselElement from './CarouselElement';
 
 export default function Carousel({
-  className,
+  className = '',
   carouselName,
   carouselKeyIndex,
   carouselInitialSlideIndex,
@@ -85,13 +85,23 @@ export default function Carousel({
   );
 }
 
-// Carousel.propTypes = {
-//   className: PropTypes.string.isRequired,
-//   carouselName: PropTypes.string.isRequired,
-//   carouselKeyIndex: PropTypes.string.isRequired,
-//   carouselInitialSlideIndex: PropTypes.string.isRequired,
-//   data: PropTypes.string.isRequired,
-//   buttonText: PropTypes.string.isRequired,
-//   buttonFunction: PropTypes.string.isRequired,
+Carousel.propTypes = {
+  className: PropTypes.string,
+  carouselName: PropTypes.string,
+  carouselKeyIndex: PropTypes.number,
+  carouselInitialSlideIndex: PropTypes.number,
+  data: PropTypes.arrayOf(PropTypes.shape(CarouselElement.propTypes)),
+  buttonText: PropTypes.string,
+  buttonFunction: PropTypes.func,
 
-// };
+};
+
+Carousel.defaultProps = {
+  className: '',
+  carouselName: '',
+  carouselKeyIndex: 0,
+  carouselInitialSlideIndex: 0,
+  data: CarouselElement.defaultProps,
+  buttonText: undefined,
+  buttonFunction: undefined,
+};
