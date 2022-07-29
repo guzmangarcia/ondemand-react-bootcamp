@@ -79,10 +79,22 @@ export default function ProductsInfo({
 
   );
 }
-// ProductsInfo.propTypes = {
-//   products: PropTypes.string.isRequired,
-//   totalPages: PropTypes.string.isRequired,
-//   currentPage: PropTypes.string.isRequired,
-//   setCurrentPage: PropTypes.string.isRequired,
+ProductsInfo.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.number.isRequired,
+    text: PropTypes.number.isRequired,
+    categoryId: PropTypes.number.isRequired,
+    navigationLink: PropTypes.number.isRequired,
+    uniqueId: PropTypes.number.isRequired,
+    stock: PropTypes.number.isRequired,
+    name: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
 
-// };
+  })).isRequired,
+  totalPages: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.number.isRequired,
+
+};
