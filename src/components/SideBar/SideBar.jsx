@@ -47,8 +47,10 @@ export default function SideBar({
     </div>
   );
 }
-// SideBar.propTypes = {
-//   menuListItems: PropTypes.string.isRequired,
-//   selectedCategories: PropTypes.string.isRequired,
-//   updateParentSelectedCategories: PropTypes.string.isRequired,
-// };
+SideBar.propTypes = {
+  menuListItems: PropTypes.arrayOf(PropTypes.shape(
+    { categoryId: PropTypes.string.isRequired },
+  )).isRequired,
+  selectedCategories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  updateParentSelectedCategories: PropTypes.func.isRequired,
+};
