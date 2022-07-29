@@ -62,7 +62,7 @@ export default function Galery({ data }) {
     </>
   );
 }
-// Galery.propTypes = {
-//   data: PropTypes.string.isRequired,
+Galery.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({ src: PropTypes.string.isRequired })).isRequired,
 
-// };
+};
