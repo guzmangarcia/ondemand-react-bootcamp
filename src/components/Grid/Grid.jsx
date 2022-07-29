@@ -123,10 +123,20 @@ export default function Grid({ data, setData, editable }) {
     </div>
   );
 }
-// Grid.propTypes = {
+Grid.propTypes = {
 
-//   data: PropTypes.string.isRequired,
-//   setData: PropTypes.string.isRequired,
-//   editable: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    uniqueId: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    quantity: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    stock: PropTypes.number.isRequired,
+    itemDataQuantity: PropTypes.string.isRequired,
 
-// };
+  })).isRequired,
+  setData: PropTypes.func.isRequired,
+  editable: PropTypes.bool.isRequired,
+
+};

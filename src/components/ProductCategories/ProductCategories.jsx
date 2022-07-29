@@ -3,21 +3,14 @@ import PropTypes from 'prop-types';
 import styles from './ProductCategories.module.scss';
 import Carousel from '../Carousel/Carousel';
 
-export default class ProductCategories extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { productCategories: this.props.productCategories };
-  }
-
-  render() {
-    return (
-      <div className={styles.parentdiv}>
-        <Carousel className={styles.divCarrousell} carouselKeyIndex={1} carouselInitialSlideIndex={1} carouselName="productCategories" data={this.state.productCategories} />
-      </div>
-    );
-  }
+export default function ProductCategories({ productCategories }) {
+  return (
+    <div className={styles.parentdiv}>
+      <Carousel className={styles.divCarrousell} carouselKeyIndex={1} carouselInitialSlideIndex={1} carouselName="productCategories" data={productCategories} />
+    </div>
+  );
 }
 
-// ProductCategories.propTypes = {
-//   productCategories: PropTypes.arrayOf(Carousel).isRequired,
-// };
+ProductCategories.propTypes = {
+  productCategories: PropTypes.arrayOf(PropTypes.shape(Carousel.propTypes)).isRequired,
+};

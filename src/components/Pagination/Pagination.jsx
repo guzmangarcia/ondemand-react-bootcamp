@@ -56,8 +56,8 @@ export default function Pagination({ totalPages, currentPage, setCurrentPage }) 
   );
 }
 
-// Pagination.propTypes = {
-//   totalPages: PropTypes.string.isRequired,
-//   currentPage: PropTypes.string.isRequired,
-//   setCurrentPage: PropTypes.string.isRequired,
-// };
+Pagination.propTypes = {
+  totalPages: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+};

@@ -114,15 +114,28 @@ export default function ProductDescription({
   );
 }
 
-// ProductDescription.propTypes = {
-//   item: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-//   price: PropTypes.string.isRequired,
-//   sku: PropTypes.string.isRequired,
-//   categoryName: PropTypes.string.isRequired,
-//   tags: PropTypes.string.isRequired,
-//   description: PropTypes.string.isRequired,
-//   specs: PropTypes.string.isRequired,
-//   stock: PropTypes.string.isRequired,
-//   uniqueId: PropTypes.string.isRequired,
-// };
+ProductDescription.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+
+  }).isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  sku: PropTypes.string.isRequired,
+  categoryName: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ])).isRequired,
+  description: PropTypes.string.isRequired,
+  specs: PropTypes.arrayOf(
+
+    PropTypes.shape({
+      spec_name: PropTypes.string.isRequired,
+      spec_value: PropTypes.string.isRequired,
+    }),
+
+  ).isRequired,
+  stock: PropTypes.number.isRequired,
+  uniqueId: PropTypes.string.isRequired,
+};
