@@ -19,5 +19,5 @@ export default class ProductCategories extends React.Component {
 }
 
 ProductCategories.propTypes = {
-  productCategories: PropTypes.array.isRequired,
+  productCategories: PropTypes.arrayOf(Carousel).isRequired,
 };
