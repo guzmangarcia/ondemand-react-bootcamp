@@ -15,7 +15,7 @@ export default function useWrappedFeaturedProducts({ pageNumber = 1 }) {
         id: index + 1,
         srcs: row.data.images,
         alt: row.data.mainimage.alt,
-        text: [row.data.name, row.data.price, row.data.category.slug],
+        text: [row.data.name, `${row.data.price}€`, row.data.category.slug],
         navigationLink: `/detail?productId=${row.id}`,
         uniqueId: row.id,
         stock: row.data.stock,
