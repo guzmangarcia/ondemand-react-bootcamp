@@ -39,9 +39,7 @@ export default function FeaturedProducts({ featuredProducts }) {
       };
     }
     if (totalElements > item.stock) {
-      setTimeout(() => {
-        setMessage('not enough stock');
-      }, 100);
+      setMessage('not enough stock');
       return;
     }
     cartItem.quantity = totalElements;
