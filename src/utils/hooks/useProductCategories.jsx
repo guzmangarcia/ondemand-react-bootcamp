@@ -32,7 +32,6 @@ export default function useProductCategories({ pageNumber = 1 }) {
         setProductCategories({ data, isLoading: false });
       } catch (err) {
         setProductCategories({ data: {}, isLoading: false });
-        console.error(err);
       }
     }
 

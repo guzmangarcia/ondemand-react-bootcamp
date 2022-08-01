@@ -11,7 +11,7 @@ export default function useFeaturedProducts({ pageNumber = 1 }) {
 
   useEffect(() => {
     if (!apiRef || isApiMetadataLoading) {
-      return () => {};
+      return () => { };
     }
 
     const controller = new AbortController();
@@ -32,7 +32,6 @@ export default function useFeaturedProducts({ pageNumber = 1 }) {
         setFeaturedProducts({ data, isLoading: false });
       } catch (err) {
         setFeaturedProducts({ data: {}, isLoading: false });
-        console.error(err);
       }
     }
 

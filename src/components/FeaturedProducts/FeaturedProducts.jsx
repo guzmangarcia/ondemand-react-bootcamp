@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './FeaturedProducts.module.scss';
 import CarouselGrid from '../CarouselGrid/CarouselGrid';
+import ShowError from '../ShowError/ShowError';
 
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider';
 
 export default function FeaturedProducts({ featuredProducts }) {
   const navigate = useNavigate();
   const { cartItems, setCartItems } = useContext(CartItemsContext);
+  const [message, setMessage] = useState('');
 
   const featuredProductsMapped = featuredProducts.map((data) => data.srcs.map((image, index) => ({
     id: index + 1,
@@ -38,7 +40,7 @@ export default function FeaturedProducts({ featuredProducts }) {
     }
     if (totalElements > item.stock) {
       setTimeout(() => {
-        alert('not enough stock');
+        setMessage('not enough stock');
       }, 100);
       return;
     }
@@ -49,6 +51,7 @@ export default function FeaturedProducts({ featuredProducts }) {
 
   return (
     <div className={styles.featuredProducts}>
+      <ShowError message={message} setMessage={setMessage} />
       <CarouselGrid
         gridName="FeaturedProducts"
         gridData={featuredProductsMapped}

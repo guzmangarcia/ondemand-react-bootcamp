@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider';
+import ShowError from '../ShowError/ShowError';
 
 export default function ProductDescription({
   item, name, price, sku, categoryName, tags, description, specs, stock, uniqueId,
 }) {
   const { cartItems, setCartItems } = useContext(CartItemsContext);
   const [numberOfItems, setNumberOfItems] = useState(1);
+  const [message, setMessage] = useState('');
 
   function addItemToCard() {
     let totalElements = parseInt(numberOfItems, 10);
@@ -26,7 +28,7 @@ export default function ProductDescription({
     }
     if (totalElements > stock) {
       setTimeout(() => {
-        alert('not enough stock');
+        setMessage('not enough stock');
       }, 100);
       return;
     }
@@ -36,7 +38,9 @@ export default function ProductDescription({
   }
 
   return (
+
     <div>
+      <ShowError message={message} setMessage={setMessage} />
       <p>
         <label htmlFor={name}>
           <b>Name: </b>

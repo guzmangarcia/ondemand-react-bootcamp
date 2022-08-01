@@ -3,12 +3,14 @@ import { useEffect, useState, useContext } from 'react';
 import { CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider';
 import CarouselGrid from '../CarouselGrid/CarouselGrid';
 import Pagination from '../Pagination/Pagination';
+import ShowError from '../ShowError/ShowError';
 
 export default function ProductsInfo({
   products, totalPages, currentPage, setCurrentPage,
 }) {
   const { cartItems, setCartItems } = useContext(CartItemsContext);
   const [gridData, setGridData] = useState([]);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (products === undefined || products?.length === 0) {
@@ -45,7 +47,7 @@ export default function ProductsInfo({
     }
     if (totalElements > item.stock) {
       setTimeout(() => {
-        alert('not enough stock');
+        setMessage('not enough stock');
       }, 100);
       return;
     }
@@ -56,6 +58,7 @@ export default function ProductsInfo({
 
   return (
     <div>
+      <ShowError message={message} setMessage={setMessage} />
       {(gridData?.length > 0)
         ? (
           <div>
