@@ -4,11 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 import './styles.css';
-
-// import Swiper core and required modules
 import SwiperCore, { FreeMode, Navigation, Thumbs } from 'swiper';
 
-// install Swiper modules
 SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
 export default function Galery({ data }) {
