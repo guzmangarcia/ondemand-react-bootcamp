@@ -36,12 +36,12 @@ afterEach(() => {
 
 
 it("Opens Home", async () => {
-  // act(() => {
-  //   render(<BrowserRouter><Home /></BrowserRouter>  , container);
-  // });
+  act(() => {
+    render(<BrowserRouter><Home /></BrowserRouter>  , container);
+  });
 
-   //expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
+   expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
 
 
-  // await waitFor(() => expect(screen.getByText('banner products!'), 5000).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText('banner products!'), 5000).toBeInTheDocument());
 });

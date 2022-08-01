@@ -126,14 +126,14 @@ export default function Grid({ data, setData, editable }) {
 Grid.propTypes = {
 
   data: PropTypes.arrayOf(PropTypes.shape({
-    uniqueId: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    quantity: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    stock: PropTypes.number.isRequired,
-    itemDataQuantity: PropTypes.string.isRequired,
+    uniqueId: PropTypes.string,
+    name: PropTypes.string,
+    quantity: PropTypes.number,
+    src: PropTypes.string,
+    alt: PropTypes.string,
+    price: PropTypes.number,
+    stock: PropTypes.number,
+    itemDataQuantity: PropTypes.string,
 
   })).isRequired,
   setData: PropTypes.func.isRequired,
