@@ -10,6 +10,8 @@ export default function Slider({ elements }) {
     setRangeValue(parseInt(value, 10));
   }
 
+  if (elements === undefined) return (<div>Loading...</div>);
+  if (elements.length === 0) return (<div>No elements found</div>);
   return (
     <div className={styles.text}>
       <div>
@@ -47,5 +49,9 @@ Slider.propTypes = {
       },
 
     ),
-  ).isRequired,
+  ),
+};
+Slider.defaultProps = {
+  elements: undefined,
+
 };

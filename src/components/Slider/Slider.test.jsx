@@ -4,10 +4,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 import { act } from "react-dom/test-utils";
-import Home from './Home';
+import Home from './Slider';
 import Layout from "../../components/Layout/Layout";
 import CartItemsContextProvider from '../../components/CartItemsContextProvider/CartItemsContextProvider'
 import useFeaturedProducts from '../../utils/hooks/useFeaturedProducts';
+import Slider from './Slider';
 
 
 let container = null;
@@ -43,10 +44,10 @@ afterEach(() => {
 });
 
 
-it("Opens Home", async () => {
+it("Test Slider Loading", async () => {
 
   act(() => {
-    render(<BrowserRouter><Home /></BrowserRouter>, container);
+    render(<Slider />, container);
   });
 
   expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
@@ -54,7 +55,7 @@ it("Opens Home", async () => {
 
 
 
-it("Opens Home and waits to load", async () => {
+it("Test Slider 0 Elements", async () => {
 
 
   jest.mock('../../utils/hooks/useFeaturedProducts', () => {
@@ -67,20 +68,11 @@ it("Opens Home and waits to load", async () => {
 
 
   await act(async () => {
-    render(<BrowserRouter><Home /></BrowserRouter>, container);
+    render(<Slider elements={[] }/>, container);
   });
 
-  // let result = await waitForElementToBeRemoved(() => {
-
-  //   let query = queryAllByText('Loading...');
-  //   if (query?.length > 0) return query[0];
-  //   return null;
-  // }, { timeout: 4000 })
-  // .catch(//err =>
-  // //  console.log(err),
-  // )
-  // console.log(screen.debug());
-
-
-  expect(screen.getAllByText(/Loading.../i)[0]).toBeInTheDocument();
+ expect(screen.queryByText(/No elements found/i)).toBeInTheDocument();
 }, 5000);
+
+
+/*node --experimental-vm-modules node_modules/jest/bin/jest.js */
