@@ -54,7 +54,6 @@ it("Test Slider Loading", async () => {
 });
 
 
-
 it("Test Slider 0 Elements", async () => {
 
 
@@ -68,11 +67,33 @@ it("Test Slider 0 Elements", async () => {
 
 
   await act(async () => {
-    render(<Slider elements={[] }/>, container);
+    render(<Slider elements={[]} />, container);
   });
 
- expect(screen.queryByText(/No elements found/i)).toBeInTheDocument();
+  expect(screen.queryByText(/No elements found/i)).toBeInTheDocument();
 }, 5000);
+
+it("test slider with 2 elements", async () => {
+
+  const product = [{
+    id: 1,
+    src: '',
+    alt: 'banner products!',
+    text: 'banner products!',
+  },
+  {
+    id: 2,
+    src: '',
+    alt: 'banner products!',
+    text: 'banner products!',
+  },
+  ]
+  await act(async () => {
+    render(<Slider elements={product} />, container);
+  });
+  expect(screen.getAllByText(/banner products!/i)[0]).toBeInTheDocument();
+
+})
 
 
 /*node --experimental-vm-modules node_modules/jest/bin/jest.js */
