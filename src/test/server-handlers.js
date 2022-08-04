@@ -10,7 +10,7 @@ const handlers = [
     // return res(ctx.json({ user }));
   }),
   rest.post('/checkout', async (req, res, ctx) => {
-     const request = await users.login(JSON.parse(req.json()));
+    const request = await users.login(JSON.parse(req.json()));
     // const isAuthorized = user.authorize(req.headers.Authorization);
     // if (!isAuthorized) {
     //   return res(ctx.status(401), ctx.json({ message: 'Not authorized' }));

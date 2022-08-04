@@ -18,7 +18,7 @@ export default function CarouselGrid({
           className={styles.imageSmall}
           carouselName={gridName}
           carouselKeyIndex={index}
-          key={`${carouselData[0].uniqueId}-${carouselName}-${carouselIndex}${carouselData.id}`}
+          key={`${carouselData[0].uniqueId}-${carouselName}-${carouselIndex}-${carouselData[0].id}`}
           carouselInitialSlideIndex={1}
           data={carouselData}
           uniqueId={carouselData[0].uniqueId}

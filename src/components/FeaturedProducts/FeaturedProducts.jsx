@@ -12,6 +12,9 @@ export default function FeaturedProducts({ featuredProducts }) {
   const { cartItems, setCartItems } = useContext(CartItemsContext);
   const [message, setMessage] = useState('');
 
+  if (featuredProducts === undefined) return (<div>Loading...</div>);
+  if (featuredProducts.length === 0) return (<div>No elements found</div>);
+
   const featuredProductsMapped = featuredProducts.map((data) => data.srcs.map((image, index) => ({
     id: index + 1,
     src: image.image.url,
@@ -51,7 +54,7 @@ export default function FeaturedProducts({ featuredProducts }) {
     <div className={styles.featuredProducts}>
       <ShowError message={message} setMessage={setMessage} />
       <CarouselGrid
-        gridName="FeaturedProducts"
+        carouselName="FeaturedProducts"
         gridData={featuredProductsMapped}
         buttonFunction={(item) => { addItemToCard(item); }}
         buttonText="Add to cart"
@@ -70,7 +73,11 @@ FeaturedProducts.propTypes = {
 
   featuredProducts: PropTypes.PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
-    src: PropTypes.string,
+    srcs: PropTypes.arrayOf(PropTypes.shape({
+      image: PropTypes.shape({
+        url: PropTypes.string,
+      }),
+    })),
     alt: PropTypes.string,
     text: PropTypes.arrayOf(PropTypes.oneOfType([
       PropTypes.string,
@@ -84,17 +91,6 @@ FeaturedProducts.propTypes = {
   })),
 };
 FeaturedProducts.defaultProps = {
-  featuredProducts: [{
-    id: 1,
-    src: '',
-    alt: '',
-    text: [],
-    navigationLink: '',
-    uniqueId: '',
-    stock: 0,
-    name: '',
-    price: 0,
-
-  }],
+  featuredProducts: undefined,
 
 };
