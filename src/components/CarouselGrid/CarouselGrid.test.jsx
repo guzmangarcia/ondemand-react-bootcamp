@@ -3,7 +3,7 @@ import { unmountComponentAtNode } from "react-dom";
 import { render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText, getElementsByClassName } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 import { act } from "react-dom/test-utils";
-import Carrousel from './Carousel';
+import CarouselGrid from './CarouselGrid';
 import { BrowserRouter } from 'react-router-dom';
 
 
@@ -24,10 +24,10 @@ afterEach(() => {
 });
 
 
-it("Test Carrousel Loading", async () => {
+it("Test CarouselGrid Loading", async () => {
 
   act(() => {
-    render(<Carrousel />, container);
+    render(<CarouselGrid />, container);
   });
 
   expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
@@ -36,15 +36,21 @@ it("Test Carrousel Loading", async () => {
 
 it("Test Carrousel 0 Elements", async () => {
   await act(async () => {
-    render(<Carrousel data={[]} />, container);
+    render(<CarouselGrid gridData={[]}
+      gridName={'grid test'}
+      carouselName={''}
+      carouselIndex={1}
+      buttonFunction={() => { }}
+      buttonText={undefined}
+      showButton={() => false} />, container);
   });
 
   expect(screen.queryByText(/No elements found/i)).toBeInTheDocument();
 }, 5000);
 
-it("test Carrousel with 2 elements", async () => {
+it("test CarouselGrid with 2 elements", async () => {
 
-  const product = [{
+  const product = [[{
     className: 'className test',
     count: 0,
     carouselCurrentSlideIndex: 0,
@@ -64,9 +70,18 @@ it("test Carrousel with 2 elements", async () => {
     id: 1,
     navigationLink: '',
   },
-  ]
+  ]]
   await act(async () => {
-    render(<BrowserRouter><Carrousel data={product} /></BrowserRouter>, container);
+    render(<BrowserRouter>
+      <CarouselGrid gridData={product}
+        gridName={'grid test'}
+        carouselName={''}
+        carouselIndex={1}
+        buttonFunction={() => { }}
+        buttonText={undefined}
+        showButton={() => false} />
+    </BrowserRouter>, container);
+
   });
   expect(screen.getAllByText('text test')[0]).toBeInTheDocument();
   expect(screen.getByRole("img", { className: /styleCarrouselImage className test/i })).toBeInTheDocument();

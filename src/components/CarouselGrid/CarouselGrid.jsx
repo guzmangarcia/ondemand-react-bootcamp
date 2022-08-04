@@ -5,7 +5,8 @@ import Carousel from '../Carousel/Carousel';
 export default function CarouselGrid({
   gridData, gridName, carouselName, carouselIndex, buttonFunction, buttonText, showButton,
 }) {
-  if (gridData === undefined || gridData?.length === 0) return (null);
+  if (gridData === undefined) return (<div>Loading...</div>);
+  if (gridData.length === 0) return (<div>No elements found</div>);
 
   return (
 
