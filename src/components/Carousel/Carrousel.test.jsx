@@ -1,9 +1,10 @@
 import React from 'react';
 import { unmountComponentAtNode } from "react-dom";
-import { render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText } from '@testing-library/react';
+import { render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText,getElementsByClassName } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 import { act } from "react-dom/test-utils";
-import Slider from './Slider';
+import Carrousel from './Carousel';
+import { BrowserRouter } from 'react-router-dom';
 
 
 let container = null;
@@ -39,55 +40,65 @@ afterEach(() => {
 });
 
 
-it("Test Slider Loading", async () => {
+it("Test Carrousel Loading", async () => {
 
   act(() => {
-    render(<Slider />, container);
+    render(<Carrousel />, container);
   });
 
   expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
 });
 
 
-it("Test Slider 0 Elements", async () => {
+it("Test Carrousel 0 Elements", async () => {
 
 
   jest.mock('../../utils/hooks/useFeaturedProducts', () => {
     jest.fn().mockImplementation(() => {
 
-      return { productsData: [], isLoading: false };
+      return { data: [], isLoading: false };
     });
   });
 
 
 
   await act(async () => {
-    render(<Slider elements={[]} />, container);
+    render(<Carrousel data={[]} />, container);
   });
 
   expect(screen.queryByText(/No elements found/i)).toBeInTheDocument();
 }, 5000);
 
-it("test slider with 2 elements", async () => {
+it("test Carrousel with 2 elements", async () => {
 
   const product = [{
-    id: 1,
-    src: '',
-    alt: 'banner products!',
-    text: 'banner products!',
+    className: 'className test',
+    count: 0,
+    carouselCurrentSlideIndex: 0,
+    src: 'src test',
+    alt: 'alt test',
+    text: ['text test'],
+    id: 0,
+    navigationLink: '/NavigationLink',
   },
   {
-    id: 2,
+    className: '',
+    count: 0,
+    carouselCurrentSlideIndex: 0,
     src: '',
-    alt: 'banner products!',
-    text: 'banner products!',
+    alt: '',
+    text: [''],
+    id: 1,
+    navigationLink: '',
   },
   ]
   await act(async () => {
-    render(<Slider elements={product} />, container);
+    render(<BrowserRouter><Carrousel data={product} /></BrowserRouter>, container);
   });
-  expect(screen.getAllByText(/banner products!/i)[0]).toBeInTheDocument();
-
+  expect(screen.getAllByText('text test')[0]).toBeInTheDocument();
+  expect(screen.getByRole("img", {className: /styleCarrouselImage className test/i})).toBeInTheDocument();
+  expect(screen.getByRole("img", {src: /src test/i})).toBeInTheDocument();
+  expect(screen.getByRole("img", {alt: /alt test/i})).toBeInTheDocument();
 })
 
 

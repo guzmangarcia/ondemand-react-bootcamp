@@ -71,7 +71,7 @@ CarouselElement.defaultProps = {
   carouselCurrentSlideIndex: 0,
   src: '',
   alt: '',
-  text: '',
+  text: [''],
   id: 0,
   navigationLink: '',
 };

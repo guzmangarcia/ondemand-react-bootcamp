@@ -9,7 +9,7 @@ module.exports = {
     'swiper/css/autoplay': '<rootDir>/node_modules/swiper/modules/autoplay/autoplay.min.css',
     'swiper/css/free-mode': '<rootDir>/node_modules/swiper/modules/autoplay/free-mode.min.css',
     'swiper/css/navigation': '<rootDir>/node_modules/swiper/modules/autoplay/navigation.min.css',
-    'swiper/css/pagination': '<rootDir>/node_modules/swiper/modules/autoplay/pagination.min.css'
+    'swiper/css/pagination': '<rootDir>/node_modules/swiper/modules/autoplay/pagination.min.css',
   },
   // Allow Swiper js and css mapped modules to be imported in test files
   transform: {
@@ -17,5 +17,5 @@ module.exports = {
     '^.+\\.(css)$': '<rootDir>/jest.transform.js',
   },
   // Do not transform any node_modules to CJS except for Swiper and Friends
-  transformIgnorePatterns: ['/node_modules/(?!swiper|swiper/react|ssr-window|dom7)']
+  transformIgnorePatterns: ['/node_modules/(?!swiper|swiper/react|ssr-window|dom7)'],
 };

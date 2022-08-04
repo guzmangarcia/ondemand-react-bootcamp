@@ -1,5 +1,4 @@
 // jest.transform.js
-"use strict"
 
 const path = require('path');
 

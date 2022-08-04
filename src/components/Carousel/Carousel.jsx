@@ -36,7 +36,9 @@ export default function Carousel({
   function dotClick(dot) {
     setIndex(dot);
   }
-  if (data === undefined || data?.length === 0) return (null);
+  if (data === undefined) return (<div>Loading...</div>);
+  if (data.length === 0) return (<div>No elements found</div>);
+
   return (
 
     <div className={styles.styleCarrousel}>
@@ -101,7 +103,7 @@ Carousel.defaultProps = {
   carouselName: '',
   carouselKeyIndex: 0,
   carouselInitialSlideIndex: 0,
-  data: CarouselElement.defaultProps,
+  data: undefined,
   buttonText: undefined,
   buttonFunction: undefined,
 };
