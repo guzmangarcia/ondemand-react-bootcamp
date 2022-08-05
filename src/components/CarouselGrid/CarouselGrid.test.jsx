@@ -84,9 +84,9 @@ it("test CarouselGrid with 2 elements", async () => {
 
   });
   expect(screen.getAllByText('text test')[0]).toBeInTheDocument();
-  expect(screen.getByRole("img", { className: /styleCarrouselImage className test/i })).toBeInTheDocument();
-  expect(screen.getByRole("img", { src: /src test/i })).toBeInTheDocument();
-  expect(screen.getByRole("img", { alt: /alt test/i })).toBeInTheDocument();
+  expect(screen.getAllByAltText('alt test')[0]).toBeInTheDocument();
+  expect(screen.getAllByAltText('alt test')[0].className).toContain('styleCarrouselImage className test');
+  expect(screen.getAllByAltText('alt test')[0].src).toContain('src%20test');
 })
 
 

@@ -7,6 +7,7 @@ export default function SearchEngine() {
   return (
 
     <input
+      type="textbox"
       className={styles.search}
       placeholder="Find your product..."
       onChange={(e) => {

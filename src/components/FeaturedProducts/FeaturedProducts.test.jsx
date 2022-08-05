@@ -56,7 +56,7 @@ it("test FeaturedProducts with 2 elements", async () => {
     {
       id: 1,
       srcs: [{ image: { url: 'src1' } }, { image: { url: 'src2' } }],
-      alt: 'ALT',
+      alt: 'ALT 1',
       text: ['row.data.name', `row.data.price€`, 'row.data.category.slug'],
       navigationLink: `/detail?productId=row.id`,
       uniqueId: 'row.id.1',
@@ -67,7 +67,7 @@ it("test FeaturedProducts with 2 elements", async () => {
     {
       id: 3,
       srcs: [{ image: { url: 'src3' } }, { image: { url: 'src4' } }],
-      alt: 'ALT',
+      alt: 'ALT 2',
       text:  ['row.data.name', `row.data.price€`, 'row.data.category.slug'],
       navigationLink: `/detail?productId=row.id`,
       uniqueId: 'row.id.2',
@@ -89,8 +89,7 @@ it("test FeaturedProducts with 2 elements", async () => {
   expect(screen.getAllByText('row.data.name')[0]).toBeInTheDocument();
   expect(screen.getAllByText(`row.data.price€`)[0]).toBeInTheDocument();
   expect(screen.getAllByText('row.data.category.slug')[0]).toBeInTheDocument();
-  expect(screen.getAllByRole("img", { src: /src1/i })[0]).toBeInTheDocument();
-  expect(screen.getAllByRole("img", { alt: /ALT/i })[0]).toBeInTheDocument();
+  expect(screen.getAllByAltText('ALT 1')[0].src).toContain('src1');
 })
 
 
