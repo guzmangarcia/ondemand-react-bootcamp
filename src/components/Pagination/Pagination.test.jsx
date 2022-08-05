@@ -62,8 +62,6 @@ it("Test Pagination numbers click", async () => {
       cancelable: true,
     }),
   )
-  //console.log(screen.debug());
-  console.log(currentPage);
   expect(currentPage).toBe(2);
 })
 
