@@ -35,7 +35,7 @@ it("Test Layout alt", async () => {
       </BrowserRouter>
       , container);
   });
-console.log(screen)
+
   expect(screen.getByText('Ecommerce created during Wizeline’s Academy React Bootcamp')).toBeInTheDocument();
   expect(screen.getByText(/Authentic Authentic Authentic/i)).toBeInTheDocument();
   expect( screen.queryByPlaceholderText(/Find your product.../i)).toBeInTheDocument();
