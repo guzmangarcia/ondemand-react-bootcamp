@@ -10,7 +10,7 @@ export default function useWrappedFeaturedProducts({ pageNumber = 1 }) {
 
   useEffect(() => {
     let featuredProducts = [];
-    if (productsData?.results !== undefined ) {
+    if (productsData?.results !== undefined) {
       featuredProducts = productsData.results.map((row, index) => ({
         id: index + 1,
         srcs: row.data.images,
