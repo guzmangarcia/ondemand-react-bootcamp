@@ -10,7 +10,7 @@ export default function useWrappedFeaturedBanners({ pageNumber = 1 }) {
 
   useEffect(() => {
     let bannerDataItems = [];
-    if (bannerData.results !== undefined) {
+    if (bannerData?.results !== undefined) {
       bannerDataItems = bannerData.results.map((row, index) => ({
         id: index + 1,
         src: row.data.main_image.url,

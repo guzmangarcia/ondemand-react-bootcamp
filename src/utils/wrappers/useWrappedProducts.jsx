@@ -14,7 +14,7 @@ export default function useWrappedProducts({ productId, pageNumber = 1 }) {
   useEffect(() => {
     let products = [];
     let totalPages = 1;
-    if (productsDataFiltered.results !== undefined) {
+    if (productsDataFiltered?.results !== undefined) {
       totalPages = productsDataFiltered.total_pages;
       products = productsDataFiltered.results.map((item, index) => ({
 

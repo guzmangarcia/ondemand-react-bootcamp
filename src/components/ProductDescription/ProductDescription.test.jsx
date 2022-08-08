@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import  React  from "react";
 import { unmountComponentAtNode } from "react-dom";
 import { render, screen, fireEvent, renderHook } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
@@ -89,8 +89,7 @@ it("Test Product Description add to card", async () => {
   let cartItems = []
 
   const mockSetCartItems= jest.fn().mockImplementation(expense => {
-  console.log("tesst--------")
-    cartItems=2;
+    cartItems=1;
   
     return cartItems;
   });
@@ -117,7 +116,7 @@ it("Test Product Description add to card", async () => {
 
   act(() => {
     render(
-      <CartItemsContext.Provider value={{cartItems,setCartItems:()=>{cartItems=1}}}>
+      <CartItemsContextProvider >
         <ProductDescription
           item={item}
           name={name}
@@ -129,7 +128,7 @@ it("Test Product Description add to card", async () => {
           specs={specs}
           stock={stock}
           uniqueId={uniqueId} />
-      </CartItemsContext.Provider>
+      </CartItemsContextProvider>
       , container);
 
   });

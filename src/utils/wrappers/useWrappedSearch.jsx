@@ -13,7 +13,7 @@ export default function useWrappedSearch({ searchTerm, pageNumber = 1 }) {
   useEffect(() => {
     let dataFiltered = [];
     let totalPages = 1;
-    if (data.results !== undefined) {
+    if (data?.results !== undefined) {
       totalPages = data.total_pages;
 
       dataFiltered = data.results.map((item, index) => ({

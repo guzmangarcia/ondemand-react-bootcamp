@@ -11,7 +11,7 @@ export default function useWrappedProductCategoriesMenu({ pageNumber = 1 }) {
 
   useEffect(() => {
     let productCategories = [];
-    if (ProductCategories.results !== undefined) {
+    if (ProductCategories?.results !== undefined) {
       productCategories = ProductCategories.results.map((row, index) => ({
         id: index + 1,
         categoryId: row.id,

@@ -10,6 +10,7 @@ export default function Grid({ data, setData, editable }) {
 
   useEffect(() => {
     let totalPriceAux = 0;
+    if (data === undefined || data === null) return;
     setDataAux(data.map((itemData) => {
       const itemDataQuantity = [];
       for (let id = 1; id <= itemData.item.stock; id += 1) {
@@ -46,7 +47,11 @@ export default function Grid({ data, setData, editable }) {
     setData(restItems);
   }
 
+  if (data === undefined) return (<div>Loading...</div>);
+  if (data.length === 0) return (<div>No elements found</div>);
+
   return (
+
     <div style={{ overflowx: 'auto' }}>
       <table className={styles.table}>
         <thead>
@@ -135,8 +140,13 @@ Grid.propTypes = {
     stock: PropTypes.number,
     itemDataQuantity: PropTypes.string,
 
-  })).isRequired,
-  setData: PropTypes.func.isRequired,
-  editable: PropTypes.bool.isRequired,
+  })),
+  setData: PropTypes.func,
+  editable: PropTypes.bool,
 
+};
+Grid.defaultProps = {
+  data: undefined,
+  setData: () => { },
+  editable: true,
 };

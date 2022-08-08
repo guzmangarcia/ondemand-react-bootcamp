@@ -11,7 +11,7 @@ export default function useWrappedProductCategories({ pageNumber = 1 }) {
 
   useEffect(() => {
     let productCategories = [];
-    if (ProductCategories.results !== undefined) {
+    if (ProductCategories?.results !== undefined) {
       productCategories = ProductCategories.results.map((row, index) => ({
         id: index + 1,
         src: row.data.main_image.url,

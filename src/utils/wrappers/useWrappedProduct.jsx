@@ -11,7 +11,7 @@ export default function useWrappedProduct({ productId, pageNumber = 1 }) {
 
   useEffect(() => {
     let product = [];
-    if (productDataFiltered.results !== undefined) {
+    if (productDataFiltered?.results !== undefined) {
       // eslint-disable-next-line prefer-destructuring
       product = productDataFiltered.results.map((item) => ({
         properties: {
