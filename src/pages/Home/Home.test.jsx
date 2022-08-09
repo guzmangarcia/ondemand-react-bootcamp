@@ -1,54 +1,39 @@
 import React from 'react';
 import { unmountComponentAtNode } from "react-dom";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText, fireEvent, renderHook } from '@testing-library/react';
+import { render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText, fireEvent, renderHook, prettyDOM} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 import { act } from "react-dom/test-utils";
 import Home from './Home';
-import Layout from "../../components/Layout/Layout";
 import { CartItemsContextProvider } from '../../components/CartItemsContextProvider/CartItemsContextProvider'
-// import useFeaturedBanners from '../../utils/hooks-mooks/useFeaturedBanners'
-import * as hookBanners from '../../utils/hooks/useFeaturedBanners';
-// import * as hookProducts from '../../utils/hooks/useFeaturedProducts';
-// import * as hookCategories from '../../utils/hooks/useProductCategories';
+
+jest.mock('../../utils/hooks/useFeaturedBanners');
+jest.mock('../../utils/hooks/useProductCategories');
+jest.mock('../../utils/hooks/useFeaturedProducts');
+
+
 
 let container = null;
+beforeEach(() => {
+
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+;
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+
+});
+
+describe('Home Loading state', () => {
 
 
-describe('add', () => {
-  beforeAll(() => { })
+  it("Opens Home and shows Loading...", async () => {
 
-  beforeEach(() => {
-    container = document.createElement("div");
-    document.body.appendChild(container);
-  });
-
-  afterEach(() => {
-    jest.resetModules();
-    unmountComponentAtNode(container);
-    container.remove();
-    container = null;
-  });
-
-
-
-  jest.mock('../../utils/hooks/useFeaturedBanners', () => {
-    return () => ({ data: [], isLoading: true });
-  });
-
-  jest.mock('../../utils/hooks/useFeaturedProducts', () => {
-    return () => ({ data: [], isLoading: true });
-  });
-
-  jest.mock('../../utils/hooks/useProductCategories', () => {
-    return () => ({ data: [], isLoading: true });
-  });
-
-
-
-  it("Opens Home", async () => {
-
-    act(() => {
+       await act(async () => {
       render(<BrowserRouter>
         <CartItemsContextProvider>
           <Home />
@@ -60,43 +45,38 @@ describe('add', () => {
   });
 
 
-
-
 });
 
-describe('working', () => {
+describe('useFeaturedBanners testing', () => {
 
-  beforeAll(() => { })
-
-  beforeEach(() => {
-    container = document.createElement("div");
-    document.body.appendChild(container);
-  });
-
-  afterEach(() => {
-    jest.resetModules();
-    unmountComponentAtNode(container);
-    container.remove();
-    container = null;
-  });
-
-  jest.mock('../../utils/hooks/useFeaturedBanners', () => {
-    const originalModule = jest.requireActual('../../utils/hooks-mooks/useFeaturedBanners');
-    return originalModule;
-  });
-
-  jest.mock('../../utils/hooks/useFeaturedProducts', () => {
-    const originalModule = jest.requireActual('../../utils/hooks-mooks/useFeaturedProducts');
-    return originalModule;
-  });
-
-  jest.mock('../../utils/hooks/useProductCategories', () => {
-    const originalModule = jest.requireActual('../../utils/hooks-mooks/useProductCategories');
-    return originalModule;
-  });
-  it("Opens Home and waits to load", async () => {
+  it("Opens Home and waits  useFeaturedBanners to load", async () => {
 
 
+
+       await act(async () => {
+      render(<BrowserRouter>
+        <CartItemsContextProvider>
+          <Home />
+        </CartItemsContextProvider>
+      </BrowserRouter>, container);
+    });
+
+    await waitFor(() => expect(screen.queryAllByText(/banner/i)[0]).toBeInTheDocument(), {
+      timeout: 3000,
+      interval: 50,
+      onTimeout: (e) => {
+      },
+    })
+
+    expect(screen.queryAllByText(/banner/i)[0]).toBeInTheDocument()
+  }, 5000);
+});
+
+
+describe('useProductCategories testing', () => {
+
+
+  it("Opens Home and waits useProductCategories to load", async () => {
 
     await act(async () => {
       render(<BrowserRouter>
@@ -106,14 +86,44 @@ describe('working', () => {
       </BrowserRouter>, container);
     });
 
-    await waitFor(() => expect(screen.getAllByText(/banner/i)[0]).toBeInTheDocument(), {
-      timeout: 1000,
+    await waitFor(() => expect(screen.queryAllByText(/Decorate/i)[0]).toBeInTheDocument(), {
+      timeout: 3000,
       interval: 50,
       onTimeout: (e) => {
       },
     })
 
+    expect(screen.queryAllByText(/Decorate/i)[0]).toBeInTheDocument()
+  }, 5000);
+});
 
-    expect(screen.getAllByText(/banner/i)[0]).toBeInTheDocument()
-  }, 15000);
+
+
+
+describe('useFeaturedProducts testing', () => {
+
+  it("Opens Home and waits useFeaturedProducts to load", async () => {
+
+    await act(async () => {
+      render(<BrowserRouter>
+        <CartItemsContextProvider>
+          <Home />
+        </CartItemsContextProvider>
+      </BrowserRouter>, container);
+    });
+
+
+    await waitFor(() => expect(screen.queryAllByText(/Tyler Poly Reclining Leather Armchair/i)[0]).toBeInTheDocument(), {
+      timeout: 3000,
+      interval: 50,
+      onTimeout: (e) => {
+      },
+    })
+
+    // const fs = require('fs');
+    // fs.writeFileSync("./sometextfile.txt",prettyDOM() );
+ 
+    
+    expect(screen.queryAllByText(/Tyler Poly Reclining Leather Armchair/i)[0]).toBeInTheDocument()
+  }, 5000);
 });

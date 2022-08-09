@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import useProductsMock from '../../mocks/en-us/products.json';
+import useProductsMock from '../../../mocks/en-us/products.json';
 
 export default function useProducts() {
   const [products, setProducts] = useState(() => ({

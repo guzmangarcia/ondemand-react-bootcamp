@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useProductCategoriesMock from '../../mocks/en-us/product-categories.json';
+import useProductCategoriesMock from '../../../mocks/en-us/product-categories.json';
 
 export default function useProductCategories() {
   const [ProductCategories, setProductCategories] = useState(() => ({
@@ -21,8 +21,9 @@ export default function useProductCategories() {
         setProductCategories({ data: {}, isLoading: false });
       }
     }
-
-    getProductCategories();
+    setTimeout(() => {
+      getProductCategories();
+    }, 1000);
 
     return () => {
       controller.abort();

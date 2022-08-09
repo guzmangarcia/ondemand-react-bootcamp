@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import useFeaturedBannersMock from '../../mocks/en-us/featured-banners.json';
+import useFeaturedBannersMock from '../../../mocks/en-us/featured-banners.json';
 
 export default function useFeaturedBanners() {
   const [featuredBanners, setFeaturedBanners] = useState(() => ({
@@ -24,7 +24,9 @@ export default function useFeaturedBanners() {
       }
     }
 
-    getFeaturedBanners();
+    setTimeout(() => {
+      getFeaturedBanners();
+    }, 1000);
 
     return () => {
       controller.abort();

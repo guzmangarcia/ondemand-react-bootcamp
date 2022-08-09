@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-// import useProductCategories from '../hooks/useProductCategories'
-import useProductCategories from '../hooks-mooks/useProductCategories';
+import useProductCategories from '../hooks/useProductCategories';
+// import useProductCategories from '../hooks/__mocks__/useProductCategories';
 
 export default function useWrappedProductCategoriesMenu({ pageNumber = 1 }) {
   const [wrappedData, setWrappedData] = useState(() => ({

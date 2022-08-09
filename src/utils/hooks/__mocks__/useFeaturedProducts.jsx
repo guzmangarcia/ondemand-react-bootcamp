@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import useFeaturedProductsMock from '../../mocks/en-us/featured-products.json';
+import useFeaturedProductsMock from '../../../mocks/en-us/featured-products.json';
 
 export default function useFeaturedProducts() {
   const [FeaturedProducts, setFeaturedProducts] = useState(() => ({
@@ -24,7 +24,9 @@ export default function useFeaturedProducts() {
       }
     }
 
-    getFeaturedProducts();
+    setTimeout(() => {
+      getFeaturedProducts();
+    }, 1000);
 
     return () => {
       controller.abort();
