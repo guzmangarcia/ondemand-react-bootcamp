@@ -26,7 +26,7 @@ export default function useFeaturedProducts() {
 
     setTimeout(() => {
       getFeaturedProducts();
-    }, 1000);
+    }, 500);
 
     return () => {
       controller.abort();

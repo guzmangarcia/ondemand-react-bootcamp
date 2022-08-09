@@ -23,7 +23,7 @@ export default function useProductCategories() {
     }
     setTimeout(() => {
       getProductCategories();
-    }, 1000);
+    }, 500);
 
     return () => {
       controller.abort();

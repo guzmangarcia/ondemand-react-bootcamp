@@ -26,7 +26,7 @@ export default function useFeaturedBanners() {
 
     setTimeout(() => {
       getFeaturedBanners();
-    }, 1000);
+    }, 500);
 
     return () => {
       controller.abort();

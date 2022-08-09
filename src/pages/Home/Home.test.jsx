@@ -62,7 +62,7 @@ describe('useFeaturedBanners testing', () => {
     });
 
     await waitFor(() => expect(screen.queryAllByText(/banner/i)[0]).toBeInTheDocument(), {
-      timeout: 3000,
+      timeout: 1000,
       interval: 50,
       onTimeout: (e) => {
       },
@@ -87,7 +87,7 @@ describe('useProductCategories testing', () => {
     });
 
     await waitFor(() => expect(screen.queryAllByText(/Decorate/i)[0]).toBeInTheDocument(), {
-      timeout: 3000,
+      timeout: 1000,
       interval: 50,
       onTimeout: (e) => {
       },
@@ -114,7 +114,7 @@ describe('useFeaturedProducts testing', () => {
 
 
     await waitFor(() => expect(screen.queryAllByText(/Tyler Poly Reclining Leather Armchair/i)[0]).toBeInTheDocument(), {
-      timeout: 3000,
+      timeout: 1000,
       interval: 50,
       onTimeout: (e) => {
       },
