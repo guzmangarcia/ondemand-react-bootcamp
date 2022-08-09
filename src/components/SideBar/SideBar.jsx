@@ -27,6 +27,9 @@ export default function SideBar({
     handleClick(categorySelected);
   }, []);
 
+  if (menuListItems === undefined) return (<div>Loading...</div>);
+  if (menuListItems.length === 0) return (<div>No elements found</div>);
+
   return (
 
     <div className={styles.sidebar}>
@@ -49,8 +52,16 @@ export default function SideBar({
 }
 SideBar.propTypes = {
   menuListItems: PropTypes.arrayOf(PropTypes.shape(
-    { categoryId: PropTypes.string.isRequired },
-  )).isRequired,
-  selectedCategories: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateParentSelectedCategories: PropTypes.func.isRequired,
+    {
+      categoryId: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    },
+  )),
+  selectedCategories: PropTypes.arrayOf(PropTypes.string),
+  updateParentSelectedCategories: PropTypes.func,
+};
+SideBar.defaultProps = {
+  menuListItems: undefined,
+  selectedCategories: [],
+  updateParentSelectedCategories: () => {},
 };
