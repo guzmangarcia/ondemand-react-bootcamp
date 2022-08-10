@@ -1,3 +1,4 @@
+
 {
   "page": 1,
   "results_per_page": 50,
@@ -27,7 +28,7 @@
         }
       ],
       "data": {
-        "name": "Tallulah Sofa Gray",
+        "name": "not found",
         "sku": "1080681271",
         "category": {
           "id": "YWHviRIAACsAyjP3",
@@ -45,7 +46,7 @@
             "width": 696,
             "height": 900
           },
-          "alt": "Tallulah Sofa Gray",
+          "alt": "not found",
           "copyright": null,
           "url": "https://images.prismic.io/wizeline-academy/fa394f7d-4d89-4c90-86b3-832de74928fa_1.webp?auto=compress,format"
         },
