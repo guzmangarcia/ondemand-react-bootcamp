@@ -7,6 +7,7 @@ export default function SideBar({
   menuListItems,
   selectedCategories,
   updateParentSelectedCategories,
+  setCurrentPage,
 }) {
   const [searchParams] = useSearchParams();
 
@@ -17,7 +18,7 @@ export default function SideBar({
     } else {
       newArray = [...selectedCategories, categoryId];
     }
-
+    setCurrentPage(1);
     updateParentSelectedCategories(newArray);
   }
 
@@ -59,9 +60,11 @@ SideBar.propTypes = {
   )),
   selectedCategories: PropTypes.arrayOf(PropTypes.string),
   updateParentSelectedCategories: PropTypes.func,
+  setCurrentPage: PropTypes.func,
 };
 SideBar.defaultProps = {
   menuListItems: undefined,
   selectedCategories: [],
   updateParentSelectedCategories: () => {},
+  setCurrentPage: () => {},
 };

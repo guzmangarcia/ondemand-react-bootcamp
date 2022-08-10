@@ -3,7 +3,12 @@ import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
 import useLatestAPI from './useLatestAPI';
 
-export default function useProducts({ productId, pageSize = 12, pageNumber = 1 }) {
+export default function useProducts({
+  productId,
+  pageSize = 12,
+  pageNumber = 1,
+  selectedCategories = [],
+}) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [products, setProducts] = useState(() => ({
     data: {},
@@ -20,14 +25,21 @@ export default function useProducts({ productId, pageSize = 12, pageNumber = 1 }
     async function getProducts() {
       try {
         let searchByID = '';
+
         if (productId !== undefined) {
           searchByID = `&q=${encodeURIComponent(`[[at(document.id,"${productId}")]]`)}`;
         } else {
           searchByID = `&q=${encodeURIComponent('[[at(document.type, "product")]]')}`;
         }
+        let strSelectedCategories = '';
+
+        if (selectedCategories.length > 0) {
+          const selectedCategoriesMap = selectedCategories.map((category) => `"${category}"`);
+          strSelectedCategories = `&q=${encodeURIComponent(`[[any(my.product.category,[${selectedCategoriesMap.toString()}])]]`)}`;
+        }
 
         setProducts({ data: {}, isLoading: true });
-        const url = `${API_BASE_URL}/documents/search?ref=${apiRef}${searchByID}&lang=en-us&pageSize=${pageSize}&page=${pageNumber}`;
+        const url = `${API_BASE_URL}/documents/search?ref=${apiRef}${searchByID}${strSelectedCategories}&lang=en-us&pageSize=${pageSize}&page=${pageNumber}`;
 
         const response = await fetch(
           url,
@@ -48,7 +60,7 @@ export default function useProducts({ productId, pageSize = 12, pageNumber = 1 }
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading, pageSize, productId, pageNumber]);
+  }, [apiRef, isApiMetadataLoading, pageSize, productId, pageNumber, selectedCategories]);
 
   return products;
 }
@@ -58,5 +70,5 @@ useProducts.propTypes = {
   productId: PropTypes.string.isRequired,
   pageSize: PropTypes.number.isRequired,
   pageNumber: PropTypes.number.isRequired,
-
+  selectedCategories: PropTypes.string.isRequired,
 };

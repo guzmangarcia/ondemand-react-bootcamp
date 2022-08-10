@@ -6,7 +6,6 @@ import useWrappedProducts from '../../utils/wrappers/useWrappedProducts';
 import styles from './ProductList.module.scss';
 
 function ProductList() {
-  const [filteredProducts, setFilteredProducts] = useState({});
   const [selectedCategories, updateSelectedCategories] = useState([]);
   const [readyForRender, setReadyForRender] = useState(false);
 
@@ -15,7 +14,7 @@ function ProductList() {
     products,
     isProductsLoading,
     totalPages,
-  } = useWrappedProducts({ pageNumber: currentPage });
+  } = useWrappedProducts({ pageNumber: currentPage, selectedCategories });
   const {
     productCategories,
     isProductCategoriesLoading,
@@ -23,18 +22,10 @@ function ProductList() {
 
   useEffect(
     () => {
+      setReadyForRender(false);
       if (isProductsLoading || isProductCategoriesLoading || selectedCategories === undefined) {
         return;
       }
-      if (selectedCategories === undefined || selectedCategories?.length === 0) {
-        setFilteredProducts(products);
-        setReadyForRender(true);
-        return;
-      }
-
-      setFilteredProducts(
-        products.filter((p) => selectedCategories.some((c) => c === p.categoryId)),
-      );
       setReadyForRender(true);
     },
     [selectedCategories,
@@ -50,20 +41,21 @@ function ProductList() {
 
       <h1 className={styles.flexDiv}>This is the Product List Page </h1>
       <div className={styles.sidePanel}>
-        {!readyForRender ? <div>Loading</div>
+        {!readyForRender ? <div>Loading...</div>
           : (
             <SideBar
               menuListItems={productCategories}
               selectedCategories={selectedCategories}
               updateParentSelectedCategories={updateSelectedCategories}
+              setCurrentPage={setCurrentPage}
             />
           )}
         <div>
 
-          {!readyForRender ? <div>Loading</div>
+          {!readyForRender ? <div>Loading...</div>
             : (
               <ProductsInfo
-                products={filteredProducts}
+                products={products}
                 totalPages={totalPages}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
