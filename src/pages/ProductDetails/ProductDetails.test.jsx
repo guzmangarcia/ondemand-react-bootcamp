@@ -63,8 +63,7 @@ describe('products testing', () => {
     await waitFor(() => expect(screen.queryAllByText(/Tallulah Sofa Gray/i)[0]).toBeInTheDocument(), {
       timeout: 2000,
       interval: 50,
-      onTimeout: (e) => {
-        console.log('timeout');
+      onTimeout: () => {
       },
     });
 

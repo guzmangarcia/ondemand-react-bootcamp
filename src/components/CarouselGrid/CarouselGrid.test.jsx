@@ -71,17 +71,20 @@ it('test CarouselGrid with 2 elements', async () => {
   },
   ]];
   await act(async () => {
-    render(<BrowserRouter>
-      <CarouselGrid
-        gridData={product}
-        gridName="grid test"
-        carouselName=""
-        carouselIndex={1}
-        buttonFunction={() => { }}
-        buttonText={undefined}
-        showButton={() => false}
-      />
-    </BrowserRouter>, container);
+    render(
+      <BrowserRouter>
+        <CarouselGrid
+          gridData={product}
+          gridName="grid test"
+          carouselName=""
+          carouselIndex={1}
+          buttonFunction={() => { }}
+          buttonText={undefined}
+          showButton={() => false}
+        />
+      </BrowserRouter>,
+      container,
+    );
   });
   expect(screen.getAllByText('text test')[0]).toBeInTheDocument();
   expect(screen.getAllByAltText('alt test')[0]).toBeInTheDocument();

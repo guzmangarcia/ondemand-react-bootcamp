@@ -74,7 +74,11 @@ describe('useFeaturedBanners testing', () => {
             <SideBar
               menuListItems={[{ categoryId: 'categoryId', alt: 'categoryId' }]}
               selectedCategories={[]}
-              updateParentSelectedCategories={(selectedCategory) => { selectedCategories.push(...selectedCategory); }}
+              updateParentSelectedCategories={
+                (selectedCategory) => {
+                  selectedCategories.push(...selectedCategory);
+                }
+}
             />
           </CartItemsContextProvider>
         </BrowserRouter>,
