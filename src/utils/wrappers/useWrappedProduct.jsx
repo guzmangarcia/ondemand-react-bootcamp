@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react';
 import useProducts from '../hooks/useProducts';
 
-export default function useWrappedProduct({ productId, pageNumber = 1 }) {
+export default function useWrappedProduct({
+  productId,
+  pageNumber = 1,
+  selectedCategories = [],
+}) {
   const [productData, setProduct] = useState(() => ({
     product: {},
     isProductLoading: true,
   }));
 
-  const { data: productDataFiltered, isLoading } = useProducts({ productId, pageNumber });
+  const { data: productDataFiltered, isLoading } = useProducts(
+    { productId, pageNumber, selectedCategories },
+  );
 
   useEffect(() => {
     let product = [];
@@ -34,7 +40,6 @@ export default function useWrappedProduct({ productId, pageNumber = 1 }) {
 
         })),
       }))[0];
-
       setProduct({ product, isProductLoading: isLoading });
     }
   }, [productDataFiltered, isLoading]);

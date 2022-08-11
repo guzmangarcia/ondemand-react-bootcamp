@@ -7,15 +7,21 @@ import styles from './ProductDetails.module.scss';
 
 export default function ProductDetails() {
   const [searchParams] = useSearchParams();
+
   const [productId, setproductId] = useState('');
-  const { product, isProductLoading } = useWrappedProduct({ productId, pageNumber: 1 });
 
   useEffect(() => {
     const productelected = searchParams.get('productId');
-    if (productelected === undefined || productelected === null || productelected === '') return;
+
+    if (productelected === undefined
+       || productelected === null
+       || productelected === productId
+       || productelected === '') return;
+
     setproductId(productelected);
   }, [searchParams]);
 
+  const { product, isProductLoading } = useWrappedProduct({ productId, pageNumber: 1 });
   return (
     <div>
       <div className={styles.galery}>

@@ -10,6 +10,7 @@ export default function useProducts({
   selectedCategories = [],
 }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
+
   const [products, setProducts] = useState(() => ({
     data: {},
     isLoading: true,
@@ -54,7 +55,6 @@ export default function useProducts({
         setProducts({ data: {}, isLoading: false });
       }
     }
-
     getProducts();
 
     return () => {

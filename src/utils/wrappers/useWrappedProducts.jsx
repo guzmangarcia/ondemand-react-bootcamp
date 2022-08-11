@@ -6,7 +6,7 @@ export default function useWrappedProducts({
   pageNumber = 1,
   selectedCategories = [],
 }) {
-  const [productsData, setProducts] = useState(() => ({
+  const [productsData, setWrappedProducts] = useState(() => ({
 
     totalPages: 1,
     products: {},
@@ -36,7 +36,7 @@ export default function useWrappedProducts({
         price: item.data.price,
       }));
 
-      setProducts({ totalPages, products, isProductsLoading: isLoading });
+      setWrappedProducts({ totalPages, products, isProductsLoading: isLoading });
     }
   }, [productsDataFiltered, isLoading]);
 

@@ -7,6 +7,7 @@ import { CartItemsContextProvider } from './components/CartItemsContextProvider/
 import Search from './pages/Search/Search';
 import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
+import Test from './pages/Test/Test';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/search" element={<Search />} />
             <Route exact path="/cart" element={<Cart />} />
             <Route exact path="/checkout" element={<Checkout />} />
+            <Route exact path="/test" element={<Test />} />
             <Route path="*" element={<NotFound />} />
 
           </Routes>

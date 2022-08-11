@@ -92,7 +92,7 @@ export default function ProductDescription({
       <div>
         <b>Qty:</b>
         <input type="number" defaultValue={1} onChange={(e) => { setNumberOfItems(e.target.value); }} />
-        <button type="button" onClick={() => { addItemToCard(); }}>Add to cart</button>
+        <button type="button" onClick={addItemToCard}>Add to cart</button>
       </div>
       <p>
         Stock:
