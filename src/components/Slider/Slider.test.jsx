@@ -1,16 +1,15 @@
 import React from 'react';
-import { unmountComponentAtNode } from "react-dom";
-import { render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'
-import { act } from "react-dom/test-utils";
+import { unmountComponentAtNode } from 'react-dom';
+import {
+  render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText,
+} from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { act } from 'react-dom/test-utils';
 import Slider from './Slider';
-
 
 let container = null;
 
-
-
-beforeAll(() => { })
+beforeAll(() => { });
 
 beforeEach(() => {
   // jest.mock('react-router-dom', () => ({
@@ -22,13 +21,9 @@ beforeEach(() => {
   //   useContext: () => (jest.fn())
   // }));
   // setup a DOM element as a render target
-  container = document.createElement("div");
+  container = document.createElement('div');
 
   document.body.appendChild(container);
-
-
-
-
 });
 
 afterEach(() => {
@@ -38,9 +33,7 @@ afterEach(() => {
   container = null;
 });
 
-
-it("Test Slider Loading", async () => {
-
+it('Test Slider Loading', async () => {
   act(() => {
     render(<Slider />, container);
   });
@@ -48,18 +41,10 @@ it("Test Slider Loading", async () => {
   expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
 });
 
-
-it("Test Slider 0 Elements", async () => {
-
-
+it('Test Slider 0 Elements', async () => {
   jest.mock('../../utils/hooks/useFeaturedProducts', () => {
-    jest.fn().mockImplementation(() => {
-
-      return { productsData: [], isLoading: false };
-    });
+    jest.fn().mockImplementation(() => ({ productsData: [], isLoading: false }));
   });
-
-
 
   await act(async () => {
     render(<Slider elements={[]} />, container);
@@ -68,8 +53,7 @@ it("Test Slider 0 Elements", async () => {
   expect(screen.queryByText(/No elements found/i)).toBeInTheDocument();
 }, 5000);
 
-it("test slider with 2 elements", async () => {
-
+it('test slider with 2 elements', async () => {
   const product = [{
     id: 1,
     src: '',
@@ -82,13 +66,11 @@ it("test slider with 2 elements", async () => {
     alt: 'banner products!',
     text: 'banner products!',
   },
-  ]
+  ];
   await act(async () => {
     render(<Slider elements={product} />, container);
   });
   expect(screen.getAllByText(/banner products!/i)[0]).toBeInTheDocument();
+});
 
-})
-
-
-/*node --experimental-vm-modules node_modules/jest/bin/jest.js */
+/* node --experimental-vm-modules node_modules/jest/bin/jest.js */

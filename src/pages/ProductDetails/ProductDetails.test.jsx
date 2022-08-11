@@ -6,7 +6,7 @@ import {
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { act } from 'react-dom/test-utils';
-import ProductList from './ProductList';
+import ProductDetails from './ProductDetails';
 import { CartItemsContextProvider } from '../../components/CartItemsContextProvider/CartItemsContextProvider';
 import useProductsMock from '../../mocks/en-us/products.json';
 import useProductsMockPage2 from '../../mocks/en-us/products-page-2.json';
@@ -29,12 +29,12 @@ afterEach(() => {
   container = null;
 });
 
-describe('ProductList Loading state', () => {
-  it('Opens ProductList and shows Loading...', async () => {
+describe('ProductDetails Loading state', () => {
+  it('Opens ProductDetails and shows Loading...', async () => {
     await act(async () => {
       render(<BrowserRouter>
         <CartItemsContextProvider>
-          <ProductList />
+          <ProductDetails />
         </CartItemsContextProvider>
       </BrowserRouter>, container);
     });
@@ -45,11 +45,11 @@ describe('ProductList Loading state', () => {
 });
 
 describe('products testing', () => {
-  it('Opens ProductList and waits  products to load', async () => {
+  it('Opens ProductDetails and waits  products to load', async () => {
     await act(async () => {
       render(<BrowserRouter>
         <CartItemsContextProvider>
-          <ProductList />
+          <ProductDetails />
         </CartItemsContextProvider>
       </BrowserRouter>, container);
     });
@@ -69,11 +69,11 @@ describe('products testing', () => {
 });
 
 describe('products testing', () => {
-  it('Opens ProductList and waits  the sidebar to load', async () => {
+  it('Opens ProductDetails and waits  the sidebar to load', async () => {
     await act(async () => {
       render(<BrowserRouter>
         <CartItemsContextProvider>
-          <ProductList />
+          <ProductDetails />
         </CartItemsContextProvider>
       </BrowserRouter>, container);
     });
@@ -92,11 +92,11 @@ describe('products testing', () => {
 });
 
 describe('products testing', () => {
-  it('Opens ProductList clicks on next', async () => {
+  it('Opens ProductDetails clicks on next', async () => {
     await act(async () => {
       render(<BrowserRouter>
         <CartItemsContextProvider>
-          <ProductList />
+          <ProductDetails />
         </CartItemsContextProvider>
       </BrowserRouter>, container);
     });

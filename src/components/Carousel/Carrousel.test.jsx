@@ -1,18 +1,19 @@
 import React from 'react';
-import { unmountComponentAtNode } from "react-dom";
-import { render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText, getElementsByClassName } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'
-import { act } from "react-dom/test-utils";
-import Carrousel from './Carousel';
+import { unmountComponentAtNode } from 'react-dom';
+import {
+  render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText, getElementsByClassName,
+} from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { act } from 'react-dom/test-utils';
 import { BrowserRouter } from 'react-router-dom';
-
+import Carrousel from './Carousel';
 
 let container = null;
 
-beforeAll(() => { })
+beforeAll(() => { });
 
 beforeEach(() => {
-  container = document.createElement("div");
+  container = document.createElement('div');
   document.body.appendChild(container);
 });
 
@@ -23,9 +24,7 @@ afterEach(() => {
   container = null;
 });
 
-
-it("Test Carrousel Loading", async () => {
-
+it('Test Carrousel Loading', async () => {
   act(() => {
     render(<Carrousel />, container);
   });
@@ -33,8 +32,7 @@ it("Test Carrousel Loading", async () => {
   expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
 });
 
-
-it("Test Carrousel 0 Elements", async () => {
+it('Test Carrousel 0 Elements', async () => {
   await act(async () => {
     render(<Carrousel data={[]} />, container);
   });
@@ -42,8 +40,7 @@ it("Test Carrousel 0 Elements", async () => {
   expect(screen.queryByText(/No elements found/i)).toBeInTheDocument();
 }, 5000);
 
-it("test Carrousel with 2 elements", async () => {
-
+it('test Carrousel with 2 elements', async () => {
   const product = [{
     className: 'className test',
     count: 0,
@@ -64,7 +61,7 @@ it("test Carrousel with 2 elements", async () => {
     id: 1,
     navigationLink: '',
   },
-  ]
+  ];
   await act(async () => {
     render(<BrowserRouter><Carrousel data={product} /></BrowserRouter>, container);
   });
@@ -73,8 +70,6 @@ it("test Carrousel with 2 elements", async () => {
   expect(screen.getAllByAltText('alt test')[0]).toBeInTheDocument();
   expect(screen.getAllByAltText('alt test')[0].className).toContain('styleCarrouselImage className test');
   expect(screen.getAllByAltText('alt test')[0].src).toContain('src%20test');
+});
 
-})
-
-
-/*node --experimental-vm-modules node_modules/jest/bin/jest.js */
+/* node --experimental-vm-modules node_modules/jest/bin/jest.js */
