@@ -1,18 +1,15 @@
-import React, { createContext, useState, useMemo } from 'react';
+import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
 import {
-  render, screen, fireEvent, renderHook,
+  render, screen, fireEvent,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { act } from 'react-dom/test-utils';
 import { BrowserRouter } from 'react-router-dom';
 import ProductDescription from './ProductDescription';
-import { CartItemsContextProvider, CartItemsContext } from '../CartItemsContextProvider/CartItemsContextProvider';
+import { CartItemsContextProvider } from '../CartItemsContextProvider/CartItemsContextProvider';
 
 let container = null;
-
-let realUseContext;
-let useContextMock;
 
 beforeAll(() => { });
 
@@ -75,7 +72,7 @@ it('Test Product Description elements', async () => {
 it('Test Product Description add to card', async () => {
   let cartItems = [];
 
-  const mockSetCartItems = jest.fn().mockImplementation((expense) => {
+  const mockSetCartItems = jest.fn().mockImplementation(() => {
     cartItems = 1;
 
     return cartItems;
@@ -128,46 +125,3 @@ it('Test Product Description add to card', async () => {
   );
   expect(cartItems).toBe(1);
 });
-
-// it("Test Product Description controls click", async () => {
-
-//   let currentPage = 1;
-//   act(() => {
-//     render(
-
-//       <ProductDescription totalPages={5} currentPage={currentPage} setCurrentPage={(value) => { currentPage = value }} />
-
-//       , container);
-//   });
-//   fireEvent(
-//     screen.getByText(/>/i),
-//     new MouseEvent('click', {
-//       bubbles: true,
-//       cancelable: true,
-//     }),
-//   )
-//   expect(currentPage).toBe(2);
-// });
-
-// it("Test Pagination controls click", async () => {
-
-//   let currentPage = 1;
-//   act(() => {
-//     render(
-
-//       <Pagination totalPages={5} currentPage={currentPage} setCurrentPage={(value) => { currentPage = value }} />
-
-//       , container);
-//   });
-//   fireEvent(
-//     screen.getByText(/</i),
-//     new MouseEvent('click', {
-//       bubbles: true,
-//       cancelable: true,
-//     }),
-//   )
-//   expect(currentPage).toBe(5);
-// });
-
-// /*node --experimental-vm-modules node_modules/jest/bin/jest.js */
-// /*yarn eslint .  --ext .js --ext .jsx --fix */

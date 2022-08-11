@@ -26,7 +26,11 @@ it('Test Pagination numbers', async () => {
   act(() => {
     render(
 
-      <Pagination totalPages={5} currentPage={currentPage} setCurrentPage={(value) => { currentPage = value; }} />,
+      <Pagination
+        totalPages={5}
+        currentPage={currentPage}
+        setCurrentPage={(value) => { currentPage = value; }}
+      />,
 
       container,
     );
@@ -46,7 +50,11 @@ it('Test Pagination numbers click', async () => {
   act(() => {
     render(
 
-      <Pagination totalPages={5} currentPage={currentPage} setCurrentPage={(value) => { currentPage = value; }} />,
+      <Pagination
+        totalPages={5}
+        currentPage={currentPage}
+        setCurrentPage={(value) => { currentPage = value; }}
+      />,
 
       container,
     );
@@ -66,7 +74,11 @@ it('Test Pagination controls click', async () => {
   act(() => {
     render(
 
-      <Pagination totalPages={5} currentPage={currentPage} setCurrentPage={(value) => { currentPage = value; }} />,
+      <Pagination
+        totalPages={5}
+        currentPage={currentPage}
+        setCurrentPage={(value) => { currentPage = value; }}
+      />,
 
       container,
     );
@@ -81,12 +93,16 @@ it('Test Pagination controls click', async () => {
   expect(currentPage).toBe(2);
 });
 
-it('Test Pagination controls click', async () => {
+it('Test Pagination controls click in number', async () => {
   let currentPage = 1;
   act(() => {
     render(
 
-      <Pagination totalPages={5} currentPage={currentPage} setCurrentPage={(value) => { currentPage = value; }} />,
+      <Pagination
+        totalPages={5}
+        currentPage={currentPage}
+        setCurrentPage={(value) => { currentPage = value; }}
+      />,
 
       container,
     );

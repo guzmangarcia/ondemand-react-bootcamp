@@ -1,8 +1,8 @@
 import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import {
-  render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText, fireEvent, renderHook, prettyDOM,
+  render, screen, waitFor,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { act } from 'react-dom/test-utils';
@@ -28,11 +28,14 @@ afterEach(() => {
 describe('Home Loading state', () => {
   it('Opens Home and shows Loading...', async () => {
     await act(async () => {
-      render(<BrowserRouter>
-        <CartItemsContextProvider>
-          <Home />
-        </CartItemsContextProvider>
-      </BrowserRouter>, container);
+      render(
+        <BrowserRouter>
+          <CartItemsContextProvider>
+            <Home />
+          </CartItemsContextProvider>
+        </BrowserRouter>,
+        container,
+      );
     });
 
     expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
@@ -42,17 +45,20 @@ describe('Home Loading state', () => {
 describe('useFeaturedBanners testing', () => {
   it('Opens Home and waits  useFeaturedBanners to load', async () => {
     await act(async () => {
-      render(<BrowserRouter>
-        <CartItemsContextProvider>
-          <Home />
-        </CartItemsContextProvider>
-      </BrowserRouter>, container);
+      render(
+        <BrowserRouter>
+          <CartItemsContextProvider>
+            <Home />
+          </CartItemsContextProvider>
+        </BrowserRouter>,
+        container,
+      );
     });
 
     await waitFor(() => expect(screen.queryAllByText(/banner/i)[0]).toBeInTheDocument(), {
       timeout: 1000,
       interval: 50,
-      onTimeout: (e) => {
+      onTimeout: () => {
       },
     });
 
@@ -63,17 +69,20 @@ describe('useFeaturedBanners testing', () => {
 describe('useProductCategories testing', () => {
   it('Opens Home and waits useProductCategories to load', async () => {
     await act(async () => {
-      render(<BrowserRouter>
-        <CartItemsContextProvider>
-          <Home />
-        </CartItemsContextProvider>
-      </BrowserRouter>, container);
+      render(
+        <BrowserRouter>
+          <CartItemsContextProvider>
+            <Home />
+          </CartItemsContextProvider>
+        </BrowserRouter>,
+        container,
+      );
     });
 
     await waitFor(() => expect(screen.queryAllByText(/Decorate/i)[0]).toBeInTheDocument(), {
       timeout: 1000,
       interval: 50,
-      onTimeout: (e) => {
+      onTimeout: () => {
       },
     });
 
@@ -84,17 +93,20 @@ describe('useProductCategories testing', () => {
 describe('useFeaturedProducts testing', () => {
   it('Opens Home and waits useFeaturedProducts to load', async () => {
     await act(async () => {
-      render(<BrowserRouter>
-        <CartItemsContextProvider>
-          <Home />
-        </CartItemsContextProvider>
-      </BrowserRouter>, container);
+      render(
+        <BrowserRouter>
+          <CartItemsContextProvider>
+            <Home />
+          </CartItemsContextProvider>
+        </BrowserRouter>,
+        container,
+      );
     });
 
     await waitFor(() => expect(screen.queryAllByText(/Tyler Poly Reclining Leather Armchair/i)[0]).toBeInTheDocument(), {
       timeout: 1000,
       interval: 50,
-      onTimeout: (e) => {
+      onTimeout: () => {
       },
     });
 

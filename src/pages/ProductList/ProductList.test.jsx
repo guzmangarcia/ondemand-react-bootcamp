@@ -1,8 +1,8 @@
 import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import {
-  render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText, fireEvent, renderHook, prettyDOM,
+  render, screen, waitFor, fireEvent,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { act } from 'react-dom/test-utils';
@@ -32,11 +32,14 @@ afterEach(() => {
 describe('ProductList Loading state', () => {
   it('Opens ProductList and shows Loading...', async () => {
     await act(async () => {
-      render(<BrowserRouter>
-        <CartItemsContextProvider>
-          <ProductList />
-        </CartItemsContextProvider>
-      </BrowserRouter>, container);
+      render(
+        <BrowserRouter>
+          <CartItemsContextProvider>
+            <ProductList />
+          </CartItemsContextProvider>
+        </BrowserRouter>,
+        container,
+      );
     });
 
     expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
@@ -44,21 +47,23 @@ describe('ProductList Loading state', () => {
   });
 });
 
-describe('products testing', () => {
+describe('products testing basic', () => {
   it('Opens ProductList and waits  products to load', async () => {
     await act(async () => {
-      render(<BrowserRouter>
-        <CartItemsContextProvider>
-          <ProductList />
-        </CartItemsContextProvider>
-      </BrowserRouter>, container);
+      render(
+        <BrowserRouter>
+          <CartItemsContextProvider>
+            <ProductList />
+          </CartItemsContextProvider>
+        </BrowserRouter>,
+        container,
+      );
     });
 
     await waitFor(() => expect(screen.queryAllByText(/Tallulah Sofa Gray/i)[0]).toBeInTheDocument(), {
       timeout: 2000,
       interval: 50,
-      onTimeout: (e) => {
-        console.log('timeout');
+      onTimeout: () => {
       },
     });
 
@@ -68,20 +73,23 @@ describe('products testing', () => {
   }, 5000);
 });
 
-describe('products testing', () => {
+describe('products testing with one page', () => {
   it('Opens ProductList and waits  the sidebar to load', async () => {
     await act(async () => {
-      render(<BrowserRouter>
-        <CartItemsContextProvider>
-          <ProductList />
-        </CartItemsContextProvider>
-      </BrowserRouter>, container);
+      render(
+        <BrowserRouter>
+          <CartItemsContextProvider>
+            <ProductList />
+          </CartItemsContextProvider>
+        </BrowserRouter>,
+        container,
+      );
     });
 
     await waitFor(() => expect(screen.queryAllByText(/Bath/i)[0]).toBeInTheDocument(), {
       timeout: 2000,
       interval: 50,
-      onTimeout: (e) => {
+      onTimeout: () => {
       },
     });
 
@@ -91,20 +99,23 @@ describe('products testing', () => {
   }, 5000);
 });
 
-describe('products testing', () => {
+describe('products testing with multiple pages', () => {
   it('Opens ProductList clicks on next', async () => {
     await act(async () => {
-      render(<BrowserRouter>
-        <CartItemsContextProvider>
-          <ProductList />
-        </CartItemsContextProvider>
-      </BrowserRouter>, container);
+      render(
+        <BrowserRouter>
+          <CartItemsContextProvider>
+            <ProductList />
+          </CartItemsContextProvider>
+        </BrowserRouter>,
+        container,
+      );
     });
 
     await waitFor(() => expect(screen.queryAllByText('2')[0]).toBeInTheDocument(), {
       timeout: 1000,
       interval: 50,
-      onTimeout: (e) => {
+      onTimeout: () => {
 
       },
     });

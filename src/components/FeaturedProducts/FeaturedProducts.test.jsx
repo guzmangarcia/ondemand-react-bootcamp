@@ -1,7 +1,7 @@
 import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
 import {
-  render, screen, waitFor, waitForElementToBeRemoved, queryByText, queryAllByText, getElementsByClassName,
+  render, screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { act } from 'react-dom/test-utils';
@@ -27,11 +27,14 @@ afterEach(() => {
 
 it('Test FeaturedProducts Loading', async () => {
   act(() => {
-    render(<BrowserRouter>
-      <CartItemsContextProvider>
-        <FeaturedProducts />
-      </CartItemsContextProvider>
-    </BrowserRouter>, container);
+    render(
+      <BrowserRouter>
+        <CartItemsContextProvider>
+          <FeaturedProducts />
+        </CartItemsContextProvider>
+      </BrowserRouter>,
+      container,
+    );
   });
 
   expect(screen.getAllByText('Loading...')[0]).toBeInTheDocument();
@@ -39,11 +42,14 @@ it('Test FeaturedProducts Loading', async () => {
 
 it('Test FeaturedProducts 0 Elements', async () => {
   await act(async () => {
-    render(<BrowserRouter>
-      <CartItemsContextProvider>
-        <FeaturedProducts featuredProducts={[]} />
-      </CartItemsContextProvider>
-    </BrowserRouter>, container);
+    render(
+      <BrowserRouter>
+        <CartItemsContextProvider>
+          <FeaturedProducts featuredProducts={[]} />
+        </CartItemsContextProvider>
+      </BrowserRouter>,
+      container,
+    );
   });
 
   expect(screen.queryByText(/No elements found/i)).toBeInTheDocument();
@@ -75,11 +81,14 @@ it('test FeaturedProducts with 2 elements', async () => {
     },
   ];
   await act(async () => {
-    render(<BrowserRouter>
-      <CartItemsContextProvider>
-        <FeaturedProducts featuredProducts={product} />
-      </CartItemsContextProvider>
-    </BrowserRouter>, container);
+    render(
+      <BrowserRouter>
+        <CartItemsContextProvider>
+          <FeaturedProducts featuredProducts={product} />
+        </CartItemsContextProvider>
+      </BrowserRouter>,
+      container,
+    );
   });
 
   expect(screen.getAllByText('row.data.name')[0]).toBeInTheDocument();
