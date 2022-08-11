@@ -31,6 +31,8 @@ afterEach(() => {
 
 describe('ProductDetails Loading state', () => {
   it('Opens ProductDetails and shows Loading...', async () => {
+    useProducts.mockImplementation(() => ({ data: [], isLoading: false }));
+
     await act(async () => {
       render(
         <BrowserRouter>

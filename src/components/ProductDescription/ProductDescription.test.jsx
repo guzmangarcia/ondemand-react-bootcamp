@@ -7,7 +7,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { act } from 'react-dom/test-utils';
 import { BrowserRouter } from 'react-router-dom';
 import ProductDescription from './ProductDescription';
-import { CartItemsContextProvider } from '../CartItemsContextProvider/CartItemsContextProvider';
+import { CartItemsContext, CartItemsContextProvider } from '../CartItemsContextProvider/CartItemsContextProvider';
 
 let container = null;
 
@@ -72,16 +72,17 @@ it('Test Product Description elements', async () => {
 it('Test Product Description add to card', async () => {
   let cartItems = [];
 
-  const mockSetCartItems = jest.fn().mockImplementation(() => {
-    cartItems = 1;
+  const mockSetCartItems = ((element) => {
+    console.log('aaaaaad ');
+    cartItems = cartItems.push(element);
 
     return cartItems;
   });
 
-  const mockUseContext = jest.fn().mockImplementation(() => ({
+  const mockUseContext = {
     cartItems: [],
     setCartItems: mockSetCartItems,
-  }));
+  };
 
   React.useContext = mockUseContext;
 
@@ -98,7 +99,7 @@ it('Test Product Description add to card', async () => {
 
   act(() => {
     render(
-      <CartItemsContextProvider>
+      <CartItemsContext.Provider value={mockUseContext}>
         <ProductDescription
           item={item}
           name={name}
@@ -111,7 +112,7 @@ it('Test Product Description add to card', async () => {
           stock={stock}
           uniqueId={uniqueId}
         />
-      </CartItemsContextProvider>,
+      </CartItemsContext.Provider>,
       container,
     );
   });

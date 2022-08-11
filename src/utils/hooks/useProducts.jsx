@@ -10,7 +10,6 @@ export default function useProducts({
   selectedCategories = [],
 }) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
-
   const [products, setProducts] = useState(() => ({
     data: {},
     isLoading: true,
@@ -22,9 +21,12 @@ export default function useProducts({
     }
 
     const controller = new AbortController();
-
+    let isloading = false;
     async function getProducts() {
       try {
+        if (isloading) return;
+        isloading = true;
+        setProducts({ data: {}, isLoading: true });
         let searchByID = '';
 
         if (productId !== undefined) {
@@ -33,15 +35,12 @@ export default function useProducts({
           searchByID = `&q=${encodeURIComponent('[[at(document.type, "product")]]')}`;
         }
         let strSelectedCategories = '';
-
         if (selectedCategories.length > 0) {
           const selectedCategoriesMap = selectedCategories.map((category) => `"${category}"`);
           strSelectedCategories = `&q=${encodeURIComponent(`[[any(my.product.category,[${selectedCategoriesMap.toString()}])]]`)}`;
         }
 
-        setProducts({ data: {}, isLoading: true });
         const url = `${API_BASE_URL}/documents/search?ref=${apiRef}${searchByID}${strSelectedCategories}&lang=en-us&pageSize=${pageSize}&page=${pageNumber}`;
-
         const response = await fetch(
           url,
           {
@@ -49,12 +48,14 @@ export default function useProducts({
           },
         );
         const data = await response.json();
-
+        // isloading = false;
         setProducts({ data, isLoading: false });
       } catch (err) {
+        // isloading = false;
         setProducts({ data: {}, isLoading: false });
       }
     }
+
     getProducts();
 
     return () => {
@@ -66,9 +67,15 @@ export default function useProducts({
 }
 
 useProducts.propTypes = {
-  className: PropTypes.string.isRequired,
-  productId: PropTypes.string.isRequired,
-  pageSize: PropTypes.number.isRequired,
-  pageNumber: PropTypes.number.isRequired,
-  selectedCategories: PropTypes.string.isRequired,
+
+  productId: PropTypes.string,
+  pageSize: PropTypes.number,
+  pageNumber: PropTypes.number,
+  selectedCategories: PropTypes.arrayOf(PropTypes.string),
+};
+useProducts.defaultProps = {
+  productId: undefined,
+  pageSize: 12,
+  pageNumber: 1,
+  selectedCategories: [],
 };
