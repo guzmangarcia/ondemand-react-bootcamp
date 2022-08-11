@@ -41,38 +41,38 @@ export default function ProductDescription({
     <div>
       <ShowError message={message} setMessage={setMessage} />
       <p>
-        <label htmlFor={name}>
+        <label htmlFor="name">
           <b>Name: </b>
           {name}
         </label>
       </p>
       <p>
-        <label htmlFor={price}>
+        <label htmlFor="price">
           <b>Price:</b>
           {' '}
           {price}
         </label>
       </p>
       <p>
-        <label htmlFor={sku}>
+        <label htmlFor="sku">
           <b>SKU:</b>
           {' '}
           {sku}
         </label>
       </p>
       <p>
-        <label htmlFor={categoryName}>
+        <label htmlFor="categoryName">
           <b>Category:</b>
           {' '}
           {categoryName}
         </label>
       </p>
       <p>
-        <label htmlFor={tags}>
+        <label htmlFor="tags">
           <b>Tags:</b>
           {' '}
           {tags.map((tag) => (
-            <label key={tag} htmlFor={tag}>
+            <label key={tag} htmlFor="tag">
               {tag}
               {' '}
             </label>
@@ -80,7 +80,7 @@ export default function ProductDescription({
         </label>
       </p>
       <p>
-        <label htmlFor={description}>
+        <label htmlFor="description">
           <b>Description:</b>
           {' '}
           <br />
@@ -92,7 +92,8 @@ export default function ProductDescription({
       <div>
         <b>Qty:</b>
         <input type="number" defaultValue={1} onChange={(e) => { setNumberOfItems(e.target.value); }} />
-        <button type="button" onClick={addItemToCard}>Add to cart</button>
+        { stock > 0 ? <button type="button" onClick={addItemToCard}>Add to cart</button>
+          : <button disabled="disabled" type="button" onClick={addItemToCard}>Add to cart</button>}
       </div>
       <p>
         Stock:

@@ -1,16 +1,41 @@
-import useProducts from '../../utils/hooks/useProducts';
+// import useWrappedProducts from '../../utils/wrappers/useWrappedProducts';
+import useWrappedProductCategoriesMenu from '../../utils/wrappers/useWrappedProductCategoriesMenu';
+import useYamasaii from '../../utils/hooks/useProducts';
 // import { useEffect, useState } from 'react';
-// import useWrappedProduct from '../../utils/wrappers/useWrappedProduct';
 
 export default function Test() {
-  const { product, isProductLoading } = useProducts({ productId: 'YZZ6OhIAACgAvlE1' });
+  const {
+    products,
+    isProductsLoading,
+
+  } = useYamasaii({
+    pageSize: 12,
+    pageNumber: 1,
+    selectedCategories: [],
+
+  });
+
+  const {
+    productCategories,
+    isProductCategoriesLoading,
+  } = useWrappedProductCategoriesMenu({ pageNumber: 1 });
+
   return (
+
     <div>
-      {isProductLoading && (
-      <div>
-        {' '}
-        {JSON.stringify(product)}
-      </div>
+
+      {!isProductCategoriesLoading && (
+        <div>
+          <div> fdsfdssdfsfsd</div>
+          {console.log(productCategories, isProductCategoriesLoading)}
+        </div>
+      )}
+
+      {!isProductsLoading && (
+        <div>
+          <div> fdsfdssdfsfsd</div>
+          {console.log(products, isProductsLoading)}
+        </div>
       )}
     </div>
 

@@ -31,12 +31,14 @@ export default function ProductDetails() {
 
       <div className={styles.galerydetails}>
         {
-          !isProductLoading && (
-          <ProductDescription
-            item={product.galery[0]}
-            {...product.properties}
-          />
-          )
+          !isProductLoading
+            ? (
+              <ProductDescription
+                item={product.galery[0]}
+                {...product.properties}
+              />
+            )
+            : <div>Loading...</div>
         }
       </div>
     </div>
