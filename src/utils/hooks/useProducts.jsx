@@ -10,7 +10,7 @@ export default function useProducts() {
 
   useEffect(() => {
     const controller = new AbortController();
-    let isloading = false;
+
     async function getProducts() {
       try {
         setProducts({ data: {}, isLoading: true });
@@ -19,11 +19,9 @@ export default function useProducts() {
 
         setProducts({ data, isLoading: false });
       } catch (err) {
-        // isloading = false;
         setProducts({ data: {}, isLoading: false });
       }
     }
-
 
     getProducts();
 
@@ -34,5 +32,3 @@ export default function useProducts() {
 
   return products;
 }
-<<<<<<< HEAD
-=======
