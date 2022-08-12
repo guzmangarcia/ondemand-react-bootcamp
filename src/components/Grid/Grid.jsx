@@ -78,6 +78,7 @@ export default function Grid({ data, setData, editable }) {
                       onChange={(e) => {
                         handleClick({ itemId: itemData.uniqueId, newValue: e.currentTarget.value });
                       }}
+                      data-testid={`select-${itemData.uniqueId}`}
                     >
                       {itemData.quantityItems.map((item, index) => (
                         // eslint-disable-next-line react/no-array-index-key
@@ -100,7 +101,7 @@ export default function Grid({ data, setData, editable }) {
                 {itemData.price * itemData.quantity}
                 $
               </td>
-              {editable && <td className={styles.thtd}><button type="button" onClick={() => { removeItem({ itemId: itemData.uniqueId }); }}>X</button></td>}
+              {editable && <td className={styles.thtd}><button data-testid={`button-${itemData.uniqueId}`} type="button" onClick={() => { removeItem({ itemId: itemData.uniqueId }); }}>X</button></td>}
             </tr>
           ))}
 

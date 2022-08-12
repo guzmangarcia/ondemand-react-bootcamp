@@ -150,8 +150,6 @@ describe('products testing', () => {
       },
     );
 
-    screen.debug();
-
     expect(screen.getByText('Add to cart')).toHaveAttribute('disabled');
   }, 5000);
 });
