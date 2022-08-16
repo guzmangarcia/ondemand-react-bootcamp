@@ -1,40 +1,32 @@
 // import useWrappedProducts from '../../utils/wrappers/useWrappedProducts';
-import useWrappedProductCategoriesMenu from '../../utils/wrappers/useWrappedProductCategoriesMenu';
-import useYamasaii from '../../utils/hooks/useProducts';
+
+import useProducts from '../../utils/hooks/useProducts';
 // import { useEffect, useState } from 'react';
 
 export default function Test() {
-  const {
-    products,
-    isProductsLoading,
+  let {
+    data,
+    isLoading,
 
-  } = useYamasaii({
+  } = useProducts({
     pageSize: 12,
     pageNumber: 1,
-    selectedCategories: [],
+    selectedCategories: ['aaaa'],
 
   });
 
-  const {
-    productCategories,
-    isProductCategoriesLoading,
-  } = useWrappedProductCategoriesMenu({ pageNumber: 1 });
+
 
   return (
 
     <div>
 
-      {!isProductCategoriesLoading && (
-        <div>
-          <div> fdsfdssdfsfsd</div>
-          {console.log(productCategories, isProductCategoriesLoading)}
-        </div>
-      )}
 
-      {!isProductsLoading && (
+
+      {!isLoading && (
         <div>
           <div> fdsfdssdfsfsd</div>
-          {console.log(products, isProductsLoading)}
+          {console.log(data,isLoading,)}
         </div>
       )}
     </div>

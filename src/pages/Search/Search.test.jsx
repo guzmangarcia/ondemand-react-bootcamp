@@ -32,8 +32,6 @@ afterEach(() => {
   container = null;
 });
 
-
-
 describe('Search Loading state', () => {
   it('5.1. Validate that the list of results is rendering data according to the “searchTerm” provided.', async () => {
     await act(async () => {

@@ -27,7 +27,7 @@
     "sourceType": "module"
   },
   "plugins": ["react","jest"],
-   //"ignorePatterns": [ "jest.setup.js","fileTransformer.js", "**/test","*.test.jsx","**/*.test.jsx"],
+   "ignorePatterns": [ "jest.setup.js","fileTransformer.js", "**/test","*.test.jsx","**/*.test.jsx"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/control-has-associated-label": "off",
