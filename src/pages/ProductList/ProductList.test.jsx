@@ -48,7 +48,7 @@ describe('ProductList Loading state', () => {
 });
 
 describe('products testing basic', () => {
-  it('Opens ProductList and waits  products to load', async () => {
+  it('Product Category Sidebar is fetching and rendering data from the API,Category links on Product Category Sidebar are filtering Products Grid correctly interacting with the API', async () => {
     await act(async () => {
       render(
         <BrowserRouter>

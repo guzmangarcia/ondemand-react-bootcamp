@@ -21,7 +21,7 @@ afterEach(() => {
   container = null;
 });
 
-it('Test Pagination numbers', async () => {
+it(' Pagination Controls are generated correctly based on the number of results fetched from the API and the maximum number of products per page', async () => {
   let currentPage = 1;
   act(() => {
     render(
@@ -69,7 +69,7 @@ it('Test Pagination numbers click', async () => {
   expect(currentPage).toBe(2);
 });
 
-it('Test Pagination controls click', async () => {
+it('Next button is working as expected', async () => {
   let currentPage = 1;
   act(() => {
     render(
@@ -93,7 +93,7 @@ it('Test Pagination controls click', async () => {
   expect(currentPage).toBe(2);
 });
 
-it('Test Pagination controls click in number', async () => {
+it('prev button is working as expected', async () => {
   let currentPage = 1;
   act(() => {
     render(

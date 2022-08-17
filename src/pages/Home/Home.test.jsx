@@ -43,7 +43,7 @@ describe('Home Loading state', () => {
 });
 
 describe('useFeaturedBanners testing', () => {
-  it('Opens Home and waits  useFeaturedBanners to load', async () => {
+  it('2.1. Featured Banners Slider is fetching and rendering data from the API', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
@@ -67,7 +67,7 @@ describe('useFeaturedBanners testing', () => {
 });
 
 describe('useProductCategories testing', () => {
-  it('Opens Home and waits useProductCategories to load', async () => {
+  it('Categories Carousel/Grid is fetching and rendering data from the API', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
@@ -91,7 +91,7 @@ describe('useProductCategories testing', () => {
 });
 
 describe('useFeaturedProducts testing', () => {
-  it('Opens Home and waits useFeaturedProducts to load', async () => {
+  it('Featured Products Grid is fetching and rendering data from the API', async () => {
     await act(async () => {
       render(
         <BrowserRouter>
