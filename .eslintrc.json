@@ -1,0 +1,54 @@
+{
+  "overrides": [
+    {
+      "files": [
+        "**/*.test.js",
+        "**/*.test.jsx"
+      ],
+      "env": {
+        "jest": true,
+        "jest/globals": true
+      },
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"],
+      "rules": { "jest/prefer-expect-assertions": "off" }
+    }
+  ],
+  "env": {
+    "browser": true,
+    "es2017": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "plugin:jest/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": ["react","jest"],
+   "ignorePatterns": [ "jest.setup.js","fileTransformer.js", "**/test","*.test.jsx","**/*.test.jsx"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "react/destructuring-assignment":"off",
+    "react/jsx-props-no-spreading":"off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
+    
+  },
+  "settings": {
+    "jest": {
+      "globalAliases": {
+        "describe": ["context"],
+        "fdescribe": ["fcontext"],
+        "xdescribe": ["xcontext"]
+      }
+    }
+  }
+}

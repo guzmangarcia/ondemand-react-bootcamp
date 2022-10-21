@@ -1,9 +1,9 @@
-.styleCarrousel
-{
-  // display: grid;
-  display: inline-block;
+.styleCarrousel {
+  display: flex;
+  width: 100vw;
+  flex-wrap: wrap;
 }
-.imageSmall
-{
-   max-height: 20vh;
+
+.imageSmall {
+  max-height: 20vh;
 }
